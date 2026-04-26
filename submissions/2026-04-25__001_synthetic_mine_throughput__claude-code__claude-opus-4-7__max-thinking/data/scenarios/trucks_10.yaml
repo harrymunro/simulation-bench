@@ -1,0 +1,5 @@
+scenario_id: trucks_10
+inherits: baseline
+description: Optional intermediate fleet size (10) to confirm where saturation begins
+fleet:
+  truck_count: 10

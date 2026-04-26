@@ -1,0 +1,25 @@
+benchmark_suite: simulation-bench
+version: "0.1.0"
+description: Agentic modelling and simulation benchmark suite.
+
+benchmarks:
+  - id: "001_synthetic_mine_throughput"
+    name: "Synthetic Mine Throughput"
+    path: "benchmarks/001_synthetic_mine_throughput"
+    type: "discrete_event_simulation"
+    required_tool: "simpy"
+    recommended_time_limit_minutes: 45
+    required_scenarios:
+      - baseline
+      - trucks_4
+      - trucks_12
+      - ramp_upgrade
+      - crusher_slowdown
+      - ramp_closed
+    required_outputs:
+      - conceptual_model.md
+      - README.md
+      - results.csv
+      - summary.json
+      - event_log.csv
+

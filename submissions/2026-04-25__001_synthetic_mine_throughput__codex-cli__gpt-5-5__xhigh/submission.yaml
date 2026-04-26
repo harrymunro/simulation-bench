@@ -1,0 +1,16 @@
+submission_id: 2026-04-25__001_synthetic_mine_throughput__codex-cli__gpt-5-5__xhigh
+date: 2026-04-25
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: codex-cli
+  version: tbc
+  notes: null
+model:
+  name: gpt-5-5
+  vendor: openai
+  notes: xhigh reasoning effort
+run_tag: xhigh
+operator: harry
+status: completed
+time_s: 400
+tokens: 503000

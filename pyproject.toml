@@ -1,0 +1,10 @@
+[project]
+name = "simulation-bench"
+version = "0.1.0"
+description = "Benchmark for agentic modelling and simulation development using SimPy."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["benchmarks"]
+python_files = ["test_*.py"]
+

@@ -1,0 +1,16 @@
+submission_id: 2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking
+date: 2026-04-25
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: claude-code
+  version: tbc
+  notes: max thinking budget enabled
+model:
+  name: claude-opus-4-7
+  vendor: anthropic
+  notes: max thinking
+run_tag: max-thinking
+operator: harry
+status: scaffolded
+time_s: 699
+tokens: 116900

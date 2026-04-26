@@ -1,0 +1,14 @@
+submission_id: 2026-04-25__001_synthetic_mine_throughput__pi-agent__gemini-3-1-pro-preview__vanilla-customtools
+date: 2026-04-25
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: pi-agent
+  version: tbc
+  notes: vanilla pi agent with custom tools enabled
+model:
+  name: gemini-3-1-pro-preview
+  vendor: google
+  notes: 3.1 Pro preview
+run_tag: vanilla-customtools
+operator: harry
+status: scaffolded

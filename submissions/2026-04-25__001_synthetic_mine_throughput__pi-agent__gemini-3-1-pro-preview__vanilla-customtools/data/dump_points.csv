@@ -1,0 +1,4 @@
+dump_id,node_id,type,capacity,mean_dump_time_min,sd_dump_time_min
+D_CRUSH,CRUSH,crusher,1,3.5,0.8
+D_WASTE,WASTE,waste_dump,1,4.0,0.8
+

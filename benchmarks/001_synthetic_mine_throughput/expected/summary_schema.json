@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Simulation Bench Summary Schema",
+  "type": "object",
+  "required": [
+    "benchmark_id",
+    "scenarios",
+    "key_assumptions",
+    "model_limitations"
+  ],
+  "properties": {
+    "benchmark_id": {
+      "type": "string"
+    },
+    "scenarios": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "replications",
+          "shift_length_hours",
+          "total_tonnes_mean",
+          "tonnes_per_hour_mean"
+        ],
+        "properties": {
+          "replications": {
+            "type": "number"
+          },
+          "shift_length_hours": {
+            "type": "number"
+          },
+          "total_tonnes_mean": {
+            "type": "number"
+          },
+          "total_tonnes_ci95_low": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "total_tonnes_ci95_high": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tonnes_per_hour_mean": {
+            "type": "number"
+          },
+          "tonnes_per_hour_ci95_low": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tonnes_per_hour_ci95_high": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "average_cycle_time_min": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "truck_utilisation_mean": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "loader_utilisation": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "crusher_utilisation": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "average_loader_queue_time_min": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "average_crusher_queue_time_min": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "top_bottlenecks": {
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "key_assumptions": {
+      "type": "array"
+    },
+    "model_limitations": {
+      "type": "array"
+    },
+    "additional_scenarios_proposed": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

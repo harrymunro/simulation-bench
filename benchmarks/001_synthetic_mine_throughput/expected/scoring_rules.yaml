@@ -1,0 +1,45 @@
+benchmark_id: 001_synthetic_mine_throughput
+
+required_scenarios:
+  - baseline
+  - trucks_4
+  - trucks_12
+  - ramp_upgrade
+  - crusher_slowdown
+  - ramp_closed
+
+required_output_files:
+  - conceptual_model.md
+  - README.md
+  - results.csv
+  - summary.json
+  - event_log.csv
+
+required_results_columns:
+  - scenario_id
+  - replication
+  - random_seed
+  - total_tonnes_delivered
+  - tonnes_per_hour
+
+required_event_log_columns:
+  - time_min
+  - replication
+  - scenario_id
+  - truck_id
+  - event_type
+
+behavioural_checks:
+  trucks_12_gt_trucks_4:
+    description: Higher fleet should usually outperform lower fleet.
+    expression: "total_tonnes_mean[trucks_12] > total_tonnes_mean[trucks_4]"
+  ramp_upgrade_ge_baseline:
+    description: Ramp upgrade should usually improve or maintain throughput.
+    expression: "total_tonnes_mean[ramp_upgrade] >= 0.95 * total_tonnes_mean[baseline]"
+  crusher_slowdown_lt_baseline:
+    description: Slower crusher should usually reduce throughput.
+    expression: "total_tonnes_mean[crusher_slowdown] < total_tonnes_mean[baseline]"
+  ramp_closed_le_baseline:
+    description: Ramp closure should usually not improve throughput.
+    expression: "total_tonnes_mean[ramp_closed] <= 1.05 * total_tonnes_mean[baseline]"
+

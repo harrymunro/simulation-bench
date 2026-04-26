@@ -1,0 +1,8 @@
+{
+  "name": "simulation-bench",
+  "version": "0.1.0-regenerated",
+  "contains_reference_solution": false,
+  "benchmark_count": 1,
+  "primary_benchmark": "001_synthetic_mine_throughput",
+  "generated_files_note": "No reference solution is included. The harness automates quantitative and structural checks only."
+}

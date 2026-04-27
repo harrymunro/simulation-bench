@@ -12,3 +12,9 @@ model:
 run_tag: vanilla-customtools
 operator: harry
 status: scaffolded
+time_s: 297
+tokens_in: 78000
+tokens_out: 21000
+intervention:
+  category: autonomous
+  notes: ''

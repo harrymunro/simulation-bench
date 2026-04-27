@@ -1,0 +1,7 @@
+{
+  "input_tokens": 78000,
+  "output_tokens": 21000,
+  "total_tokens": 99000,
+  "token_count_method": "reported",
+  "estimated_cost_usd": null
+}

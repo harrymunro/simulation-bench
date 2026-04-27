@@ -14,3 +14,6 @@ operator: harry
 status: completed
 time_s: 400
 tokens: 503000
+intervention:
+  category: autonomous
+  notes: ''

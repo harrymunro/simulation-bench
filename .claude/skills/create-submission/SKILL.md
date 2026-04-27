@@ -68,6 +68,24 @@ Use these commands from the project root:
 mkdir -p submissions/<folder>
 cp benchmarks/<benchmark_id>/prompt.md submissions/<folder>/prompt.md
 cp -R benchmarks/<benchmark_id>/data submissions/<folder>/data
+cat > submissions/<folder>/token_usage.json <<'JSON'
+{
+  "input_tokens": null,
+  "output_tokens": null,
+  "total_tokens": null,
+  "token_count_method": "unknown",
+  "estimated_cost_usd": null
+}
+JSON
+cat > submissions/<folder>/run_metrics.json <<'JSON'
+{
+  "command": null,
+  "runtime_seconds": null,
+  "return_code": null,
+  "timed_out": null,
+  "note": "Populate via harness/measure_run.py once the run completes."
+}
+JSON
 ```
 
 Do not copy `expected/`, `public_tests/`, or `templates/` — those are evaluator-side material the agent must not see. Do not create `outputs/`, `results/`, or a `run_experiment.py` stub; the agent will produce those itself when it runs.
@@ -93,7 +111,12 @@ model:
 run_tag: <run_tag or null>
 operator: <user's name or env, optional>
 status: scaffolded     # scaffolded | running | complete | abandoned
+intervention:
+  category: unrecorded   # autonomous | hints | manual_repair | failed | unrecorded
+  notes: ""
 ```
+
+Leave `intervention.category` as `unrecorded` until the run completes; update it during evaluation per `RUN_PROTOCOL.md` §8.
 
 Populate every field you have evidence for. Use `tbc` for things the user explicitly flagged as not yet known. Leave optional fields as `null` rather than guessing.
 

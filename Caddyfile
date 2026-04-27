@@ -6,7 +6,6 @@
 :80 {
     root * /srv
     encode gzip
-    file_server
 
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains"
@@ -16,9 +15,8 @@
         -Server
     }
 
-    @notFound {
-        not file
-        not path *.css *.js *.png *.svg *.gif *.mp4 *.csv *.json *.txt *.ico *.woff *.woff2
-    }
-    rewrite @notFound /index.html
+    # Resolve directory URLs (e.g. /methodology/scoring/) to their index.html
+    # before falling back to the leaderboard for true 404s.
+    try_files {path} {path}index.html {path}/index.html /index.html
+    file_server
 }

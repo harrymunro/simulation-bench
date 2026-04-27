@@ -57,9 +57,9 @@ animation.mp4
 additional_scenarios/
 ```
 
-## 4. Quantitative measurement
+## 4. Quantitative measurement (required)
 
-If possible, run the final solution through:
+Every submission MUST include `run_metrics.json`. Produce it with:
 
 ```bash
 python harness/measure_run.py \
@@ -67,6 +67,8 @@ python harness/measure_run.py \
   --command "python run_experiment.py" \
   --metrics-out path/to/submission/run_metrics.json
 ```
+
+If the platform does not expose runtime data (e.g. an interactive harness), the file must still exist with `runtime_seconds: null` and a note explaining why.
 
 This records:
 
@@ -79,15 +81,9 @@ This records:
 - Python LOC
 - file counts
 
-## 5. Token usage
+## 5. Token usage (required)
 
-Exact token usage is platform-dependent. If the platform exposes token usage, save it as:
-
-```text
-token_usage.json
-```
-
-Suggested schema:
+Every submission MUST include `token_usage.json`. Schema:
 
 ```json
 {
@@ -99,7 +95,9 @@ Suggested schema:
 }
 ```
 
-If exact token usage is unavailable, use:
+`token_count_method` is one of `"exact"`, `"reported"`, `"estimated"`, or `"unknown"`.
+
+If the platform does not expose token usage, write:
 
 ```json
 {
@@ -111,7 +109,7 @@ If exact token usage is unavailable, use:
 }
 ```
 
-Do not mix exact and estimated token counts without labelling them.
+The file must always exist. Do not mix exact and estimated counts without labelling them.
 
 ## 6. Automated evaluation
 
@@ -151,4 +149,17 @@ A good benchmark result should distinguish:
 - success after one or more hints
 - success after manual repair
 - failed run
+
+Capture this in two places:
+
+1. **Narrative** — `interventions.md` or a section of `README.md` describing what happened.
+2. **Structured** — add this block to `submission.yaml`:
+
+   ```yaml
+   intervention:
+     category: autonomous | hints | manual_repair | failed | unrecorded
+     notes: "free text; references to interventions.md welcomed"
+   ```
+
+   The `category` field drives the leaderboard intervention badge. If the field is missing or contains an unknown value, the dashboard treats the run as `unrecorded`.
 

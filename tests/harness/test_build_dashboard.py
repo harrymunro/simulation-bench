@@ -129,3 +129,31 @@ def test_walk_submission_includes_nested_results(tmp_path: Path) -> None:
     entries = build_dashboard.walk_submission(folder)
     paths = {e["path"] for e in entries}
     assert "results/evaluation_report.json" in paths
+
+
+def test_emit_submission_writes_frontmatter_and_copies_downloads(
+    tmp_path: Path, populated_db: Path
+) -> None:
+    submissions_root = tmp_path / "submissions"
+    folder = submissions_root / "2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking"
+    folder.mkdir(parents=True)
+    (folder / "README.md").write_text("# README\n\nbody\n", encoding="utf-8")
+    (folder / "conceptual_model.md").write_text("# Conceptual model\n", encoding="utf-8")
+    (folder / "summary.json").write_text("{}", encoding="utf-8")
+    (folder / "event_log.csv").write_bytes(b"a,b\n" * 50_000)
+
+    dashboard_root = tmp_path / "dashboard"
+    rows = build_dashboard.load_leaderboard(populated_db)
+    build_dashboard.emit_submissions(rows, submissions_root, dashboard_root)
+
+    md_path = dashboard_root / "src" / "content" / "submissions" / f"{folder.name}.md"
+    assert md_path.exists()
+    text = md_path.read_text()
+    assert text.startswith("---\n")
+    assert f'id: "{folder.name}"' in text
+    assert 'interventionCategory: "autonomous"' in text
+    assert "files:" in text
+
+    download = dashboard_root / "public" / "submissions" / folder.name / "event_log.csv"
+    assert download.exists()
+    assert download.stat().st_size == folder.joinpath("event_log.csv").stat().st_size

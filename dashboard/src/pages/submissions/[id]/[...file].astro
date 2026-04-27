@@ -1,0 +1,81 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { codeToHtml } from "shiki";
+import { readFile } from "fs/promises";
+import { resolve, join } from "path";
+
+export async function getStaticPaths() {
+  const submissions = await getCollection("submissions");
+  const paths: {
+    params: { id: string; file: string };
+    props: { language: string | null; submissionPath: string };
+  }[] = [];
+
+  // Extensions that should have syntax-highlighted viewers
+  const viewableExtensions = new Set([
+    "md",
+    "markdown",
+    "py",
+    "python",
+    "yaml",
+    "yml",
+    "csv",
+  ]);
+
+  for (const s of submissions) {
+    for (const f of s.data.files) {
+      if (f.kind === "text") {
+        const ext = f.path.split(".").pop()?.toLowerCase() || "";
+        if (viewableExtensions.has(ext)) {
+          paths.push({
+            params: { id: s.data.id, file: f.path },
+            props: { language: f.language, submissionPath: f.path },
+          });
+        }
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { id, file } = Astro.params;
+const { language, submissionPath } = Astro.props;
+
+const repoRoot = resolve(process.cwd(), "..");
+const absolutePath = join(repoRoot, "submissions", id!, submissionPath);
+
+let source: string;
+try {
+  source = await readFile(absolutePath, "utf-8");
+} catch (error) {
+  throw new Error(
+    `Failed to read file at ${absolutePath}: ${error instanceof Error ? error.message : String(error)}`
+  );
+}
+
+const html = await codeToHtml(source, {
+  lang: language ?? "text",
+  theme: "github-dark",
+});
+const githubUrl = `https://github.com/harrymunro/simulation-bench/blob/main/submissions/${id}/${submissionPath}`;
+---
+
+<Layout title={`${file} — ${id}`} pageTitle={file ?? ""}>
+  <p>
+    <a href={`/submissions/${id}/`}>← Back to submission</a> ·
+    <a href={githubUrl} rel="noreferrer">View raw on GitHub</a>
+  </p>
+  <article set:html={html} />
+</Layout>
+
+<style>
+  article {
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+  article :global(pre) {
+    margin: 0;
+  }
+</style>

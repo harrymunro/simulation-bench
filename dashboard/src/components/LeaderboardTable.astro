@@ -1,0 +1,139 @@
+---
+import InterventionBadge from "./InterventionBadge.astro";
+
+interface CategoryScores {
+  conceptual_modelling: number | null;
+  data_topology: number | null;
+  simulation_correctness: number | null;
+  experimental_design: number | null;
+  results_interpretation: number | null;
+  code_quality: number | null;
+  traceability: number | null;
+}
+
+interface Row {
+  submission_id: string;
+  runDate: string;
+  benchmarkId: string;
+  harness: string;
+  model: string;
+  runTag: string | null;
+  totalScore: number | null;
+  categoryScores: CategoryScores;
+  totalTokens: number | null;
+  inputTokens: number | null;
+  outputTokens: number | null;
+  tokenCountMethod: string | null;
+  runtimeSeconds: number | null;
+  interventionCategory: string;
+}
+
+interface Props {
+  rows: Row[];
+}
+
+const { rows } = Astro.props;
+
+function formatTokens(n: number | null): string {
+  if (n === null || n === undefined) return "—";
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `${Math.round(n / 1_000)}k`;
+  return String(n);
+}
+
+function formatSeconds(s: number | null): string {
+  if (s === null || s === undefined) return "—";
+  const total = Math.round(s);
+  const m = Math.floor(total / 60);
+  const r = total % 60;
+  return m === 0 ? `${r}s` : `${m}m ${String(r).padStart(2, "0")}s`;
+}
+
+function tokenTooltip(r: Row): string {
+  const parts: string[] = [];
+  if (r.inputTokens !== null) parts.push(`in: ${formatTokens(r.inputTokens)}`);
+  if (r.outputTokens !== null) parts.push(`out: ${formatTokens(r.outputTokens)}`);
+  parts.push(`method: ${r.tokenCountMethod ?? "unknown"}`);
+  return parts.join(" · ");
+}
+---
+<table id="leaderboard">
+  <thead>
+    <tr>
+      <th data-sort="rank" data-type="number">#</th>
+      <th data-sort="runDate" data-type="string">Date</th>
+      <th data-sort="benchmarkId" data-type="string">Benchmark</th>
+      <th data-sort="harness" data-type="string">Harness</th>
+      <th data-sort="model" data-type="string">Model</th>
+      <th data-sort="runTag" data-type="string">Tag</th>
+      <th data-sort="totalScore" data-type="number" data-default-desc="true">
+        <a href="/methodology/scoring/">Quality / 100</a>
+      </th>
+      <th data-sort="totalTokens" data-type="number">
+        <a href="/methodology/protocol/#5-token-usage-required">Tokens</a>
+      </th>
+      <th data-sort="runtimeSeconds" data-type="number">
+        <a href="/methodology/protocol/#4-quantitative-measurement-required">Time</a>
+      </th>
+      <th data-sort="interventionCategory" data-type="string">
+        <a href="/methodology/protocol/#8-recording-interventions">Intervention</a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {rows.map((row, i) => (
+      <tr data-row={JSON.stringify(row)}>
+        <td>{i + 1}</td>
+        <td>{row.runDate}</td>
+        <td>{row.benchmarkId}</td>
+        <td>{row.harness}</td>
+        <td>{row.model}{row.runTag ? ` / ${row.runTag}` : ""}</td>
+        <td>{row.runTag ?? ""}</td>
+        <td>
+          <a href={`/submissions/${row.submission_id}/`}>{row.totalScore ?? "—"}</a>
+        </td>
+        <td title={tokenTooltip(row)}>{formatTokens(row.totalTokens)}</td>
+        <td>{formatSeconds(row.runtimeSeconds)}</td>
+        <td><InterventionBadge category={row.interventionCategory} /></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<script>
+  const table = document.getElementById("leaderboard") as HTMLTableElement | null;
+  if (table) {
+    const tbody = table.querySelector("tbody")!;
+    let activeKey: string | null = null;
+    let activeDir: 1 | -1 = -1;
+    table.querySelectorAll("th[data-sort]").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.getAttribute("data-sort")!;
+        const type = th.getAttribute("data-type") ?? "string";
+        const defaultDesc = th.getAttribute("data-default-desc") === "true";
+        if (activeKey === key) {
+          activeDir = activeDir === 1 ? -1 : 1;
+        } else {
+          activeKey = key;
+          activeDir = defaultDesc ? -1 : 1;
+        }
+        const rows = Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr"));
+        rows.sort((a, b) => {
+          if (key === "rank") return 0;
+          const aRow = JSON.parse(a.getAttribute("data-row")!);
+          const bRow = JSON.parse(b.getAttribute("data-row")!);
+          const aVal = aRow[key];
+          const bVal = bRow[key];
+          if (aVal === null || aVal === undefined) return 1;
+          if (bVal === null || bVal === undefined) return -1;
+          if (type === "number") return ((aVal as number) - (bVal as number)) * activeDir;
+          return String(aVal).localeCompare(String(bVal)) * activeDir;
+        });
+        rows.forEach((r, i) => {
+          r.querySelector("td")!.textContent = String(i + 1);
+          tbody.appendChild(r);
+        });
+      });
+    });
+  }
+</script>

@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LeaderboardTable from "../components/LeaderboardTable.astro";
+import rows from "../data/leaderboard.json";
+---
+<Layout title="Simulation Bench" pageTitle="Leaderboard">
+  <p>
+    A reproducible benchmark for AI-assisted discrete-event simulation work.
+    Sort by Quality, Tokens, or Time — there is no combined score on purpose.
+  </p>
+  <LeaderboardTable rows={rows} />
+</Layout>

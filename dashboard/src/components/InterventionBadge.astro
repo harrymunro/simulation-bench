@@ -1,0 +1,17 @@
+---
+interface Props {
+  category: string;
+}
+const { category } = Astro.props;
+const config: Record<string, { label: string; symbol: string; cls: string }> = {
+  autonomous:    { label: "Autonomous",    symbol: "✓", cls: "badge-ok" },
+  hints:         { label: "Hints",         symbol: "!", cls: "badge-warn" },
+  manual_repair: { label: "Manual repair", symbol: "⚙", cls: "badge-warn" },
+  failed:        { label: "Failed",        symbol: "✗", cls: "badge-err" },
+  unrecorded:    { label: "Unrecorded",    symbol: "?", cls: "badge-unknown" },
+};
+const entry = config[category] ?? config.unrecorded;
+---
+<span class={`badge ${entry.cls}`} title={entry.label}>
+  {entry.symbol} {entry.label}
+</span>

@@ -77,3 +77,55 @@ def test_write_leaderboard_json_emits_array(populated_db: Path, tmp_path: Path) 
     payload = json.loads(out.read_text())
     assert isinstance(payload, list)
     assert payload[0]["totalScore"] == 92
+
+
+def test_classify_text_file_under_threshold(tmp_path: Path) -> None:
+    f = tmp_path / "sim.py"
+    f.write_text("print('hi')\n", encoding="utf-8")
+    entry = build_dashboard.classify_file(f, tmp_path)
+    assert entry == {"path": "sim.py", "kind": "text", "bytes": 12, "language": "python"}
+
+
+def test_classify_event_log_is_download(tmp_path: Path) -> None:
+    f = tmp_path / "event_log.csv"
+    f.write_bytes(b"a,b\n" * 50_000)  # 200 KB > 64 KB threshold
+    entry = build_dashboard.classify_file(f, tmp_path)
+    assert entry["kind"] == "download"
+    assert entry["path"] == "event_log.csv"
+
+
+def test_classify_animation_is_download(tmp_path: Path) -> None:
+    f = tmp_path / "animation.mp4"
+    f.write_bytes(b"\x00" * 10)
+    entry = build_dashboard.classify_file(f, tmp_path)
+    assert entry["kind"] == "download"
+
+
+def test_classify_unknown_extension_is_skipped(tmp_path: Path) -> None:
+    f = tmp_path / "weird.bin"
+    f.write_bytes(b"\x00\x01\x02")
+    entry = build_dashboard.classify_file(f, tmp_path)
+    assert entry is None
+
+
+def test_walk_submission_skips_pycache(tmp_path: Path) -> None:
+    folder = tmp_path / "submission"
+    folder.mkdir()
+    (folder / "sim.py").write_text("print('hi')\n", encoding="utf-8")
+    pycache = folder / "__pycache__"
+    pycache.mkdir()
+    (pycache / "sim.cpython-311.pyc").write_bytes(b"\x00\x01")
+    entries = build_dashboard.walk_submission(folder)
+    paths = {e["path"] for e in entries}
+    assert "sim.py" in paths
+    assert not any(p.startswith("__pycache__") for p in paths)
+
+
+def test_walk_submission_includes_nested_results(tmp_path: Path) -> None:
+    folder = tmp_path / "submission"
+    folder.mkdir()
+    (folder / "results").mkdir()
+    (folder / "results" / "evaluation_report.json").write_text("{}", encoding="utf-8")
+    entries = build_dashboard.walk_submission(folder)
+    paths = {e["path"] for e in entries}
+    assert "results/evaluation_report.json" in paths

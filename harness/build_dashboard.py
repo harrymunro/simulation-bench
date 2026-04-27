@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sqlite3
 import sys
 from pathlib import Path
@@ -102,6 +103,97 @@ def copy_methodology(src_root: Path, dest_root: Path) -> None:
         body = src.read_text(encoding="utf-8")
         frontmatter = f"---\ntitle: {title}\nsourcePath: {filename}\n---\n\n"
         (dest_root / f"{slug}.md").write_text(frontmatter + body, encoding="utf-8")
+
+
+TEXT_LANGUAGE_BY_EXT: dict[str, str] = {
+    ".py": "python",
+    ".md": "markdown",
+    ".yaml": "yaml",
+    ".yml": "yaml",
+    ".json": "json",
+    ".toml": "toml",
+    ".csv": "csv",
+    ".txt": "text",
+    ".sh": "bash",
+    ".cfg": "ini",
+    ".ini": "ini",
+    ".rst": "markdown",
+}
+DOWNLOAD_FILENAMES: set[str] = {
+    "event_log.csv",
+    "animation.gif",
+    "animation.mp4",
+    "topology.png",
+}
+DOWNLOAD_EXTENSIONS: set[str] = {".gif", ".mp4", ".png", ".jpg", ".jpeg", ".pdf", ".zip"}
+TEXT_BYTE_THRESHOLD = 64 * 1024  # 64 KB
+
+ALLOWLIST_TOP_LEVEL: set[str] = {
+    "README.md",
+    "conceptual_model.md",
+    "results.csv",
+    "summary.json",
+    "event_log.csv",
+    "submission.yaml",
+    "token_usage.json",
+    "run_metrics.json",
+    "topology.png",
+    "animation.gif",
+    "animation.mp4",
+    "interventions.md",
+    "requirements.txt",
+    "prompt.md",
+}
+ALLOWLIST_DIRS: set[str] = {"src", "data", "results", "additional_scenarios"}
+SKIP_DIRS: set[str] = {"__pycache__", ".pytest_cache", ".venv", "node_modules", ".git"}
+
+
+def classify_file(path: Path, root: Path) -> dict | None:
+    """Return a file-manifest entry, or None to skip."""
+    if not path.is_file():
+        return None
+    rel = path.relative_to(root).as_posix()
+    name = path.name
+    ext = path.suffix.lower()
+    size = path.stat().st_size
+
+    if name in DOWNLOAD_FILENAMES or ext in DOWNLOAD_EXTENSIONS:
+        return {"path": rel, "kind": "download", "bytes": size, "language": None}
+
+    if ext in TEXT_LANGUAGE_BY_EXT:
+        if size > TEXT_BYTE_THRESHOLD:
+            return {"path": rel, "kind": "download", "bytes": size, "language": None}
+        return {
+            "path": rel,
+            "kind": "text",
+            "bytes": size,
+            "language": TEXT_LANGUAGE_BY_EXT[ext],
+        }
+
+    return None
+
+
+def walk_submission(folder: Path) -> list[dict]:
+    """Walk a submission folder and return classified entries respecting the allowlist."""
+    entries: list[dict] = []
+    for child in sorted(folder.rglob("*")):
+        if any(part in SKIP_DIRS for part in child.relative_to(folder).parts):
+            continue
+        if not child.is_file():
+            continue
+        rel_parts = child.relative_to(folder).parts
+        if len(rel_parts) == 1:
+            if rel_parts[0] not in ALLOWLIST_TOP_LEVEL:
+                # Allow any top-level Python entry-point file (sim.py, run.py, simulate.py, …).
+                if not (rel_parts[0].endswith(".py") and not rel_parts[0].startswith("_")):
+                    continue
+        else:
+            if rel_parts[0] not in ALLOWLIST_DIRS:
+                continue
+        entry = classify_file(child, folder)
+        if entry is not None:
+            entries.append(entry)
+    return entries
 
 
 def main() -> int:

@@ -1,0 +1,24 @@
+{
+    auto_https off
+    admin off
+}
+
+:80 {
+    root * /srv
+    encode gzip
+    file_server
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'"
+        -Server
+    }
+
+    @notFound {
+        not file
+        not path *.css *.js *.png *.svg *.gif *.mp4 *.csv *.json *.txt *.ico *.woff *.woff2
+    }
+    rewrite @notFound /index.html
+}

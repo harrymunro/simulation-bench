@@ -1,0 +1,24 @@
+# Top-level — nothing should leak into the build context except dashboard/, submissions/, and the two methodology docs.
+*
+!dashboard/
+!submissions/
+!Caddyfile
+!SCORING_GUIDE.md
+!RUN_PROTOCOL.md
+
+# Inside dashboard/, exclude build output and node_modules from the context.
+dashboard/dist/
+dashboard/node_modules/
+dashboard/.astro/
+
+# Inside submissions/, exclude temporary artifacts but keep results/.
+submissions/*/.git/
+submissions/*/__pycache__/
+
+# Global excludes
+**/__pycache__/
+**/.DS_Store
+.beads/
+.dolt/
+.beads-credential-key
+.git/

@@ -100,3 +100,29 @@ python harness/measure_run.py \
 - behavioural checks passed
 - human interventions
 
+## Public dashboard
+
+The leaderboard at <https://simulation-bench.fly.dev/> is built from this repository:
+
+- `scores/seed_scores.json` — source of truth for human review scores.
+- `submissions/<id>/token_usage.json` and `submissions/<id>/run_metrics.json` — per-run tokens and time.
+- `SCORING_GUIDE.md` and `RUN_PROTOCOL.md` — methodology pages.
+
+### Refreshing the dashboard after adding a submission or score
+
+```bash
+# 1. Add the new submission folder under submissions/ (use the create-submission skill)
+# 2. Append the new review block to scores/seed_scores.json
+# 3. Rebuild and deploy:
+make deploy
+```
+
+`make deploy` runs:
+
+1. `python harness/normalize_tokens.py` — ensures every submission has `token_usage.json` + `run_metrics.json`.
+2. `python harness/record_score.py --from-json scores/seed_scores.json` — refreshes `scores/scores.db`.
+3. `python harness/build_dashboard.py` — emits `dashboard/src/data/leaderboard.json` and per-submission `.md` files.
+4. `cd dashboard && npm run build` — produces `dashboard/dist/`.
+5. `flyctl deploy --remote-only` — ships the Caddy container to fly.io.
+
+For a local preview before deploying: `make preview` (serves `dashboard/dist/` on `http://127.0.0.1:4321/`).

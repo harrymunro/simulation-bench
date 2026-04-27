@@ -102,6 +102,12 @@ class SubmissionRecord:
     model: str
     run_tag: Optional[str]
     submission_path: str
+    total_tokens: Optional[int] = None
+    input_tokens: Optional[int] = None
+    output_tokens: Optional[int] = None
+    token_count_method: Optional[str] = None
+    runtime_seconds: Optional[float] = None
+    intervention_category: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -188,15 +194,23 @@ def upsert_submission(conn: sqlite3.Connection, sub: SubmissionRecord) -> None:
     conn.execute(
         """
         INSERT INTO submissions
-            (submission_id, run_date, benchmark_id, harness, model, run_tag, submission_path)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+            (submission_id, run_date, benchmark_id, harness, model, run_tag, submission_path,
+             total_tokens, input_tokens, output_tokens, token_count_method,
+             runtime_seconds, intervention_category)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(submission_id) DO UPDATE SET
-            run_date        = excluded.run_date,
-            benchmark_id    = excluded.benchmark_id,
-            harness         = excluded.harness,
-            model           = excluded.model,
-            run_tag         = excluded.run_tag,
-            submission_path = excluded.submission_path
+            run_date              = excluded.run_date,
+            benchmark_id          = excluded.benchmark_id,
+            harness               = excluded.harness,
+            model                 = excluded.model,
+            run_tag               = excluded.run_tag,
+            submission_path       = excluded.submission_path,
+            total_tokens          = excluded.total_tokens,
+            input_tokens          = excluded.input_tokens,
+            output_tokens         = excluded.output_tokens,
+            token_count_method    = excluded.token_count_method,
+            runtime_seconds       = excluded.runtime_seconds,
+            intervention_category = excluded.intervention_category
         """,
         (
             sub.submission_id,
@@ -206,6 +220,12 @@ def upsert_submission(conn: sqlite3.Connection, sub: SubmissionRecord) -> None:
             sub.model,
             sub.run_tag,
             sub.submission_path,
+            sub.total_tokens,
+            sub.input_tokens,
+            sub.output_tokens,
+            sub.token_count_method,
+            sub.runtime_seconds,
+            sub.intervention_category,
         ),
     )
     conn.commit()

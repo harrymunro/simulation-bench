@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+src/data/leaderboard.json
+src/content/submissions/
+src/content/methodology/scoring.md
+src/content/methodology/protocol.md
+public/submissions/

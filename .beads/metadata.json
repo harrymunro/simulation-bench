@@ -1,8 +1,7 @@
 {
   "database": "dolt",
   "backend": "dolt",
-  "dolt_mode": "server",
-  "dolt_server_port": 3307,
-  "dolt_database": "simbench",
-  "project_id": "f6bbff47-54d1-4de8-80d6-02e0e217026c"
+  "dolt_mode": "embedded",
+  "dolt_database": "simulation_bench",
+  "project_id": "1e1d8d07-06c7-4d16-9e5c-90d17741cc8c"
 }

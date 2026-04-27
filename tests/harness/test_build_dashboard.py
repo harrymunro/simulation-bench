@@ -157,3 +157,61 @@ def test_emit_submission_writes_frontmatter_and_copies_downloads(
     download = dashboard_root / "public" / "submissions" / folder.name / "event_log.csv"
     assert download.exists()
     assert download.stat().st_size == folder.joinpath("event_log.csv").stat().st_size
+
+
+def test_emit_submission_embeds_rendered_sections(tmp_path: Path, populated_db: Path) -> None:
+    submissions_root = tmp_path / "submissions"
+    folder = submissions_root / "2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking"
+    folder.mkdir(parents=True)
+    (folder / "README.md").write_text("# Run notes\n\nWe used Opus 4.7.\n", encoding="utf-8")
+    (folder / "conceptual_model.md").write_text("# Conceptual model\n\nTrucks are entities.\n", encoding="utf-8")
+    (folder / "results").mkdir()
+    (folder / "results" / "reviewer_form.md").write_text(
+        "# Reviewer form\n\n- Score: 78/100\n", encoding="utf-8"
+    )
+    (folder / "results" / "evaluation_report.json").write_text(
+        json.dumps(
+            {
+                "benchmark_id": "001_synthetic_mine_throughput",
+                "automated_checks": {"passed": 57, "total": 57, "pass_rate": 1.0},
+                "behavioural_checks": {"passed": 6, "total": 6, "details": []},
+                "summary": {"scenario_total_tonnes_means": {"baseline": 12345.0}},
+                "quantitative_metrics": {"runtime_seconds": 699.0, "return_code": 0},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    dashboard_root = tmp_path / "dashboard"
+    rows = build_dashboard.load_leaderboard(populated_db)
+    build_dashboard.emit_submissions(rows, submissions_root, dashboard_root)
+
+    text = (dashboard_root / "src" / "content" / "submissions" / f"{folder.name}.md").read_text()
+    assert "## Conceptual model" in text
+    assert "Trucks are entities." in text
+    assert "## README" in text
+    assert "We used Opus 4.7." in text
+    assert "## Reviewer form" in text
+    assert "Score: 78/100" in text
+    # The full evaluation_report JSON is linked, not pasted; we only embed selected fields
+    # in frontmatter so the page can render a structured summary.
+    assert "evaluationReport:" in text
+    assert "automatedChecksPassed: 57" in text
+    assert "behaviouralChecksPassed: 6" in text
+
+
+def test_emit_submission_omits_missing_sections(tmp_path: Path, populated_db: Path) -> None:
+    submissions_root = tmp_path / "submissions"
+    folder = submissions_root / "2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking"
+    folder.mkdir(parents=True)
+    (folder / "README.md").write_text("# README\n\nbody\n", encoding="utf-8")  # only README
+
+    dashboard_root = tmp_path / "dashboard"
+    rows = build_dashboard.load_leaderboard(populated_db)
+    build_dashboard.emit_submissions(rows, submissions_root, dashboard_root)
+
+    text = (dashboard_root / "src" / "content" / "submissions" / f"{folder.name}.md").read_text()
+    assert "## README" in text
+    assert "## Conceptual model" not in text
+    assert "## Reviewer form" not in text
+    assert "evaluationReport: null" in text

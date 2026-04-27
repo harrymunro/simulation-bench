@@ -30,6 +30,17 @@ const submissions = defineCollection({
     reviewDate: z.string().nullable(),
     recommendation: z.string().nullable(),
     notes: z.string().nullable(),
+    evaluationReport: z
+      .object({
+        automatedChecksPassed: z.number().nullable(),
+        automatedChecksTotal: z.number().nullable(),
+        automatedPassRate: z.number().nullable(),
+        behaviouralChecksPassed: z.number().nullable(),
+        behaviouralChecksTotal: z.number().nullable(),
+        reportRelativePath: z.string(),
+        scenarioTotalTonnesMeans: z.record(z.string(), z.number()).nullable(),
+      })
+      .nullable(),
     files: z.array(
       z.object({
         path: z.string(),

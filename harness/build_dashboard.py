@@ -207,7 +207,41 @@ def _yaml_scalar(value) -> str:  # type: ignore[no-untyped-def]
     return f'"{text}"'
 
 
-def _render_frontmatter(row: dict, files: list[dict]) -> str:
+def _read_text_section(path: Path) -> str | None:
+    """Read a text file and return its stripped content, or None if missing/unreadable."""
+    if not path.exists() or not path.is_file():
+        return None
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return None
+
+
+def _summarise_evaluation_report(folder: Path) -> dict | None:
+    """Return a small dict of selected fields from results/evaluation_report.json, or None."""
+    candidates = [folder / "results" / "evaluation_report.json", folder / "evaluation_report.json"]
+    report_path = next((p for p in candidates if p.exists()), None)
+    if report_path is None:
+        return None
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+    automated = report.get("automated_checks") or {}
+    behavioural = report.get("behavioural_checks") or {}
+    summary = report.get("summary") or {}
+    return {
+        "automatedChecksPassed": automated.get("passed"),
+        "automatedChecksTotal": automated.get("total"),
+        "automatedPassRate": automated.get("pass_rate"),
+        "behaviouralChecksPassed": behavioural.get("passed"),
+        "behaviouralChecksTotal": behavioural.get("total"),
+        "scenarioTotalTonnesMeans": summary.get("scenario_total_tonnes_means") or {},
+        "reportRelativePath": report_path.relative_to(folder).as_posix(),
+    }
+
+
+def _render_frontmatter(row: dict, files: list[dict], evaluation_report: dict | None) -> str:
     """Render YAML frontmatter for a submission page."""
     cs = row["categoryScores"]
     lines = [
@@ -237,8 +271,21 @@ def _render_frontmatter(row: dict, files: list[dict]) -> str:
         f"reviewDate: {_yaml_scalar(row['reviewDate'])}",
         f"recommendation: {_yaml_scalar(row['recommendation'])}",
         f"notes: {_yaml_scalar(row['notes'])}",
-        "files:",
     ]
+    if evaluation_report is None:
+        lines.append("evaluationReport: null")
+    else:
+        lines.append("evaluationReport:")
+        lines.append(f"  automatedChecksPassed: {_yaml_scalar(evaluation_report['automatedChecksPassed'])}")
+        lines.append(f"  automatedChecksTotal: {_yaml_scalar(evaluation_report['automatedChecksTotal'])}")
+        lines.append(f"  automatedPassRate: {_yaml_scalar(evaluation_report['automatedPassRate'])}")
+        lines.append(f"  behaviouralChecksPassed: {_yaml_scalar(evaluation_report['behaviouralChecksPassed'])}")
+        lines.append(f"  behaviouralChecksTotal: {_yaml_scalar(evaluation_report['behaviouralChecksTotal'])}")
+        lines.append(f"  reportRelativePath: {_yaml_scalar(evaluation_report['reportRelativePath'])}")
+        lines.append("  scenarioTotalTonnesMeans:")
+        for k, v in (evaluation_report["scenarioTotalTonnesMeans"] or {}).items():
+            lines.append(f"    {_yaml_scalar(k)}: {_yaml_scalar(v)}")
+    lines.append("files:")
     for f in files:
         lines.append(f"  - path: {_yaml_scalar(f['path'])}")
         lines.append(f"    kind: {_yaml_scalar(f['kind'])}")
@@ -260,16 +307,27 @@ def emit_submissions(rows: list[dict], submissions_root: Path, dashboard_root: P
         if not folder.exists():
             continue
         files = walk_submission(folder)
-        body_lines = [
-            "<!-- Body kept short by design; the per-submission Astro page composes its own sections. -->",
-            "",
-            f"# {row['submission_id']}",
-            "",
-            "See the file index in the frontmatter for code and downloads.",
-            "",
-        ]
+        evaluation_report = _summarise_evaluation_report(folder)
+
+        body_parts: list[str] = []
+        conceptual = _read_text_section(folder / "conceptual_model.md")
+        readme = _read_text_section(folder / "README.md")
+        reviewer = _read_text_section(folder / "results" / "reviewer_form.md")
+        if reviewer is None:
+            reviewer = _read_text_section(folder / "reviewer_form.md")
+
+        if conceptual:
+            body_parts.append("## Conceptual model\n\n" + conceptual)
+        if readme:
+            body_parts.append("## README\n\n" + readme)
+        if reviewer:
+            body_parts.append("## Reviewer form\n\n" + reviewer)
+
+        body = "\n\n".join(body_parts) if body_parts else "_No rendered sections; see file index above._"
+
         (md_root / f"{row['submission_id']}.md").write_text(
-            _render_frontmatter(row, files) + "\n".join(body_lines), encoding="utf-8"
+            _render_frontmatter(row, files, evaluation_report) + body + "\n",
+            encoding="utf-8",
         )
 
         public_dest = public_root / row["submission_id"]
@@ -280,6 +338,12 @@ def emit_submissions(rows: list[dict], submissions_root: Path, dashboard_root: P
                 dest = public_dest / entry["path"]
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dest)
+        # Also copy the full evaluation_report.json into public/ so the page can link it.
+        if evaluation_report is not None:
+            src = folder / evaluation_report["reportRelativePath"]
+            dest = public_dest / evaluation_report["reportRelativePath"]
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dest)
 
 
 def main() -> int:

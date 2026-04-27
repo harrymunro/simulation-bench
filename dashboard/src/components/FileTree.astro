@@ -1,0 +1,74 @@
+---
+interface FileEntry {
+  path: string;
+  kind: "text" | "binary" | "download";
+  bytes: number;
+  language: string | null;
+}
+
+interface Props {
+  files: FileEntry[];
+  submissionId: string;
+}
+
+const { files, submissionId } = Astro.props;
+
+function formatBytes(b: number): string {
+  if (b < 1024) return `${b} B`;
+  if (b < 1024 * 1024) return `${(b / 1024).toFixed(1)} KB`;
+  return `${(b / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+const text = files.filter((f) => f.kind === "text");
+const downloads = files.filter((f) => f.kind === "download");
+---
+
+{
+  text.length > 0 && (
+    <section>
+      <h3>Source files</h3>
+      <ul>
+        {text.map((f) => (
+          <li>
+            <a href={`/submissions/${submissionId}/${f.path}/`}>{f.path}</a>
+            <span class="meta">
+              {f.language ?? ""} · {formatBytes(f.bytes)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+{
+  downloads.length > 0 && (
+    <section>
+      <h3>Downloads</h3>
+      <ul>
+        {downloads.map((f) => (
+          <li>
+            <a href={`/submissions/${submissionId}/${f.path}`} download>
+              {f.path}
+            </a>
+            <span class="meta">{formatBytes(f.bytes)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  ul {
+    padding-left: 1.25rem;
+  }
+  li {
+    margin: 0.15rem 0;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+  }
+</style>

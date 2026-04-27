@@ -1,0 +1,177 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import FileTree from "../../../components/FileTree.astro";
+import InterventionBadge from "../../../components/InterventionBadge.astro";
+import { getCollection, getEntry, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const submissions = await getCollection("submissions");
+  return submissions.map((s) => ({ params: { id: s.data.id } }));
+}
+
+const { id } = Astro.params;
+const entry = await getEntry("submissions", id!);
+if (!entry) throw new Error(`No submission entry for ${id}`);
+const data = entry.data;
+const cs = data.categoryScores;
+const evalReport = data.evaluationReport;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${data.harness} / ${data.model} — Simulation Bench`} pageTitle={data.id}>
+  <section>
+    <p>
+      <strong>Date:</strong> {data.runDate} ·
+      <strong>Benchmark:</strong> {data.benchmarkId} ·
+      <strong>Harness:</strong> {data.harness} ·
+      <strong>Model:</strong> {data.model}{data.runTag ? ` (${data.runTag})` : ""} ·
+      <InterventionBadge category={data.interventionCategory} />
+    </p>
+  </section>
+
+  <section>
+    <h2>Scores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Points</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conceptual modelling</td>
+          <td>{cs.conceptual_modelling ?? "—"}</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Data and topology</td>
+          <td>{cs.data_topology ?? "—"}</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Simulation correctness</td>
+          <td>{cs.simulation_correctness ?? "—"}</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Experimental design</td>
+          <td>{cs.experimental_design ?? "—"}</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Results & interpretation</td>
+          <td>{cs.results_interpretation ?? "—"}</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Code quality</td>
+          <td>{cs.code_quality ?? "—"}</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Traceability</td>
+          <td>{cs.traceability ?? "—"}</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th>{data.totalScore ?? "—"}</th>
+          <th>100</th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Run metrics</h2>
+    <ul>
+      <li>
+        Total tokens: <code>{data.totalTokens ?? "—"}</code> (method: <code
+          >{data.tokenCountMethod ?? "unknown"}</code
+        >)
+      </li>
+      <li>
+        Input / output tokens: <code>{data.inputTokens ?? "—"}</code> /
+        <code>{data.outputTokens ?? "—"}</code>
+      </li>
+      <li>Runtime: <code>{data.runtimeSeconds ?? "—"} s</code></li>
+      <li>
+        Reviewer: <code>{data.reviewer ?? "—"}</code> on
+        <code>{data.reviewDate ?? "—"}</code>
+      </li>
+      {data.recommendation && <li>Recommendation: {data.recommendation}</li>}
+      {data.notes && <li>Notes: {data.notes}</li>}
+    </ul>
+  </section>
+
+  {
+    evalReport && (
+      <section>
+        <h2>Evaluation report</h2>
+        <ul>
+          <li>
+            Automated checks: {evalReport.automatedChecksPassed ?? "—"} /
+            {evalReport.automatedChecksTotal ?? "—"}
+            {evalReport.automatedPassRate !== null &&
+              ` (${(evalReport.automatedPassRate * 100).toFixed(0)}%)`}
+          </li>
+          <li>
+            Behavioural checks: {evalReport.behaviouralChecksPassed ?? "—"} /
+            {evalReport.behaviouralChecksTotal ?? "—"}
+          </li>
+          <li>
+            <a
+              href={`/submissions/${data.id}/${evalReport.reportRelativePath}`}
+              download
+            >
+              Download full evaluation_report.json
+            </a>
+          </li>
+        </ul>
+        {Object.keys(evalReport.scenarioTotalTonnesMeans ?? {}).length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Mean total tonnes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(
+                evalReport.scenarioTotalTonnesMeans ?? {}
+              ).map(([scenario, mean]) => (
+                <tr>
+                  <td>{scenario}</td>
+                  <td>{mean.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
+    )
+  }
+
+  <FileTree files={data.files} submissionId={data.id} />
+
+  <section class="rendered-body">
+    <Content />
+  </section>
+
+  <p>
+    <a href="/">← Back to leaderboard</a>
+  </p>
+</Layout>
+
+<style>
+  .rendered-body {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .rendered-body :global(h2) {
+    margin-top: 2rem;
+  }
+</style>

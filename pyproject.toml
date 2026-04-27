@@ -5,6 +5,6 @@ description = "Benchmark for agentic modelling and simulation development using 
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
-testpaths = ["benchmarks"]
+testpaths = ["benchmarks", "tests"]
 python_files = ["test_*.py"]
 

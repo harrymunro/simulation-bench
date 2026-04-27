@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout title="How this dashboard is built — Simulation Bench" pageTitle="How this dashboard is built">
+  <article>
+    <p>
+      The dashboard is a static site rebuilt from two sources of truth in the
+      <a href="https://github.com/harrymunro/simulation-bench">repository</a>:
+    </p>
+    <ul>
+      <li><code>scores/scores.db</code> — SQLite DB rebuilt from <code>scores/seed_scores.json</code>.</li>
+      <li><code>submissions/&lt;id&gt;/</code> — one folder per run, holding code, results, conceptual model, and per-run metadata.</li>
+    </ul>
+    <h2>Pipeline</h2>
+    <pre><code>{`scores/scores.db ─┐
+submissions/      ├─→ harness/build_dashboard.py ─→ dashboard/src/  ─→ astro build ─→ dist/  ─→ fly deploy
+docs/methodology  ┘`}</code></pre>
+    <h2>Where each leaderboard column comes from</h2>
+    <ul>
+      <li><strong>Quality</strong> — <code>scores.scores.total_score</code>; sourced from <code>seed_scores.json</code>.</li>
+      <li><strong>Tokens</strong> — <code>token_usage.json.total_tokens</code> per submission. Method (<code>exact</code>/<code>reported</code>/<code>estimated</code>/<code>unknown</code>) is shown on hover.</li>
+      <li><strong>Time</strong> — <code>run_metrics.json.runtime_seconds</code>.</li>
+      <li><strong>Intervention</strong> — <code>submission.yaml.intervention.category</code>.</li>
+    </ul>
+    <p>
+      The site is fully baked into a Caddy container — there is no runtime
+      database, API, or auth surface. To rebuild:
+    </p>
+    <pre><code>{`make dashboard   # rebuild from sources
+make deploy      # build + push to fly.io`}</code></pre>
+  </article>
+</Layout>

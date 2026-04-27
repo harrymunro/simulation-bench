@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+
+const entry = await getEntry("methodology", "scoring");
+if (!entry) throw new Error("methodology/scoring.md missing — run python harness/build_dashboard.py");
+const { Content } = await render(entry);
+---
+<Layout title="Scoring guide — Simulation Bench" pageTitle={entry.data.title}>
+  <article><Content /></article>
+</Layout>

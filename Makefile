@@ -1,11 +1,13 @@
 .PHONY: ingest dashboard preview deploy test clean
 
+PYTHON ?= python3
+
 ingest:
-	python harness/normalize_tokens.py
-	python harness/record_score.py --from-json scores/seed_scores.json
+	$(PYTHON) harness/normalize_tokens.py
+	$(PYTHON) harness/record_score.py --from-json scores/seed_scores.json
 
 dashboard: ingest
-	python harness/build_dashboard.py
+	$(PYTHON) harness/build_dashboard.py
 	cd dashboard && npm install --no-audit --no-fund
 	cd dashboard && npm run build
 
@@ -16,7 +18,7 @@ deploy: dashboard
 	flyctl deploy --remote-only
 
 test:
-	python -m pytest tests/ -v
+	$(PYTHON) -m pytest tests/ -v
 
 clean:
 	rm -rf dashboard/dist dashboard/.astro

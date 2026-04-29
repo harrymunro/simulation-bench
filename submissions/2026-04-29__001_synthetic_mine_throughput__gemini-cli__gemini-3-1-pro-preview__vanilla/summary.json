@@ -1,0 +1,145 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12603.33,
+      "total_tonnes_ci95_low": 12548.31,
+      "total_tonnes_ci95_high": 12658.36,
+      "tonnes_per_hour_mean": 1575.42,
+      "tonnes_per_hour_ci95_low": 1568.54,
+      "tonnes_per_hour_ci95_high": 1582.29,
+      "average_cycle_time_min": 29.55,
+      "truck_utilisation_mean": 0.775,
+      "loader_utilisation": {
+        "L_N": 0.505,
+        "L_S": 0.86
+      },
+      "crusher_utilisation": 0.928,
+      "average_loader_queue_time_min": 1.97,
+      "average_crusher_queue_time_min": 3.89,
+      "top_bottlenecks": [
+        "crusher"
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 8323.33,
+      "total_tonnes_ci95_low": 8285.76,
+      "total_tonnes_ci95_high": 8360.91,
+      "tonnes_per_hour_mean": 1040.42,
+      "tonnes_per_hour_ci95_low": 1035.72,
+      "tonnes_per_hour_ci95_high": 1045.11,
+      "average_cycle_time_min": 22.58,
+      "truck_utilisation_mean": 0.944,
+      "loader_utilisation": {
+        "L_N": 0.084,
+        "L_S": 0.733
+      },
+      "crusher_utilisation": 0.609,
+      "average_loader_queue_time_min": 0.72,
+      "average_crusher_queue_time_min": 0.28,
+      "top_bottlenecks": []
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12823.33,
+      "total_tonnes_ci95_low": 12723.48,
+      "total_tonnes_ci95_high": 12923.18,
+      "tonnes_per_hour_mean": 1602.92,
+      "tonnes_per_hour_ci95_low": 1590.44,
+      "tonnes_per_hour_ci95_high": 1615.4,
+      "average_cycle_time_min": 42.89,
+      "truck_utilisation_mean": 0.546,
+      "loader_utilisation": {
+        "L_N": 0.661,
+        "L_S": 0.871
+      },
+      "crusher_utilisation": 0.941,
+      "average_loader_queue_time_min": 2.78,
+      "average_crusher_queue_time_min": 15.14,
+      "top_bottlenecks": [
+        "crusher"
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12623.33,
+      "total_tonnes_ci95_low": 12571.74,
+      "total_tonnes_ci95_high": 12674.93,
+      "tonnes_per_hour_mean": 1577.92,
+      "tonnes_per_hour_ci95_low": 1571.47,
+      "tonnes_per_hour_ci95_high": 1584.37,
+      "average_cycle_time_min": 29.47,
+      "truck_utilisation_mean": 0.774,
+      "loader_utilisation": {
+        "L_N": 0.507,
+        "L_S": 0.861
+      },
+      "crusher_utilisation": 0.93,
+      "average_loader_queue_time_min": 2.21,
+      "average_crusher_queue_time_min": 3.89,
+      "top_bottlenecks": [
+        "crusher"
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 6483.33,
+      "total_tonnes_ci95_low": 6434.22,
+      "total_tonnes_ci95_high": 6532.45,
+      "tonnes_per_hour_mean": 810.42,
+      "tonnes_per_hour_ci95_low": 804.28,
+      "tonnes_per_hour_ci95_high": 816.56,
+      "average_cycle_time_min": 55.82,
+      "truck_utilisation_mean": 0.453,
+      "loader_utilisation": {
+        "L_N": 0.036,
+        "L_S": 0.651
+      },
+      "crusher_utilisation": 0.955,
+      "average_loader_queue_time_min": 0.62,
+      "average_crusher_queue_time_min": 28.79,
+      "top_bottlenecks": [
+        "crusher"
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12416.67,
+      "total_tonnes_ci95_low": 12367.55,
+      "total_tonnes_ci95_high": 12465.78,
+      "tonnes_per_hour_mean": 1552.08,
+      "tonnes_per_hour_ci95_low": 1545.94,
+      "tonnes_per_hour_ci95_high": 1558.22,
+      "average_cycle_time_min": 29.99,
+      "truck_utilisation_mean": 0.766,
+      "loader_utilisation": {
+        "L_N": 0.58,
+        "L_S": 0.787
+      },
+      "crusher_utilisation": 0.912,
+      "average_loader_queue_time_min": 2.6,
+      "average_crusher_queue_time_min": 3.84,
+      "top_bottlenecks": [
+        "crusher"
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Shortest-time dynamic routing using distance and speed limits.",
+    "Dynamic loader dispatching based on minimum expected wait + travel time.",
+    "Constrained single-lane roads handled as independent directional resources."
+  ],
+  "model_limitations": [
+    "Truck speeds are independent of traffic unless on constrained segments.",
+    "Breakdowns and operator delays are excluded."
+  ],
+  "additional_scenarios_proposed": []
+}

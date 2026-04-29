@@ -1,0 +1,17 @@
+submission_id: 2026-04-29__001_synthetic_mine_throughput__gemini-cli__gemini-3-1-pro-preview__vanilla
+date: 2026-04-29
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: gemini-cli
+  version: tbc
+  notes: vanilla
+model:
+  name: gemini-3-1-pro-preview
+  vendor: google
+  notes: ""
+run_tag: vanilla
+operator: harry
+status: scaffolded
+intervention:
+  category: unrecorded
+  notes: ""

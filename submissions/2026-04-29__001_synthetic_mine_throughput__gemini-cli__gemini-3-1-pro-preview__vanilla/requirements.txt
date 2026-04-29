@@ -1,0 +1,6 @@
+simpy
+pandas
+numpy
+scipy
+networkx
+PyYAML

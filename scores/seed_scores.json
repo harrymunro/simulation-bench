@@ -100,5 +100,39 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Strong submission",
     "notes": "Best-in-class structure: 7-module package, real pytest suite, honest residual-service-time disclosure; loses points only on absent warmup discussion."
+  },
+  {
+    "submission_id": "2026-04-29__001_synthetic_mine_throughput__opencode__gemini-3-1-pro-preview__customtools-high-superpowers-skill",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-29",
+    "conceptual_modelling": 14,
+    "data_topology": 13,
+    "simulation_correctness": 14,
+    "experimental_design": 10,
+    "results_interpretation": 6,
+    "code_quality": 7,
+    "traceability": 3,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Partially trustworthy",
+    "notes": "Correct SimPy DES with all behavioural checks passing, but utilisation/bottleneck fields left as placeholders and README does not answer the six decision questions."
+  },
+  {
+    "submission_id": "2026-04-29__001_synthetic_mine_throughput__gemini-cli__gemini-3-1-pro-preview__vanilla",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-29",
+    "conceptual_modelling": 16,
+    "data_topology": 12,
+    "simulation_correctness": 15,
+    "experimental_design": 12,
+    "results_interpretation": 13,
+    "code_quality": 7,
+    "traceability": 5,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Solid SimPy DES with all 6 scenarios and 30 reps; travel-time noise CV ignored and loader utilisation reflects last replication only."
   }
 ]

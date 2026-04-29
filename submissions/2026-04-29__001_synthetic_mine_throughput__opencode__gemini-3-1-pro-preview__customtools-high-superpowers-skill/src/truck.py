@@ -1,66 +1,44 @@
-import scipy.stats as stats
 import networkx as nx
+from typing import Generator, List, Any
 from src.topology import get_base_travel_time
-from src.simulation import MineSimulation
+from src.stats import get_truncated_normal
+from src.routing import choose_best_destination
 
 DEFAULT_LOADER_SERVICE_TIME_MEAN = 5.0
 DEFAULT_LOADER_SERVICE_TIME_SD = 1.0
 DEFAULT_CRUSHER_SERVICE_TIME_MEAN = 3.5
 DEFAULT_CRUSHER_SERVICE_TIME_SD = 0.8
 
-def get_shortest_path_time(graph: nx.DiGraph, start: str, end: str, speed_factor: float) -> float:
-    # Custom weight function
-    def weight(u, v, d):
-        base = get_base_travel_time(d['distance_m'], d['max_speed_kph'])
-        return base / speed_factor
-        
-    try:
-        return nx.shortest_path_length(graph, start, end, weight=weight)
-    except nx.NetworkXNoPath:
-        return float('inf')
-
-def choose_best_destination(sim: MineSimulation, current_node: str, destinations: list[str], speed_factor: float, default_service_mean: float) -> str:
-    best_dest = None
-    min_expected_time = float('inf')
-    
-    for dest in destinations:
-        travel_time = get_shortest_path_time(sim.graph, current_node, dest, speed_factor)
-        
-        # Estimate wait time: queue length * mean service time
-        queue_len = len(sim.resources[dest].queue)
-        mean_service = sim.graph.nodes[dest].get('service_time_mean_min', default_service_mean)
-        expected_wait = (queue_len + 1) * mean_service
-        
-        total_time = travel_time + expected_wait
-        if total_time < min_expected_time:
-            min_expected_time = total_time
-            best_dest = dest
-            
-    return best_dest
-
-def get_truncated_normal(mean, sd, lower=0):
-    if sd == 0:
-        return mean
-    a = (lower - mean) / sd
-    return stats.truncnorm(a, float('inf'), loc=mean, scale=sd).rvs()
-
-def traverse_path(env, sim, truck_id, path, speed, is_loaded, payload):
-    stochasticity_cv = getattr(sim.config, 'stochasticity_cv', 0)
+def traverse_path(
+    env: Any,
+    graph: nx.DiGraph,
+    edge_resources: dict,
+    logger: Any,
+    replication: int,
+    scenario_id: int,
+    stochasticity_cv: float,
+    truck_id: str,
+    path: List[str],
+    speed: float,
+    is_loaded: bool,
+    payload: float
+) -> Generator[Any, Any, None]:
     for i in range(len(path) - 1):
         u, v = path[i], path[i+1]
-        edge_data = sim.graph.edges[u, v]
+        edge_data = graph.edges[u, v]
         edge_id = edge_data['edge_id']
         
         base_t = get_base_travel_time(edge_data['distance_m'], edge_data['max_speed_kph']) / speed
         actual_t = get_truncated_normal(base_t, base_t * stochasticity_cv)
         
         # Request edge capacity if constrained
-        if edge_id in sim.edge_resources:
-            with sim.edge_resources[edge_id].request() as req:
+        if edge_id in edge_resources:
+            with edge_resources[edge_id].request() as req:
                 yield req
-                sim.logger.log(env.now, sim.replication, sim.config.scenario_id, truck_id, "enter_edge", u, v, edge_id, is_loaded, payload, edge_id, 0)
+                logger.log(env.now, replication, scenario_id, truck_id, "enter_edge", u, v, edge_id, is_loaded, payload, edge_id, 0)
                 yield env.timeout(actual_t)
         else:
+            logger.log(env.now, replication, scenario_id, truck_id, "enter_edge", u, v, edge_id, is_loaded, payload, edge_id, 0)
             yield env.timeout(actual_t)
 
 def truck_process(env, sim, truck_id, start_node, payload_capacity, empty_speed, loaded_speed):
@@ -70,12 +48,14 @@ def truck_process(env, sim, truck_id, start_node, payload_capacity, empty_speed,
     
     if not crushers:
         crushers = ["CRUSH"]
+        
+    stochasticity_cv = getattr(sim.config, 'stochasticity_cv', 0)
     
     while True:
         cycle_start = env.now
         
         # 1. Choose loader & travel
-        target_loader = choose_best_destination(sim, current_node, loaders, empty_speed, DEFAULT_LOADER_SERVICE_TIME_MEAN)
+        target_loader = choose_best_destination(sim.graph, sim.resources, current_node, loaders, empty_speed, DEFAULT_LOADER_SERVICE_TIME_MEAN)
         if not target_loader:
             yield env.timeout(1) # wait if nowhere to go
             continue
@@ -83,7 +63,7 @@ def truck_process(env, sim, truck_id, start_node, payload_capacity, empty_speed,
         path = nx.shortest_path(sim.graph, current_node, target_loader)
         
         # Traverse path
-        yield from traverse_path(env, sim, truck_id, path, empty_speed, False, 0)
+        yield from traverse_path(env, sim.graph, sim.edge_resources, sim.logger, sim.replication, sim.config.scenario_id, stochasticity_cv, truck_id, path, empty_speed, False, 0)
                 
         current_node = target_loader
         
@@ -102,7 +82,7 @@ def truck_process(env, sim, truck_id, start_node, payload_capacity, empty_speed,
             yield env.timeout(load_t)
             
         # 3. Travel Loaded to Crusher
-        target_crusher = choose_best_destination(sim, current_node, crushers, loaded_speed, DEFAULT_CRUSHER_SERVICE_TIME_MEAN)
+        target_crusher = choose_best_destination(sim.graph, sim.resources, current_node, crushers, loaded_speed, DEFAULT_CRUSHER_SERVICE_TIME_MEAN)
         if not target_crusher:
             yield env.timeout(1)
             continue
@@ -110,7 +90,7 @@ def truck_process(env, sim, truck_id, start_node, payload_capacity, empty_speed,
         path = nx.shortest_path(sim.graph, current_node, target_crusher)
         
         # Traverse path
-        yield from traverse_path(env, sim, truck_id, path, loaded_speed, True, payload_capacity)
+        yield from traverse_path(env, sim.graph, sim.edge_resources, sim.logger, sim.replication, sim.config.scenario_id, stochasticity_cv, truck_id, path, loaded_speed, True, payload_capacity)
                 
         current_node = target_crusher
         

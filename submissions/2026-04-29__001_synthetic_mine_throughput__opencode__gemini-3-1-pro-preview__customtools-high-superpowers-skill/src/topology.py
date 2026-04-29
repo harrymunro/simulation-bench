@@ -4,13 +4,13 @@ import pandas as pd
 def build_graph(nodes_df: pd.DataFrame, edges_df: pd.DataFrame) -> nx.DiGraph:
     G = nx.DiGraph()
     
-    for _, row in nodes_df.iterrows():
-        G.add_node(row["node_id"], **row.to_dict())
+    for row in nodes_df.to_dict('records'):
+        G.add_node(row["node_id"], **row)
         
-    for _, row in edges_df.iterrows():
+    for row in edges_df.to_dict('records'):
         # Only add edge if it's not explicitly closed
-        if "closed" not in row or not row["closed"]:
-            G.add_edge(row["from_node"], row["to_node"], **row.to_dict())
+        if pd.isna(row.get("closed")) or not row.get("closed"):
+            G.add_edge(row["from_node"], row["to_node"], **row)
             
     return G
 

@@ -1,0 +1,7 @@
+scenario_id: trucks_4
+inherits: baseline
+description: Lower fleet size sensitivity
+
+fleet:
+  truck_count: 4
+

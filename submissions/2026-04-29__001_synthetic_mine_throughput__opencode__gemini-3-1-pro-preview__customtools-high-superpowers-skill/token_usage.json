@@ -1,7 +1,7 @@
 {
   "input_tokens": null,
   "output_tokens": null,
-  "total_tokens": null,
-  "token_count_method": "unknown",
+  "total_tokens": 130100,
+  "token_count_method": "reported",
   "estimated_cost_usd": null
 }

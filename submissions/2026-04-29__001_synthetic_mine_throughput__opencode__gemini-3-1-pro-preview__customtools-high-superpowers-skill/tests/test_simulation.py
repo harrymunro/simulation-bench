@@ -1,5 +1,4 @@
 import simpy
-import networkx as nx
 import pandas as pd
 from src.simulation import MineSimulation
 from src.config import Config

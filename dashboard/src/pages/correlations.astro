@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import data from "../data/correlations.json";
+
+interface Variable { key: string; label: string; }
+interface Payload {
+  variables: Variable[];
+  matrix: (number | null)[][];
+  n_pairs: number[][];
+  sample_size: number;
+  method: string;
+  min_pairs: number;
+}
+
+const { variables, matrix, n_pairs, sample_size, method, min_pairs } = data as Payload;
+
+function cellColor(rho: number | null): string {
+  if (rho === null) return "var(--row-alt)";
+  const intensity = Math.min(1, Math.abs(rho));
+  const alpha = 0.15 + 0.7 * intensity;
+  if (rho >= 0) {
+    return `rgba(37, 99, 235, ${alpha.toFixed(3)})`;
+  }
+  return `rgba(239, 68, 68, ${alpha.toFixed(3)})`;
+}
+
+function cellTextColor(rho: number | null): string {
+  if (rho === null) return "var(--muted)";
+  return Math.abs(rho) > 0.55 ? "#ffffff" : "var(--fg)";
+}
+
+function format(rho: number | null): string {
+  if (rho === null) return "—";
+  return rho.toFixed(2);
+}
+---
+<Layout title="Correlations — Simulation Bench" pageTitle="Correlations">
+  <p>
+    Pairwise <strong>Spearman rank correlations</strong> across the numeric leaderboard
+    fields, computed at build time from <code>scores/scores.db</code>. Spearman
+    measures whether one variable rises monotonically with another, regardless of
+    whether the relationship is linear.
+  </p>
+  <p class="muted small">
+    Sample size: {sample_size} submissions. Cells require at least {min_pairs}
+    paired non-null observations; otherwise they are blank. Hover any cell for
+    the pair count it was computed from. With this few runs, treat large
+    coefficients as suggestive, not conclusive.
+  </p>
+
+  <div class="matrix-wrap">
+    <table class="corr-matrix">
+      <thead>
+        <tr>
+          <th aria-label="variable"></th>
+          {variables.map((v) => (<th scope="col"><span>{v.label}</span></th>))}
+        </tr>
+      </thead>
+      <tbody>
+        {variables.map((rowVar, i) => (
+          <tr>
+            <th scope="row">{rowVar.label}</th>
+            {variables.map((colVar, j) => {
+              const rho = matrix[i][j];
+              const n = n_pairs[i][j];
+              return (
+                <td
+                  style={`background:${cellColor(rho)};color:${cellTextColor(rho)}`}
+                  title={`${rowVar.label} vs ${colVar.label} · n=${n}${rho === null ? " (insufficient data)" : ` · ρ=${rho.toFixed(3)}`}`}
+                >
+                  {format(rho)}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="muted small">
+    Method: {method}. Negative coefficients are red, positive blue, intensity
+    scales with |ρ|. Total tokens and runtime are sparse fields, so a few cells
+    are computed on smaller subsets — see the tooltip on each cell.
+  </p>
+</Layout>
+
+<style>
+  .matrix-wrap { overflow-x: auto; margin: 1.5rem 0; }
+  .corr-matrix { border-collapse: collapse; font-size: 0.85rem; min-width: 860px; }
+  .corr-matrix th, .corr-matrix td { padding: 0.4rem 0.55rem; text-align: center; border: 1px solid var(--border); }
+  .corr-matrix thead th { font-weight: 600; vertical-align: bottom; background: transparent; height: 11rem; padding: 0; position: relative; }
+  .corr-matrix thead th span { display: inline-block; transform: rotate(-55deg); transform-origin: left bottom; white-space: nowrap; position: absolute; bottom: 0.35rem; left: 50%; padding: 0; }
+  .corr-matrix thead th:first-child { background: transparent; border: none; height: 11rem; }
+  .corr-matrix tbody th { text-align: right; font-weight: 600; background: var(--row-alt); white-space: nowrap; }
+  .corr-matrix tbody td { font-variant-numeric: tabular-nums; min-width: 3.6rem; }
+  .muted { color: var(--muted); }
+  .small { font-size: 0.875rem; }
+</style>

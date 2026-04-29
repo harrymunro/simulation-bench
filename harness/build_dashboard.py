@@ -23,6 +23,8 @@ import sqlite3
 import sys
 from pathlib import Path
 
+from scipy.stats import spearmanr
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = REPO_ROOT / "scores" / "scores.db"
 DEFAULT_DASHBOARD_ROOT = REPO_ROOT / "dashboard"
@@ -129,6 +131,96 @@ def write_leaderboard_json(db_path: Path, out_path: Path) -> None:
     rows = load_leaderboard(db_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
+
+
+# Variables included in the correlation matrix. Ordered for display: rubric
+# categories first, then the composite total, then runtime/token signals.
+CORRELATION_VARIABLES: list[tuple[str, str]] = [
+    ("conceptual_modelling", "Conceptual modelling"),
+    ("data_topology", "Data & topology"),
+    ("simulation_correctness", "Simulation correctness"),
+    ("experimental_design", "Experimental design"),
+    ("results_interpretation", "Results interpretation"),
+    ("code_quality", "Code quality"),
+    ("traceability", "Traceability"),
+    ("totalScore", "Total score"),
+    ("totalTokens", "Total tokens"),
+    ("runtimeSeconds", "Runtime (s)"),
+]
+MIN_PAIRS_FOR_CORRELATION = 3
+
+
+def _extract_value(row: dict, key: str) -> float | None:
+    """Return a numeric field from a leaderboard row, looking inside categoryScores."""
+    if key in row:
+        value = row[key]
+    elif key in row.get("categoryScores", {}):
+        value = row["categoryScores"][key]
+    else:
+        return None
+    if value is None:
+        return None
+    return float(value)
+
+
+def _spearman_pair(x: list[float], y: list[float]) -> float | None:
+    """Spearman rank correlation. Returns None if undefined (constant input or NaN)."""
+    if len(x) < MIN_PAIRS_FOR_CORRELATION:
+        return None
+    if len(set(x)) == 1 or len(set(y)) == 1:
+        return None
+    rho = spearmanr(x, y).statistic
+    if rho is None:
+        return None
+    rho = float(rho)
+    if rho != rho:  # NaN guard
+        return None
+    return rho
+
+
+def compute_correlations(rows: list[dict]) -> dict:
+    """Build a Spearman correlation matrix across the configured variables.
+
+    Each cell holds the rank correlation computed from rows where both variables
+    are non-null. Returns ``{"variables", "matrix", "n_pairs", "sample_size"}``.
+    """
+    keys = [k for k, _ in CORRELATION_VARIABLES]
+    series: dict[str, list[tuple[int, float]]] = {
+        k: [(idx, v) for idx, row in enumerate(rows) if (v := _extract_value(row, k)) is not None]
+        for k in keys
+    }
+
+    matrix: list[list[float | None]] = []
+    n_pairs: list[list[int]] = []
+    for key_a in keys:
+        row_rho: list[float | None] = []
+        row_n: list[int] = []
+        a_by_idx = dict(series[key_a])
+        for key_b in keys:
+            b_by_idx = dict(series[key_b])
+            shared = sorted(set(a_by_idx) & set(b_by_idx))
+            xs = [a_by_idx[i] for i in shared]
+            ys = [b_by_idx[i] for i in shared]
+            row_rho.append(_spearman_pair(xs, ys))
+            row_n.append(len(shared))
+        matrix.append(row_rho)
+        n_pairs.append(row_n)
+
+    return {
+        "variables": [{"key": k, "label": label} for k, label in CORRELATION_VARIABLES],
+        "matrix": matrix,
+        "n_pairs": n_pairs,
+        "sample_size": len(rows),
+        "method": "spearman",
+        "min_pairs": MIN_PAIRS_FOR_CORRELATION,
+    }
+
+
+def write_correlations_json(db_path: Path, out_path: Path) -> None:
+    rows = load_leaderboard(db_path)
+    payload = compute_correlations(rows)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 def copy_methodology(src_root: Path, dest_root: Path) -> None:
@@ -358,6 +450,7 @@ def main() -> int:
         return 1
 
     write_leaderboard_json(args.db, args.dashboard_root / "src" / "data" / "leaderboard.json")
+    write_correlations_json(args.db, args.dashboard_root / "src" / "data" / "correlations.json")
     copy_methodology(REPO_ROOT, args.dashboard_root / "src" / "content" / "methodology")
 
     rows = load_leaderboard(args.db)

@@ -200,6 +200,115 @@ def test_emit_submission_embeds_rendered_sections(tmp_path: Path, populated_db: 
     assert "behaviouralChecksPassed: 6" in text
 
 
+def _make_row(
+    submission_id: str,
+    *,
+    total_score: int | None,
+    conceptual: int | None,
+    correctness: int | None,
+    total_tokens: int | None,
+    runtime: float | None,
+) -> dict:
+    return {
+        "submission_id": submission_id,
+        "runDate": "2026-04-29",
+        "benchmarkId": "001_synthetic_mine_throughput",
+        "harness": "claude-code",
+        "model": "claude-opus-4-7",
+        "runTag": None,
+        "totalScore": total_score,
+        "categoryScores": {
+            "conceptual_modelling": conceptual,
+            "data_topology": None,
+            "simulation_correctness": correctness,
+            "experimental_design": None,
+            "results_interpretation": None,
+            "code_quality": None,
+            "traceability": None,
+        },
+        "totalTokens": total_tokens,
+        "inputTokens": None,
+        "outputTokens": None,
+        "tokenCountMethod": "reported",
+        "runtimeSeconds": runtime,
+        "interventionCategory": "autonomous",
+        "reviewer": "x",
+        "reviewDate": "2026-04-29",
+        "recommendation": "",
+        "notes": "",
+    }
+
+
+def test_compute_correlations_returns_perfect_rank_for_monotonic_pair() -> None:
+    rows = [
+        _make_row("a", total_score=70, conceptual=12, correctness=14, total_tokens=10_000, runtime=10.0),
+        _make_row("b", total_score=80, conceptual=15, correctness=16, total_tokens=20_000, runtime=20.0),
+        _make_row("c", total_score=90, conceptual=18, correctness=18, total_tokens=30_000, runtime=30.0),
+    ]
+    payload = build_dashboard.compute_correlations(rows)
+    keys = [v["key"] for v in payload["variables"]]
+    cm_idx = keys.index("conceptual_modelling")
+    total_idx = keys.index("totalScore")
+    assert payload["matrix"][cm_idx][total_idx] == pytest.approx(1.0)
+    assert payload["matrix"][cm_idx][cm_idx] == pytest.approx(1.0)
+    assert payload["n_pairs"][cm_idx][total_idx] == 3
+    assert payload["sample_size"] == 3
+    assert payload["method"] == "spearman"
+
+
+def test_compute_correlations_returns_negative_rank_for_anti_monotonic_pair() -> None:
+    rows = [
+        _make_row("a", total_score=70, conceptual=18, correctness=10, total_tokens=10_000, runtime=10.0),
+        _make_row("b", total_score=80, conceptual=15, correctness=12, total_tokens=20_000, runtime=20.0),
+        _make_row("c", total_score=90, conceptual=12, correctness=14, total_tokens=30_000, runtime=30.0),
+    ]
+    payload = build_dashboard.compute_correlations(rows)
+    keys = [v["key"] for v in payload["variables"]]
+    total_idx = keys.index("totalScore")
+    cm_idx = keys.index("conceptual_modelling")
+    assert payload["matrix"][total_idx][cm_idx] == pytest.approx(-1.0)
+
+
+def test_compute_correlations_returns_none_when_too_few_pairs() -> None:
+    rows = [
+        _make_row("a", total_score=70, conceptual=None, correctness=10, total_tokens=10_000, runtime=10.0),
+        _make_row("b", total_score=80, conceptual=15, correctness=None, total_tokens=20_000, runtime=20.0),
+    ]
+    payload = build_dashboard.compute_correlations(rows)
+    keys = [v["key"] for v in payload["variables"]]
+    cm_idx = keys.index("conceptual_modelling")
+    correctness_idx = keys.index("simulation_correctness")
+    assert payload["matrix"][cm_idx][correctness_idx] is None
+    assert payload["n_pairs"][cm_idx][correctness_idx] == 0
+
+
+def test_compute_correlations_returns_none_for_constant_series() -> None:
+    rows = [
+        _make_row("a", total_score=80, conceptual=15, correctness=15, total_tokens=10_000, runtime=10.0),
+        _make_row("b", total_score=80, conceptual=15, correctness=16, total_tokens=20_000, runtime=20.0),
+        _make_row("c", total_score=80, conceptual=15, correctness=18, total_tokens=30_000, runtime=30.0),
+    ]
+    payload = build_dashboard.compute_correlations(rows)
+    keys = [v["key"] for v in payload["variables"]]
+    total_idx = keys.index("totalScore")
+    correctness_idx = keys.index("simulation_correctness")
+    assert payload["matrix"][total_idx][correctness_idx] is None
+
+
+def test_write_correlations_json_round_trips(populated_db: Path, tmp_path: Path) -> None:
+    out = tmp_path / "correlations.json"
+    build_dashboard.write_correlations_json(populated_db, out)
+    payload = json.loads(out.read_text())
+    assert payload["method"] == "spearman"
+    assert payload["sample_size"] == 1
+    assert {v["key"] for v in payload["variables"]} >= {
+        "totalScore",
+        "conceptual_modelling",
+        "totalTokens",
+        "runtimeSeconds",
+    }
+
+
 def test_emit_submission_omits_missing_sections(tmp_path: Path, populated_db: Path) -> None:
     submissions_root = tmp_path / "submissions"
     folder = submissions_root / "2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking"

@@ -37,8 +37,8 @@ class MineSimulation:
                 self.road_segments[data['edge_id']] = simpy.Resource(self.env, capacity=int(data['capacity']))
 
     def get_best_loader(self, current_node):
-        best_loader = None
-        best_score = float('inf')
+        available_loaders = []
+        all_loaders = []
         
         for loader in self.config.ore_sources:
             path = self.topology.get_shortest_path(current_node, loader)
@@ -46,14 +46,36 @@ class MineSimulation:
             travel_time = sum(self.topology.graph[path[i]][path[i+1]]['travel_time_min'] for i in range(len(path)-1))
             
             queue_len = len(self.loaders[loader].queue)
+            node_data = self.topology.graph.nodes[loader]
+            mean_service_time = node_data.get('service_time_mean_min', 5.0)
             
-            # Simplified score: travel_time + queue penalty
-            # Assuming mean service time is ~5 min for tie breaking
-            expected_queue_time = queue_len * 5.0
+            all_loaders.append({
+                'loader': loader,
+                'travel_time': travel_time,
+                'queue_len': queue_len,
+                'mean_service_time': mean_service_time
+            })
             
-            score = travel_time + expected_queue_time
+            if queue_len == 0:
+                available_loaders.append({
+                    'loader': loader,
+                    'travel_time': travel_time
+                })
+                
+        if available_loaders:
+            # Pick the closest available loader (queue = 0)
+            best = min(available_loaders, key=lambda x: x['travel_time'])
+            return best['loader']
+            
+        # Fall back to score tie-breaker if all loaders have queues
+        best_loader = None
+        best_score = float('inf')
+        
+        for l in all_loaders:
+            expected_queue_time = l['queue_len'] * l['mean_service_time']
+            score = l['travel_time'] + expected_queue_time
             if score < best_score:
                 best_score = score
-                best_loader = loader
+                best_loader = l['loader']
                 
         return best_loader

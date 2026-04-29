@@ -1,6 +1,6 @@
 import yaml
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Dict
 
 @dataclass
 class ScenarioConfig:
@@ -12,6 +12,9 @@ class ScenarioConfig:
     ore_sources: List[str]
     dump_destination: str
     travel_time_noise_cv: float
+    edge_overrides: Dict = field(default_factory=dict)
+    node_overrides: Dict = field(default_factory=dict)
+    dump_point_overrides: Dict = field(default_factory=dict)
 
     @classmethod
     def from_yaml(cls, filepath):
@@ -26,8 +29,8 @@ class ScenarioConfig:
                 
             def deep_update(d, u):
                 for k, v in u.items():
-                    if isinstance(v, dict):
-                        d[k] = deep_update(d.get(k, {}), v)
+                    if isinstance(v, dict) and k in d and isinstance(d[k], dict):
+                        d[k] = deep_update(d[k], v)
                     else:
                         d[k] = v
                 return d
@@ -43,5 +46,8 @@ class ScenarioConfig:
             truck_count=data.get('fleet', {}).get('truck_count', 8),
             ore_sources=data.get('production', {}).get('ore_sources', []),
             dump_destination=data.get('production', {}).get('dump_destination', ''),
-            travel_time_noise_cv=data.get('stochasticity', {}).get('travel_time_noise_cv', 0.1)
+            travel_time_noise_cv=data.get('stochasticity', {}).get('travel_time_noise_cv', 0.1),
+            edge_overrides=data.get('edge_overrides', {}),
+            node_overrides=data.get('node_overrides', {}),
+            dump_point_overrides=data.get('dump_point_overrides', {})
         )

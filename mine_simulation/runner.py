@@ -22,7 +22,6 @@ def run_replication(config: ScenarioConfig, topology: MineTopology, loaders_df, 
     return sim.metrics, sim.event_log
 
 def run_scenarios(data_dir: Path, output_dir: Path):
-    topology = MineTopology(data_dir / "nodes.csv", data_dir / "edges.csv")
     loaders_df = pd.read_csv(data_dir / "loaders.csv")
     dump_points_df = pd.read_csv(data_dir / "dump_points.csv")
     trucks_df = pd.read_csv(data_dir / "trucks.csv")
@@ -40,6 +39,7 @@ def run_scenarios(data_dir: Path, output_dir: Path):
     scenarios_dir = data_dir / "scenarios"
     for yaml_file in scenarios_dir.glob("*.yaml"):
         config = ScenarioConfig.from_yaml(yaml_file)
+        topology = MineTopology(data_dir / "nodes.csv", data_dir / "edges.csv", config)
         
         scenario_tonnes = []
         

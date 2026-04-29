@@ -6,6 +6,7 @@ from .topology import MineTopology
 from .config import ScenarioConfig
 from .simulation import MineSimulation
 from .truck import Truck
+from .metrics import calculate_advanced_metrics
 
 def run_replication(config: ScenarioConfig, topology: MineTopology, loaders_df, dump_points_df, trucks_df, seed):
     sim = MineSimulation(config, topology, loaders_df, dump_points_df, seed)
@@ -68,6 +69,10 @@ def run_scenarios(data_dir: Path, output_dir: Path):
         std_t = np.std(scenario_tonnes, ddof=1)
         ci = 1.96 * (std_t / np.sqrt(config.replications))
         
+        events_df = pd.DataFrame(all_events)
+        scenario_events = events_df[events_df['scenario_id'] == config.scenario_id]
+        adv_metrics = calculate_advanced_metrics(scenario_events, config.shift_length_hours)
+        
         summary_data["scenarios"][config.scenario_id] = {
             "replications": config.replications,
             "shift_length_hours": config.shift_length_hours,
@@ -77,14 +82,8 @@ def run_scenarios(data_dir: Path, output_dir: Path):
             "tonnes_per_hour_mean": float(mean_t / config.shift_length_hours),
             "tonnes_per_hour_ci95_low": float((mean_t - ci) / config.shift_length_hours),
             "tonnes_per_hour_ci95_high": float((mean_t + ci) / config.shift_length_hours),
-            "average_cycle_time_min": 0, # Placeholder for extended metrics calculation
-            "truck_utilisation_mean": 0,
-            "loader_utilisation": {},
-            "crusher_utilisation": 0,
-            "average_loader_queue_time_min": 0,
-            "average_crusher_queue_time_min": 0,
-            "top_bottlenecks": []
         }
+        summary_data["scenarios"][config.scenario_id].update(adv_metrics)
         
     # NOTE: The advanced metrics calculation is modified in Task 5
     # For now, just dump the initial results

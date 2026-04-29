@@ -73,7 +73,7 @@ class MineSimulation:
         
         for l in all_loaders:
             expected_queue_time = l['queue_len'] * l['mean_service_time']
-            score = l['travel_time'] + expected_queue_time
+            score = l['travel_time'] + expected_queue_time + l['mean_service_time']
             if score < best_score:
                 best_score = score
                 best_loader = l['loader']

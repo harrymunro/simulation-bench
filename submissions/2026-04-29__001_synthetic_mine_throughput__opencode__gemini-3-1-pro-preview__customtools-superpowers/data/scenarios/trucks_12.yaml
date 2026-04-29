@@ -1,7 +1,0 @@
-scenario_id: trucks_12
-inherits: baseline
-description: Higher fleet size sensitivity
-
-fleet:
-  truck_count: 12
-

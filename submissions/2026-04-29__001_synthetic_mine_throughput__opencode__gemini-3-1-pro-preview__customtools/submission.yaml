@@ -1,0 +1,17 @@
+submission_id: 2026-04-29__001_synthetic_mine_throughput__opencode__gemini-3-1-pro-preview__customtools
+date: 2026-04-29
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: opencode
+  version: tbc
+  notes: customtools variant
+model:
+  name: gemini-3-1-pro-preview
+  vendor: google
+  notes: ""
+run_tag: customtools
+operator: harry
+status: scaffolded
+intervention:
+  category: unrecorded
+  notes: ""

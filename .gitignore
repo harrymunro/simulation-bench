@@ -13,3 +13,6 @@ __pycache__/
 *.egg-info/
 .venv/
 .pytest_cache/
+
+# Nested gsd workspace (has its own .git)
+submissions/2026-04-27__001_synthetic_mine_throughput__gsd2__gemini-3-1-pro-preview__customtools/

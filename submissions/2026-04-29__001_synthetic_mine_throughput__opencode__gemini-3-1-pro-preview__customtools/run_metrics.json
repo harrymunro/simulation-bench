@@ -1,0 +1,7 @@
+{
+  "command": "opencode (customtools variant)",
+  "runtime_seconds": 678,
+  "return_code": 0,
+  "timed_out": false,
+  "note": "Runtime supplied by operator; agentic run wall-clock from harness invocation to final artefact write."
+}

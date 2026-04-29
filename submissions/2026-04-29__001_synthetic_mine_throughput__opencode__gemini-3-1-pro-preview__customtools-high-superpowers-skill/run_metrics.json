@@ -1,0 +1,7 @@
+{
+  "command": null,
+  "runtime_seconds": null,
+  "return_code": null,
+  "timed_out": null,
+  "note": "Populate via harness/measure_run.py once the run completes."
+}

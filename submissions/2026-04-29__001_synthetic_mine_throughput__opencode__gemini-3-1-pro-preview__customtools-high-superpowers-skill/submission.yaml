@@ -1,0 +1,17 @@
+submission_id: 2026-04-29__001_synthetic_mine_throughput__opencode__gemini-3-1-pro-preview__customtools-high-superpowers-skill
+date: 2026-04-29
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: opencode
+  version: tbc
+  notes: superpowers skill loaded, customtools enabled
+model:
+  name: gemini-3-1-pro-preview
+  vendor: google
+  notes: high reasoning effort
+run_tag: customtools-high-superpowers-skill
+operator: harry
+status: scaffolded
+intervention:
+  category: unrecorded
+  notes: ""

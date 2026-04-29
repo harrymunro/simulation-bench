@@ -1,4 +1,3 @@
-import pytest
 import pandas as pd
 import networkx as nx
 from src.topology import build_graph, get_base_travel_time

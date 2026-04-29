@@ -1,5 +1,4 @@
 from src.metrics import EventLogger, SimulationMetrics
-import pandas as pd
 
 def test_event_logger():
     logger = EventLogger()

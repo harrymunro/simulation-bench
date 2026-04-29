@@ -1,5 +1,4 @@
 import pandas as pd
-from typing import List, Dict
 
 class EventLogger:
     def __init__(self):

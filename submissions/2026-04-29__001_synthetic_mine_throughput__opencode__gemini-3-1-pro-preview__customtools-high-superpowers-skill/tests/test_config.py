@@ -1,6 +1,4 @@
-import pytest
-from pathlib import Path
-from src.config import Config, load_scenario, load_csv_data
+from src.config import load_scenario, load_csv_data
 
 def test_load_scenario(tmp_path):
     yaml_file = tmp_path / "baseline.yaml"

@@ -50,18 +50,28 @@ def run_scenarios(data_dir: Path, output_dir: Path):
             total_tonnes = metrics["total_tonnes_delivered"]
             scenario_tonnes.append(total_tonnes)
             
+            # add rep details to events
+            for e in events:
+                e["scenario_id"] = config.scenario_id
+                e["replication"] = rep
+            
+            # Calculate metrics for just this replication
+            rep_events_df = pd.DataFrame(events)
+            adv_metrics = calculate_advanced_metrics(rep_events_df, config.shift_length_hours, 1)
+            
             all_results.append({
                 "scenario_id": config.scenario_id,
                 "replication": rep,
                 "random_seed": seed,
                 "total_tonnes_delivered": total_tonnes,
-                "tonnes_per_hour": total_tonnes / config.shift_length_hours
+                "tonnes_per_hour": total_tonnes / config.shift_length_hours,
+                "average_truck_cycle_time_min": adv_metrics.get("average_cycle_time_min", 0),
+                "average_truck_utilisation": adv_metrics.get("truck_utilisation_mean", 0),
+                "crusher_utilisation": adv_metrics.get("crusher_utilisation", 0),
+                "average_loader_queue_time_min": adv_metrics.get("average_loader_queue_time_min", 0),
+                "average_crusher_queue_time_min": adv_metrics.get("average_crusher_queue_time_min", 0)
             })
             
-            # add rep details to events
-            for e in events:
-                e["scenario_id"] = config.scenario_id
-                e["replication"] = rep
             all_events.extend(events)
             
         # Calc 95% CI

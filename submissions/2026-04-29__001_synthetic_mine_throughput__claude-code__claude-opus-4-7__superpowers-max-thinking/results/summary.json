@@ -1,0 +1,72 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12256.666666666666,
+      "total_tonnes_ci95_low": 12204.148173147883,
+      "total_tonnes_ci95_high": 12309.185160185449,
+      "tonnes_per_hour_mean": 1532.0833333333333,
+      "tonnes_per_hour_ci95_low": 1525.5185216434854,
+      "tonnes_per_hour_ci95_high": 1538.648145023181,
+      "average_cycle_time_min": 30.364082788881415,
+      "truck_utilisation_mean": 0.7456788020246793,
+      "loader_utilisation": {
+        "L_N": 0.4579650207076383,
+        "L_S": 0.8712190879455027
+      },
+      "crusher_utilisation": 0.8945266752061455,
+      "average_loader_queue_time_min": 2.0564880817140905,
+      "average_crusher_queue_time_min": 2.82210989931936,
+      "top_bottlenecks": [
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.8945266752061455,
+          "avg_queue_wait_min": 2.82210989931936,
+          "score": 2.524452585304497
+        },
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.8712190879455027,
+          "avg_queue_wait_min": 2.2396155807605953,
+          "score": 1.9511958436187833
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.8534717152917765,
+          "avg_queue_wait_min": 1.2408278243446795,
+          "score": 1.0590114516252167
+        },
+        {
+          "resource_id": "loader_L_N",
+          "utilisation": 0.4579650207076383,
+          "avg_queue_wait_min": 1.8733605826675856,
+          "score": 0.8579336180342342
+        },
+        {
+          "resource_id": "road_RAMP",
+          "utilisation": 0.05299910371519999,
+          "avg_queue_wait_min": 10.915230427892658,
+          "score": 0.5784974295231897
+        }
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Capacity-1 ramp E03 and pit-access roads E07/E09 are modelled as paired bidirectional resources (one truck on the physical road regardless of direction). Crusher approach E05 keeps per-direction locks.",
+    "Loading and dumping times follow Normal(mean, sd) truncated to [0.1 min, mean + 5 sd].",
+    "Travel-time noise is multiplicative Normal(1.0, cv=0.10) per truck per edge per traversal, with effective speed floored at 10% of edge max_speed_kph.",
+    "Routing uses pre-computed travel-time-weighted shortest paths (NetworkX Dijkstra). Loader choice is dynamic via nearest_available_loader with shortest_expected_cycle_time tiebreaker.",
+    "Throughput is attributed at dumping_ended events at the crusher only; in-progress dumps at shift end are not counted.",
+    "All trucks start at PARK at t=0 and are dispatched simultaneously."
+  ],
+  "model_limitations": [
+    "No truck breakdowns, refuelling, shift handover, or operator skill variation are modelled.",
+    "No weather, blasting, or grade-resistance effects on travel speed beyond the loaded/empty speed factor.",
+    "Dispatching does not preempt or re-route mid-cycle; loader choice is fixed at cycle start.",
+    "Trucks finish their current state transition at shift end (no mid-traversal kill); only completed dumps count toward throughput.",
+    "Initial dispatch from PARK is simultaneous, which may overstate loader contention in the first cycle relative to staggered start-up in practice."
+  ],
+  "additional_scenarios_proposed": []
+}

@@ -4,7 +4,4 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
-results/event_log.csv
-results/*.csv
-results/*.json
-!results/.gitkeep
+# results/ outputs are checked in for this submission

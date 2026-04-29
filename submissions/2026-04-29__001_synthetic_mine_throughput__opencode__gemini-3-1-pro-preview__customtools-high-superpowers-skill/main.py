@@ -16,12 +16,14 @@ def main():
     args = parser.parse_args()
     
     config = load_scenario(Path(args.scenario))
-    config.stochasticity_cv = 0.10 # Hardcoded fallback if not in yaml
     
     nodes = load_csv_data(Path(args.data_dir) / 'nodes.csv')
     edges = load_csv_data(Path(args.data_dir) / 'edges.csv')
     trucks_df = load_csv_data(Path(args.data_dir) / 'trucks.csv')
     
+    if config.truck_count > len(trucks_df):
+        raise ValueError(f"Configured truck_count ({config.truck_count}) exceeds available trucks in trucks.csv ({len(trucks_df)})")
+        
     G = build_graph(nodes, edges)
     
     all_metrics = []

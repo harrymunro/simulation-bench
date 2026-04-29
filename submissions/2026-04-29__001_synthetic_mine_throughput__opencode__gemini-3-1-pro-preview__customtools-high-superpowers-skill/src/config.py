@@ -10,6 +10,7 @@ class Config:
     replications: int
     base_random_seed: int
     truck_count: int
+    stochasticity_cv: float = 0.10
 
 def load_scenario(yaml_path: Path) -> Config:
     with open(yaml_path, 'r') as f:
@@ -19,7 +20,8 @@ def load_scenario(yaml_path: Path) -> Config:
         shift_length_hours=data['simulation']['shift_length_hours'],
         replications=data['simulation']['replications'],
         base_random_seed=data['simulation'].get('base_random_seed', 12345),
-        truck_count=data['fleet']['truck_count']
+        truck_count=data['fleet']['truck_count'],
+        stochasticity_cv=data.get('simulation', {}).get('stochasticity_cv', 0.10)
     )
 
 def load_csv_data(csv_path: Path) -> pd.DataFrame:

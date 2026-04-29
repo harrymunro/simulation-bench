@@ -1,6 +1,6 @@
 import pandas as pd
 
-def calculate_advanced_metrics(events_df: pd.DataFrame, shift_hours: int):
+def calculate_advanced_metrics(events_df: pd.DataFrame, shift_hours: int, replications: int = 1):
     # events_df has columns: time_min, truck_id, event_type, resource_id, etc.
     metrics = {
         "average_cycle_time_min": 0,
@@ -28,7 +28,7 @@ def calculate_advanced_metrics(events_df: pd.DataFrame, shift_hours: int):
             end_row = crush_ends[(crush_ends['truck_id'] == start_row['truck_id']) & (crush_ends['time_min'] >= start_row['time_min'])].head(1)
             if not end_row.empty:
                 total_crush_time += (end_row.iloc[0]['time_min'] - start_row['time_min'])
-        metrics['crusher_utilisation'] = total_crush_time / (shift_hours * 60)
+        metrics['crusher_utilisation'] = total_crush_time / (replications * shift_hours * 60)
 
     # Calculate queues
     queue_crush = []
@@ -53,7 +53,7 @@ def calculate_advanced_metrics(events_df: pd.DataFrame, shift_hours: int):
             e = l_ends[(l_ends['truck_id'] == s['truck_id']) & (l_ends['time_min'] >= s['time_min'])].head(1)
             if not e.empty:
                 total_l_time += (e.iloc[0]['time_min'] - s['time_min'])
-        loader_util[str(l_id)] = total_l_time / (shift_hours * 60)
+        loader_util[str(l_id)] = total_l_time / (replications * shift_hours * 60)
     metrics['loader_utilisation'] = loader_util
 
     queue_load = []

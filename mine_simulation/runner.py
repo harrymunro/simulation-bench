@@ -71,7 +71,7 @@ def run_scenarios(data_dir: Path, output_dir: Path):
         
         events_df = pd.DataFrame(all_events)
         scenario_events = events_df[events_df['scenario_id'] == config.scenario_id]
-        adv_metrics = calculate_advanced_metrics(scenario_events, config.shift_length_hours)
+        adv_metrics = calculate_advanced_metrics(scenario_events, config.shift_length_hours, config.replications)
         
         summary_data["scenarios"][config.scenario_id] = {
             "replications": config.replications,

@@ -35,3 +35,25 @@ class MineSimulation:
             if 'capacity' in data and data['capacity'] < 999:
                 # Use edge_id as resource key
                 self.road_segments[data['edge_id']] = simpy.Resource(self.env, capacity=int(data['capacity']))
+
+    def get_best_loader(self, current_node):
+        best_loader = None
+        best_score = float('inf')
+        
+        for loader in self.config.ore_sources:
+            path = self.topology.get_shortest_path(current_node, loader)
+            # Sum base travel time
+            travel_time = sum(self.topology.graph[path[i]][path[i+1]]['travel_time_min'] for i in range(len(path)-1))
+            
+            queue_len = len(self.loaders[loader].queue)
+            
+            # Simplified score: travel_time + queue penalty
+            # Assuming mean service time is ~5 min for tie breaking
+            expected_queue_time = queue_len * 5.0
+            
+            score = travel_time + expected_queue_time
+            if score < best_score:
+                best_score = score
+                best_loader = loader
+                
+        return best_loader

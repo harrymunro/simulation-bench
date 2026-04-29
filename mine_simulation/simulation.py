@@ -1,10 +1,14 @@
 import simpy
+import random
+import numpy as np
 from .topology import MineTopology
 from .config import ScenarioConfig
 import pandas as pd
 
 class MineSimulation:
     def __init__(self, config: ScenarioConfig, topology: MineTopology, loaders_df: pd.DataFrame, dump_points_df: pd.DataFrame, random_seed: int):
+        random.seed(random_seed)
+        np.random.seed(random_seed)
         self.env = simpy.Environment()
         self.config = config
         self.topology = topology
@@ -20,11 +24,11 @@ class MineSimulation:
 
     def _setup_resources(self, loaders_df, dump_points_df):
         for _, row in loaders_df.iterrows():
-            self.loaders[row['node_id']] = simpy.Resource(self.env, capacity=1)
+            self.loaders[row['node_id']] = simpy.Resource(self.env, capacity=int(row['capacity']))
             
         for _, row in dump_points_df.iterrows():
             if row['type'] == 'crusher':
-                self.crusher = simpy.Resource(self.env, capacity=1)
+                self.crusher = simpy.Resource(self.env, capacity=int(row['capacity']))
                 
         # Setup constrained roads
         for u, v, data in self.topology.graph.edges(data=True):

@@ -1,0 +1,149 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12446.67,
+      "total_tonnes_ci95_low": 12362.46,
+      "total_tonnes_ci95_high": 12530.87,
+      "tonnes_per_hour_mean": 1555.833,
+      "tonnes_per_hour_ci95_low": 1545.308,
+      "tonnes_per_hour_ci95_high": 1566.359,
+      "average_cycle_time_min": 29.914,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.9066,
+      "average_loader_queue_time_min": 2.58,
+      "average_crusher_queue_time_min": 3.84,
+      "top_bottlenecks": [
+        "Crusher highly utilised (90.7%)",
+        "Long crusher queue (avg 3.8 min wait)",
+        "Long loader queue (avg 2.6 min wait)"
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 8163.33,
+      "total_tonnes_ci95_low": 8124.75,
+      "total_tonnes_ci95_high": 8201.92,
+      "tonnes_per_hour_mean": 1020.417,
+      "tonnes_per_hour_ci95_low": 1015.593,
+      "tonnes_per_hour_ci95_high": 1025.24,
+      "average_cycle_time_min": 22.965,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.5921,
+      "average_loader_queue_time_min": 0.955,
+      "average_crusher_queue_time_min": 0.304,
+      "top_bottlenecks": [
+        "No severe bottleneck detected"
+      ]
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12676.67,
+      "total_tonnes_ci95_low": 12579.25,
+      "total_tonnes_ci95_high": 12774.08,
+      "tonnes_per_hour_mean": 1584.583,
+      "tonnes_per_hour_ci95_low": 1572.407,
+      "tonnes_per_hour_ci95_high": 1596.76,
+      "average_cycle_time_min": 43.437,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.9239,
+      "average_loader_queue_time_min": 4.18,
+      "average_crusher_queue_time_min": 14.846,
+      "top_bottlenecks": [
+        "Crusher highly utilised (92.4%)",
+        "Long crusher queue (avg 14.8 min wait)",
+        "Long loader queue (avg 4.2 min wait)"
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12466.67,
+      "total_tonnes_ci95_low": 12383.85,
+      "total_tonnes_ci95_high": 12549.49,
+      "tonnes_per_hour_mean": 1558.333,
+      "tonnes_per_hour_ci95_low": 1547.981,
+      "tonnes_per_hour_ci95_high": 1568.686,
+      "average_cycle_time_min": 29.866,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.9084,
+      "average_loader_queue_time_min": 2.58,
+      "average_crusher_queue_time_min": 3.842,
+      "top_bottlenecks": [
+        "Crusher highly utilised (90.8%)",
+        "Long crusher queue (avg 3.8 min wait)",
+        "Long loader queue (avg 2.6 min wait)"
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 6423.33,
+      "total_tonnes_ci95_low": 6355.62,
+      "total_tonnes_ci95_high": 6491.05,
+      "tonnes_per_hour_mean": 802.917,
+      "tonnes_per_hour_ci95_low": 794.452,
+      "tonnes_per_hour_ci95_high": 811.381,
+      "average_cycle_time_min": 56.285,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.937,
+      "average_loader_queue_time_min": 1.855,
+      "average_crusher_queue_time_min": 28.182,
+      "top_bottlenecks": [
+        "Crusher highly utilised (93.7%)",
+        "Long crusher queue (avg 28.2 min wait)"
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12446.67,
+      "total_tonnes_ci95_low": 12362.46,
+      "total_tonnes_ci95_high": 12530.87,
+      "tonnes_per_hour_mean": 1555.833,
+      "tonnes_per_hour_ci95_low": 1545.308,
+      "tonnes_per_hour_ci95_high": 1566.359,
+      "average_cycle_time_min": 29.914,
+      "truck_utilisation_mean": 0.0,
+      "crusher_utilisation": 0.9066,
+      "average_loader_queue_time_min": 2.58,
+      "average_crusher_queue_time_min": 3.84,
+      "top_bottlenecks": [
+        "Crusher highly utilised (90.7%)",
+        "Long crusher queue (avg 3.8 min wait)",
+        "Long loader queue (avg 2.6 min wait)"
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Trucks follow shortest travel-time routes recalculated at each dispatch decision",
+    "Loading and dumping service times are truncated-normal (truncated at zero)",
+    "Travel time noise is lognormal with CV=0.10 (mean preserved at 1.0x)",
+    "Capacity-constrained road segments (capacity=1) are SimPy Resources; only one truck traverses at a time",
+    "Loaders and crusher have capacity 1 (single-server queues, FIFO)",
+    "All trucks are identical (100 t payload, loaded speed factor 0.85)",
+    "Shift warmup is zero; trucks depart from PARK at time 0",
+    "Trucks that complete a dump after shift_end are not counted (strict cutoff)",
+    "Dispatching: nearest-available-loader with queue-length penalty",
+    "All 12 trucks available; fleet scenarios select the first N from trucks.csv"
+  ],
+  "model_limitations": [
+    "No fuel or shift-change delays modelled",
+    "No truck breakdowns or maintenance schedules",
+    "Dispatch does not account for congestion on capacity-1 roads",
+    "Travel noise is independent between edges (no correlated delays)",
+    "Loader availability is 100% throughout the shift",
+    "Waste haulage not modelled (all ore goes to crusher)",
+    "Parking delays at shift start not modelled"
+  ],
+  "additional_scenarios_proposed": [
+    {
+      "id": "loader_upgrade",
+      "description": "Reduce LOAD_N service time mean from 6.5 to 4.5 min (match LOAD_S) to test whether loader speed at North Pit limits throughput."
+    }
+  ]
+}

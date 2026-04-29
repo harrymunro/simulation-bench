@@ -1,0 +1,17 @@
+submission_id: 2026-04-29__001_synthetic_mine_throughput__claude-code__claude-sonnet-4-6__vanilla-max
+date: "2026-04-29"
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: claude-code
+  version: tbc
+  notes: vanilla, no skills loaded
+model:
+  name: claude-sonnet-4-6
+  vendor: anthropic
+  notes: max effort
+run_tag: vanilla-max
+operator: harrymunro
+status: scaffolded
+intervention:
+  category: unrecorded
+  notes: ""

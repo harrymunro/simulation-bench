@@ -4,7 +4,7 @@ import networkx as nx
 from src.simulation import MineSimulation
 from src.config import Config
 from src.topology import build_graph
-from src.truck import get_shortest_path_time, choose_best_loader
+from src.truck import get_shortest_path_time
 
 def test_simulation_init():
     env = simpy.Environment()

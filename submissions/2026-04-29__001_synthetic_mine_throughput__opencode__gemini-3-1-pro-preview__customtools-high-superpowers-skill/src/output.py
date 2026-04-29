@@ -2,12 +2,8 @@ import json
 import pandas as pd
 import numpy as np
 import scipy.stats as st
-from typing import List, TYPE_CHECKING
+from typing import List
 from pathlib import Path
-
-if TYPE_CHECKING:
-    from src.metrics import SimulationMetrics
-    from src.config import Config
 
 def calculate_ci(data: list, confidence=0.95):
     if not data or len(data) < 2:
@@ -37,7 +33,7 @@ def generate_summary(metrics_list: List['SimulationMetrics'], config: 'Config', 
                 "tonnes_per_hour_mean": float(tph_m),
                 "tonnes_per_hour_ci95_low": float(tph_l),
                 "tonnes_per_hour_ci95_high": float(tph_h),
-                "average_cycle_time_min": float(np.mean(cycles)) if cycles else 0.0,
+                "average_cycle_time_min": float(np.mean(cycles)),
             }
         }
     }

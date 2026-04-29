@@ -83,5 +83,22 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Partially trustworthy",
     "notes": "Solid SimPy DES with honest, well-reasoned ramp-scenario null result; weakened by silent crusher_util clip, dead-code 'or True' in loader filter, and cycle-time-based utilisation reported without distinguishing queue vs productive time."
+  },
+  {
+    "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__superpowers-max-thinking",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-29",
+    "conceptual_modelling": 18,
+    "data_topology": 14,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 14,
+    "code_quality": 10,
+    "traceability": 5,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Best-in-class structure: 7-module package, real pytest suite, honest residual-service-time disclosure; loses points only on absent warmup discussion."
   }
 ]

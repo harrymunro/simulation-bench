@@ -1,7 +1,7 @@
 {
-  "command": null,
-  "runtime_seconds": null,
-  "return_code": null,
-  "timed_out": null,
-  "note": "Populate via harness/measure_run.py once the run completes."
+  "command": "claude-code (superpowers, max thinking) end-to-end harness session",
+  "runtime_seconds": 2167,
+  "return_code": 0,
+  "timed_out": false,
+  "note": "Wall-clock duration of the full agentic session (model + tool use), reported by the operator."
 }

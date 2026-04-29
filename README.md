@@ -1,5 +1,7 @@
 # Simulation Bench
 
+Deployed here: https://simulation-bench.fly.dev/
+
 A benchmark for evaluating agentic software development on modelling and simulation work, beginning with a synthetic open-pit mine haulage problem implemented in SimPy.
 
 The benchmark asks an agent to build a discrete-event simulation from supplied topology data and decision questions. It evaluates not only whether the code runs, but whether the agent can produce a defensible conceptual model, use topology data meaningfully, run experiments, report uncertainty, and interpret bottlenecks.

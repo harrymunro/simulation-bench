@@ -51,6 +51,261 @@
           "score": 0.5784974295231897
         }
       ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 7930.0,
+      "total_tonnes_ci95_low": 7885.98152675557,
+      "total_tonnes_ci95_high": 7974.01847324443,
+      "tonnes_per_hour_mean": 991.25,
+      "tonnes_per_hour_ci95_low": 985.7476908444462,
+      "tonnes_per_hour_ci95_high": 996.7523091555538,
+      "average_cycle_time_min": 23.625359341792148,
+      "truck_utilisation_mean": 0.9069611883853367,
+      "loader_utilisation": {
+        "L_N": 0.0971235660380924,
+        "L_S": 0.698343672727912
+      },
+      "crusher_utilisation": 0.5786302458245366,
+      "average_loader_queue_time_min": 0.4200040446637385,
+      "average_crusher_queue_time_min": 0.2927428693822012,
+      "top_bottlenecks": [
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.698343672727912,
+          "avg_queue_wait_min": 0.7853386581854312,
+          "score": 0.5484362828924243
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.6808982979191673,
+          "avg_queue_wait_min": 0.46195609573677515,
+          "score": 0.3145451193005541
+        },
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.5786302458245366,
+          "avg_queue_wait_min": 0.2927428693822012,
+          "score": 0.16938987847400327
+        },
+        {
+          "resource_id": "road_RAMP",
+          "utilisation": 0.02670025315899443,
+          "avg_queue_wait_min": 4.609475810202169,
+          "score": 0.12307417106265887
+        },
+        {
+          "resource_id": "road_E05_TO",
+          "utilisation": 0.26706315350871423,
+          "avg_queue_wait_min": 0.0284528979539551,
+          "score": 0.007598720654044892
+        }
+      ]
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12620.0,
+      "total_tonnes_ci95_low": 12550.383414552338,
+      "total_tonnes_ci95_high": 12689.616585447662,
+      "tonnes_per_hour_mean": 1577.5,
+      "tonnes_per_hour_ci95_low": 1568.7979268190422,
+      "tonnes_per_hour_ci95_high": 1586.2020731809578,
+      "average_cycle_time_min": 43.616466540310235,
+      "truck_utilisation_mean": 0.5275095108764892,
+      "loader_utilisation": {
+        "L_N": 0.5040076496764422,
+        "L_S": 0.8975865857967821
+      },
+      "crusher_utilisation": 0.926844053996195,
+      "average_loader_queue_time_min": 2.629450364414144,
+      "average_crusher_queue_time_min": 13.107469726140552,
+      "top_bottlenecks": [
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.926844053996195,
+          "avg_queue_wait_min": 13.107469726140552,
+          "score": 12.148580378608505
+        },
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.8975865857967821,
+          "avg_queue_wait_min": 2.957719125223908,
+          "score": 2.6548090113555727
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.8853319530342153,
+          "avg_queue_wait_min": 2.0593033282845763,
+          "score": 1.8231670375200437
+        },
+        {
+          "resource_id": "road_RAMP",
+          "utilisation": 0.07967820508698778,
+          "avg_queue_wait_min": 17.281760192343135,
+          "score": 1.3769796328696577
+        },
+        {
+          "resource_id": "loader_L_N",
+          "utilisation": 0.5040076496764422,
+          "avg_queue_wait_min": 2.3011816036043786,
+          "score": 1.1598131315113092
+        }
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12183.333333333334,
+      "total_tonnes_ci95_low": 12115.335553411458,
+      "total_tonnes_ci95_high": 12251.33111325521,
+      "tonnes_per_hour_mean": 1522.9166666666667,
+      "tonnes_per_hour_ci95_low": 1514.4169441764323,
+      "tonnes_per_hour_ci95_high": 1531.4163891569012,
+      "average_cycle_time_min": 30.557474743280867,
+      "truck_utilisation_mean": 0.7356999992205364,
+      "loader_utilisation": {
+        "L_N": 0.43656049320015505,
+        "L_S": 0.8754625326701808
+      },
+      "crusher_utilisation": 0.8863800268215863,
+      "average_loader_queue_time_min": 2.2406096916722626,
+      "average_crusher_queue_time_min": 2.902135768434093,
+      "top_bottlenecks": [
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.8863800268215863,
+          "avg_queue_wait_min": 2.902135768434093,
+          "score": 2.5723951802644964
+        },
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.8754625326701808,
+          "avg_queue_wait_min": 2.66937115734588,
+          "score": 2.3369344340467557
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.8590670349607555,
+          "avg_queue_wait_min": 1.6645284263962752,
+          "score": 1.4299414998721403
+        },
+        {
+          "resource_id": "loader_L_N",
+          "utilisation": 0.43656049320015505,
+          "avg_queue_wait_min": 1.811848225998646,
+          "score": 0.7909813551457948
+        },
+        {
+          "resource_id": "road_E05_TO",
+          "utilisation": 0.4127429541114973,
+          "avg_queue_wait_min": 0.1208552672923739,
+          "score": 0.049882160042189025
+        }
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 6526.666666666667,
+      "total_tonnes_ci95_low": 6460.933921678215,
+      "total_tonnes_ci95_high": 6592.399411655119,
+      "tonnes_per_hour_mean": 815.8333333333334,
+      "tonnes_per_hour_ci95_low": 807.6167402097768,
+      "tonnes_per_hour_ci95_high": 824.0499264568899,
+      "average_cycle_time_min": 55.45158343622763,
+      "truck_utilisation_mean": 0.4567069307595283,
+      "loader_utilisation": {
+        "L_N": 0.061853816437295324,
+        "L_S": 0.6342871957937668
+      },
+      "crusher_utilisation": 0.94529397575779,
+      "average_loader_queue_time_min": 0.3486317299834893,
+      "average_crusher_queue_time_min": 27.228268274294383,
+      "top_bottlenecks": [
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.94529397575779,
+          "avg_queue_wait_min": 27.228268274294383,
+          "score": 25.738717970007436
+        },
+        {
+          "resource_id": "road_RAMP",
+          "utilisation": 0.05299910371519999,
+          "avg_queue_wait_min": 10.915230427892658,
+          "score": 0.5784974295231897
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.6166294691501893,
+          "avg_queue_wait_min": 0.6005390407161069,
+          "score": 0.37031006988073695
+        },
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.6342871957937668,
+          "avg_queue_wait_min": 0.58295722839249,
+          "score": 0.3697623056647789
+        },
+        {
+          "resource_id": "loader_L_N",
+          "utilisation": 0.061853816437295324,
+          "avg_queue_wait_min": 0.11430623157448865,
+          "score": 0.007070276665447391
+        }
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12120.0,
+      "total_tonnes_ci95_low": 12049.015570956795,
+      "total_tonnes_ci95_high": 12190.984429043205,
+      "tonnes_per_hour_mean": 1515.0,
+      "tonnes_per_hour_ci95_low": 1506.1269463695994,
+      "tonnes_per_hour_ci95_high": 1523.8730536304006,
+      "average_cycle_time_min": 30.691113993945837,
+      "truck_utilisation_mean": 0.7417236342017641,
+      "loader_utilisation": {
+        "L_N": 0.4449371122197175,
+        "L_S": 0.8615345322532119
+      },
+      "crusher_utilisation": 0.8858915018743695,
+      "average_loader_queue_time_min": 2.258245519255181,
+      "average_crusher_queue_time_min": 2.8770871481511406,
+      "top_bottlenecks": [
+        {
+          "resource_id": "crusher",
+          "utilisation": 0.8858915018743695,
+          "avg_queue_wait_min": 2.8770871481511406,
+          "score": 2.5487870546990608
+        },
+        {
+          "resource_id": "loader_L_S",
+          "utilisation": 0.8615345322532119,
+          "avg_queue_wait_min": 2.6734193725906157,
+          "score": 2.303243108681531
+        },
+        {
+          "resource_id": "road_PIT_S",
+          "utilisation": 0.8486193592945116,
+          "avg_queue_wait_min": 1.5965711917131788,
+          "score": 1.3548812217797126
+        },
+        {
+          "resource_id": "loader_L_N",
+          "utilisation": 0.4449371122197175,
+          "avg_queue_wait_min": 1.843071665919747,
+          "score": 0.8200509846483162
+        },
+        {
+          "resource_id": "road_E05_TO",
+          "utilisation": 0.41187647532710797,
+          "avg_queue_wait_min": 0.11930815856792516,
+          "score": 0.04914022382872471
+        }
+      ]
     }
   },
   "key_assumptions": [

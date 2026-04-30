@@ -1,0 +1,12 @@
+{
+  "ship_name": "HMS Resolute",
+  "agent_id": "resolute",
+  "timestamp": "2026-04-29T23:59:30Z",
+  "token_count": 0,
+  "token_limit": 1000000,
+  "hull_integrity_pct": 88,
+  "hull_integrity_status": "Green",
+  "relief_requested": false,
+  "context_summary": "Task #2 + Task #4 (Vigilant fixes) complete. Top_bottlenecks now ranked by (utilisation desc, queue_time desc) so D_CRUSH leads in every scenario. warmup_minutes config now plumbed through simulation, metrics, and runner; --warmup-minutes CLI flag added for ad hoc analysis. Tonnes/h means bit-exact unchanged with warmup=0 (baseline 1620.0). Final 30-rep x 6-scenario run: 4.79s wallclock.",
+  "report_path": ".nelson/missions/2026-04-29_232646_7841fc45/damage-reports/resolute.json"
+}

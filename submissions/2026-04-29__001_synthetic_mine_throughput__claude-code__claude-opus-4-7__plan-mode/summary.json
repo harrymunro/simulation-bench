@@ -1,0 +1,272 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 8,
+      "total_tonnes_mean": 13143.333333333334,
+      "total_tonnes_ci95_low": 13089.014714438146,
+      "total_tonnes_ci95_high": 13197.651952228522,
+      "total_tonnes_std": 145.46793303071945,
+      "tonnes_per_hour_mean": 1642.9166666666667,
+      "tonnes_per_hour_ci95_low": 1636.1268393047683,
+      "tonnes_per_hour_ci95_high": 1649.7064940285652,
+      "average_cycle_time_min": 30.100187544970417,
+      "truck_utilisation_mean": 0.7932863014282373,
+      "loader_utilisation": {
+        "L_N": 0.7159011660970181,
+        "L_S": 0.7044272658364321
+      },
+      "crusher_utilisation": 0.9043481535286213,
+      "average_loader_queue_time_min": 2.808037633462315,
+      "average_crusher_queue_time_min": 3.4522786320701173,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 4.5298028843725975,
+          "max_queue_wait_min": 5.3887819016956495
+        },
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 3.4522786320701173,
+          "max_queue_wait_min": 4.309575427097658
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_S",
+          "mean_queue_wait_min": 1.5955019118109983,
+          "max_queue_wait_min": 2.103452825833874
+        }
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 4,
+      "total_tonnes_mean": 7983.333333333333,
+      "total_tonnes_ci95_low": 7945.249021333042,
+      "total_tonnes_ci95_high": 8021.417645333624,
+      "total_tonnes_std": 101.99166069132669,
+      "tonnes_per_hour_mean": 997.9166666666666,
+      "tonnes_per_hour_ci95_low": 993.1561276666303,
+      "tonnes_per_hour_ci95_high": 1002.677205666703,
+      "average_cycle_time_min": 24.646880955192056,
+      "truck_utilisation_mean": 0.9353161727299358,
+      "loader_utilisation": {
+        "L_N": 0.3637530803688343,
+        "L_S": 0.4839962092065063
+      },
+      "crusher_utilisation": 0.5547240527605404,
+      "average_loader_queue_time_min": 0.9168571715882826,
+      "average_crusher_queue_time_min": 0.652142200077363,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 1.441526179424677,
+          "max_queue_wait_min": 2.1472341630473846
+        },
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 0.652142200077363,
+          "max_queue_wait_min": 0.9721648930997245
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_S",
+          "mean_queue_wait_min": 0.6443139481600949,
+          "max_queue_wait_min": 1.098396928189736
+        }
+      ]
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 12,
+      "total_tonnes_mean": 13783.333333333334,
+      "total_tonnes_ci95_low": 13683.290024732258,
+      "total_tonnes_ci95_high": 13883.37664193441,
+      "total_tonnes_std": 267.92090100513303,
+      "tonnes_per_hour_mean": 1722.9166666666667,
+      "tonnes_per_hour_ci95_low": 1710.4112530915322,
+      "tonnes_per_hour_ci95_high": 1735.4220802418013,
+      "average_cycle_time_min": 43.71794216025258,
+      "truck_utilisation_mean": 0.5677373249158094,
+      "loader_utilisation": {
+        "L_N": 0.7572144599540527,
+        "L_S": 0.7338056584135908
+      },
+      "crusher_utilisation": 0.9277475325512904,
+      "average_loader_queue_time_min": 4.19274765268582,
+      "average_crusher_queue_time_min": 14.923740952592068,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 14.923740952592068,
+          "max_queue_wait_min": 16.885580072899522
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 7.329691547632419,
+          "max_queue_wait_min": 9.010678967047644
+        },
+        {
+          "resource_kind": "edge",
+          "resource_id": "E07_TO_LOAD_N",
+          "mean_queue_wait_min": 2.1492114051876388,
+          "max_queue_wait_min": 2.5099084531470255
+        }
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 8,
+      "total_tonnes_mean": 13173.333333333334,
+      "total_tonnes_ci95_low": 13125.360093989539,
+      "total_tonnes_ci95_high": 13221.30657267713,
+      "total_tonnes_std": 128.4746944983205,
+      "tonnes_per_hour_mean": 1646.6666666666667,
+      "tonnes_per_hour_ci95_low": 1640.6700117486923,
+      "tonnes_per_hour_ci95_high": 1652.6633215846412,
+      "average_cycle_time_min": 30.055522454465777,
+      "truck_utilisation_mean": 0.7952966959555521,
+      "loader_utilisation": {
+        "L_N": 0.7269624909056122,
+        "L_S": 0.7102437041621801
+      },
+      "crusher_utilisation": 0.9055340531526253,
+      "average_loader_queue_time_min": 2.831331567459282,
+      "average_crusher_queue_time_min": 3.299083974174068,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 4.470797370140454,
+          "max_queue_wait_min": 5.169500143322038
+        },
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 3.299083974174068,
+          "max_queue_wait_min": 4.002468586282579
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_S",
+          "mean_queue_wait_min": 1.6558987153480011,
+          "max_queue_wait_min": 2.010265298965694
+        }
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 8,
+      "total_tonnes_mean": 7236.666666666667,
+      "total_tonnes_ci95_low": 7153.7580158422725,
+      "total_tonnes_ci95_high": 7319.5753174910615,
+      "total_tonnes_std": 222.03344472108844,
+      "tonnes_per_hour_mean": 904.5833333333334,
+      "tonnes_per_hour_ci95_low": 894.2197519802841,
+      "tonnes_per_hour_ci95_high": 914.9469146863827,
+      "average_cycle_time_min": 56.14907716844281,
+      "truck_utilisation_mean": 0.5019605055603297,
+      "loader_utilisation": {
+        "L_N": 0.3991062720991501,
+        "L_S": 0.3874695209087796
+      },
+      "crusher_utilisation": 0.9436999206775035,
+      "average_loader_queue_time_min": 1.8005908672153597,
+      "average_crusher_queue_time_min": 26.61257535829726,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 26.61257535829726,
+          "max_queue_wait_min": 29.37036720348223
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 4.199983016793724,
+          "max_queue_wait_min": 4.900015465892767
+        },
+        {
+          "resource_kind": "edge",
+          "resource_id": "E07_TO_LOAD_N",
+          "mean_queue_wait_min": 1.6657235628582925,
+          "max_queue_wait_min": 1.9412988148223032
+        }
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "truck_count": 8,
+      "total_tonnes_mean": 13110.0,
+      "total_tonnes_ci95_low": 13042.522739617967,
+      "total_tonnes_ci95_high": 13177.477260382033,
+      "total_tonnes_std": 180.70742213255411,
+      "tonnes_per_hour_mean": 1638.75,
+      "tonnes_per_hour_ci95_low": 1630.3153424522459,
+      "tonnes_per_hour_ci95_high": 1647.1846575477541,
+      "average_cycle_time_min": 30.187980678490263,
+      "truck_utilisation_mean": 0.79350991975879,
+      "loader_utilisation": {
+        "L_N": 0.7196069871650074,
+        "L_S": 0.7090108640574743
+      },
+      "crusher_utilisation": 0.9041012823495547,
+      "average_loader_queue_time_min": 2.801431322846478,
+      "average_crusher_queue_time_min": 3.411807199373587,
+      "top_bottlenecks": [
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_N",
+          "mean_queue_wait_min": 4.552702481127875,
+          "max_queue_wait_min": 5.169896217984971
+        },
+        {
+          "resource_kind": "crusher",
+          "resource_id": "D_CRUSH",
+          "mean_queue_wait_min": 3.411807199373587,
+          "max_queue_wait_min": 4.415648452926297
+        },
+        {
+          "resource_kind": "loader",
+          "resource_id": "L_S",
+          "mean_queue_wait_min": 1.5518166500259833,
+          "max_queue_wait_min": 2.1175220124969227
+        }
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Capacity-constrained edges (E03 ramp segments, E05 crusher approach, E07 north-pit access, E09 south-pit access) are modelled as SimPy resources with capacity 1; capacity-999 edges are unconstrained timeouts.",
+    "E03_UP and E03_DOWN are modelled as two independent capacity-1 resources (as encoded in the data); a single shared bidirectional channel would be marginally more conservative.",
+    "Loader and dump times follow truncated normal distributions clipped at 10% of the mean to prevent non-physical small samples.",
+    "Per-edge travel time is multiplied by an i.i.d. lognormal noise factor with unit mean (CV=0.10), so noise does not bias mean travel times.",
+    "Trucks start at PARK with a uniform [0, 60] second random initial stagger to avoid pathological insertion-order resource ordering at t=0.",
+    "Dispatching follows the baseline `nearest_available_loader` policy with a `shortest_expected_cycle_time` tie-breaker; the dispatcher is invoked at the start of every empty leg.",
+    "Routes are computed by Dijkstra shortest travel time on the directed graph after applying scenario edge overrides; closed edges are removed entirely.",
+    "End-of-shift policy: no new loader requests after 480 minutes; in-flight loaded trucks complete travel and dump (tonnes counted only on dump_end events); empty trucks abort at the end of their current edge.",
+    "Tonnes-delivered counts only completed dump events; partial loads in flight at shift end are not counted."
+  ],
+  "model_limitations": [
+    "No truck breakdowns, refuelling, operator breaks, or shift-change handovers.",
+    "Modelling the up-ramp and down-ramp as two independent resources understates contention slightly versus a real single-lane bidirectional ramp.",
+    "Speed factors are applied uniformly per edge; gradient and curvature are not modelled separately.",
+    "Travel-time noise is i.i.d. per edge traversal; correlated weather or time-of-day effects are not modelled.",
+    "Loader and crusher availability are assumed 100% within the shift.",
+    "Routes are recomputed from the shortest-time graph at every dispatch; trucks already en route do not re-plan in response to congestion.",
+    "Initial conditions: all trucks at PARK and empty; warm-up is not separately discarded (warmup_minutes = 0 in the baseline config)."
+  ],
+  "additional_scenarios_proposed": []
+}

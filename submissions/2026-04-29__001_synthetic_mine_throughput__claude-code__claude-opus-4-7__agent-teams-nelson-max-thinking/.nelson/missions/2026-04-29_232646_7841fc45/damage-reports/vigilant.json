@@ -1,0 +1,63 @@
+{
+  "ship": "HMS Vigilant",
+  "role": "red-cell-navigator",
+  "status": "complete",
+  "review_file": ".nelson/missions/2026-04-29_232646_7841fc45/red-cell-review.md",
+  "verdict": "PASS_WITH_FIXES",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "medium_findings": 2,
+  "low_findings": 4,
+  "findings_summary": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "title": "E03_UP ranked top bottleneck but is startup-only artifact",
+      "detail": "E03_UP queue time (6.03 min mean) reflects only the first ~20 minutes of simulation when all trucks dispatch from PARK through the ramp. After first cycle, trucks never traverse E03_UP again. True steady-state bottleneck is D_CRUSH (crusher) at 95% utilisation."
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "title": "warmup_minutes config key present but not implemented",
+      "detail": "YAML includes warmup_minutes: 0 but the runner never reads this field. All trucks start at PARK simultaneously causing startup surge. Honestly documented in model_limitations."
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "title": "Redundant node_overrides in crusher_slowdown.yaml",
+      "detail": "CRUSH service_time_mean_min override never read by simulation (uses dump_points_df instead). Harmless."
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "title": "_LOAD_NODE_TO_LOADER module-level dict is dead code",
+      "detail": "Declared in simulation.py:19 but never written to or read anywhere."
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "title": "additional_scenarios_proposed is empty",
+      "detail": "Optional per spec but represents missed analysis opportunity."
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "title": "shift_length_hours patched into rep metrics externally",
+      "detail": "aggregate_replication() doesn't include shift_length_hours; patched in by run_experiments.py. Works but inelegant."
+    }
+  ],
+  "schema_conformance": {
+    "summary_json": "PASS",
+    "results_csv": "PASS",
+    "event_log_csv": "PASS"
+  },
+  "reasonableness_checks": {
+    "baseline_tph_plausible": true,
+    "trucks_4_less_than_baseline": true,
+    "ramp_closed_nonzero": true,
+    "crusher_slowdown_lower": true,
+    "reproducibility_confirmed": true,
+    "ci_uses_t_distribution_df_n_minus_1": true,
+    "all_6_scenarios_30_reps": true
+  }
+}

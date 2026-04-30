@@ -1,0 +1,12 @@
+{
+  "ship_name": "HMS Cartographer",
+  "agent_id": "cartographer",
+  "timestamp": "2026-04-29T23:40:20Z",
+  "token_count": 0,
+  "token_limit": 1000000,
+  "hull_integrity_pct": 95,
+  "hull_integrity_status": "Green",
+  "relief_requested": false,
+  "context_summary": "Task #1 complete: topology + scenario loaders + topology.png delivered with all smoke-test checks passing.",
+  "report_path": ".nelson/missions/2026-04-29_232646_7841fc45/damage-reports/cartographer.json"
+}

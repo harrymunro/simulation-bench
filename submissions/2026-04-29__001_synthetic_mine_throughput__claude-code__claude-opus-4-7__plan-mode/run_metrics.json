@@ -1,0 +1,7 @@
+{
+  "command": "claude-code (plan mode, single autonomous run)",
+  "runtime_seconds": 693,
+  "return_code": 0,
+  "timed_out": false,
+  "note": "Runtime reported by operator (wall-clock for the agent session, not the simulation script)."
+}

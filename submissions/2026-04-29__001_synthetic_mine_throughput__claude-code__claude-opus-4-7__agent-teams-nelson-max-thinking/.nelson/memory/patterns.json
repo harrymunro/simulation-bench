@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-30T00:28:41Z",
+  "pattern_count": 1,
+  "patterns": [
+    {
+      "mission_id": "2026-04-29_232646_7841fc45",
+      "completed_at": "2026-04-30T00:28:41Z",
+      "outcome_achieved": true,
+      "planned_outcome": "Deliver a SimPy discrete-event simulation of the synthetic mine with all six required scenarios and the required artifact set (conceptual_model.md, results.csv, summary.json, event_log.csv, README.md, plus optional topology.png)",
+      "adopt": [],
+      "avoid": [],
+      "standing_order_violations": [],
+      "damage_control_events": 0,
+      "quality": {
+        "violations": 0,
+        "blockers_raised": 0,
+        "blockers_resolved": 0,
+        "task_completion_rate": 0.5
+      }
+    }
+  ]
+}

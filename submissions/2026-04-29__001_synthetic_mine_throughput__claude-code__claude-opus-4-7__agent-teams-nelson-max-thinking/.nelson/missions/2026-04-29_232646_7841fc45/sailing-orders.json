@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "outcome": "Deliver a SimPy discrete-event simulation of the synthetic mine with all six required scenarios and the required artifact set (conceptual_model.md, results.csv, summary.json, event_log.csv, README.md, plus optional topology.png)",
+  "success_metric": "All required output files present and valid; 6 scenarios x 30 replications complete; outputs schema-conforming; decision questions answered in README",
+  "deadline": "This session",
+  "budget": {
+    "token_limit": null,
+    "time_limit_minutes": null
+  },
+  "constraints": [],
+  "out_of_scope": [],
+  "stop_criteria": [],
+  "handoff_artifacts": [],
+  "circuit_breakers": {},
+  "created_at": "2026-04-29T23:26:46Z",
+  "estimate_skipped": true,
+  "estimate_skip_reason": "Spec in prompt.md is fully detailed; analysis rolls directly into Battle Plan in auto mode"
+}

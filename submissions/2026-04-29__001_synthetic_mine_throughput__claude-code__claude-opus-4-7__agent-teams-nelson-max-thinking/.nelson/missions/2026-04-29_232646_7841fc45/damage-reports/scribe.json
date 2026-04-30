@@ -1,0 +1,36 @@
+{
+  "ship": "scribe",
+  "task_id": 3,
+  "status": "completed",
+  "hull_integrity_pct": 100,
+  "phase_a": {
+    "outcome": "success",
+    "deliverable": "conceptual_model.md",
+    "notes": "Written from prompt.md spec and data CSVs before simulation outputs were available. Covers all required sections: system boundary, entities, resources (all capacity-1 edges identified), events, state variables, assumptions (data-derived / introduced / limitations), performance measures."
+  },
+  "phase_b": {
+    "outcome": "success",
+    "deliverable": "README.md",
+    "notes": "Written from summary.json after admiral green-light. All 6 decision questions answered with numeric citations. Startup-stampede artifact on E03_UP surfaced honestly with steady-state crusher interpretation. Edge column caveats for ramp_upgrade/ramp_closed documented."
+  },
+  "files_written": [
+    "conceptual_model.md",
+    "README.md"
+  ],
+  "files_not_touched": [
+    "src/",
+    "tools/",
+    "run.py",
+    "requirements.txt",
+    "results.csv",
+    "summary.json",
+    "event_log.csv",
+    "topology.png"
+  ],
+  "rollback_note": "Delete conceptual_model.md and README.md from the submission root to revert all Scribe changes. No other files were modified.",
+  "anomalies_flagged": [
+    "E03_UP listed as top bottleneck in baseline/crusher_slowdown due to startup-stampede transient (util 3.3%). README explains the distinction between reported ranking and steady-state crusher bottleneck.",
+    "E03_UP/E03_DOWN edge columns are 0.0 in ramp_upgrade and ramp_closed scenarios — documented in README as expected behaviour."
+  ],
+  "completed_at": "2026-04-29T23:33:00Z"
+}

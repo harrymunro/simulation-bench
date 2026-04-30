@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:26:50Z",
+      "data": {
+        "from_phase": "SAILING_ORDERS",
+        "to_phase": "ESTIMATE"
+      }
+    },
+    {
+      "type": "estimate_skipped",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:27:05Z",
+      "data": {
+        "reason": "Spec in prompt.md is fully detailed; analysis rolls directly into Battle Plan in auto mode"
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:27:05Z",
+      "data": {
+        "from_phase": "ESTIMATE",
+        "to_phase": "BATTLE_PLAN"
+      }
+    },
+    {
+      "type": "squadron_formed",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:18Z",
+      "data": {
+        "captain_count": 3,
+        "has_red_cell": true,
+        "execution_mode": "agent-team",
+        "standing_order_check": {
+          "triggered": [],
+          "remedies": []
+        }
+      }
+    },
+    {
+      "type": "battle_plan_approved",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:18Z",
+      "data": {
+        "task_count": 6,
+        "parallel_tracks": 4,
+        "critical_path_length": 3,
+        "standing_order_check": {
+          "triggered": [],
+          "remedies": []
+        }
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:22Z",
+      "data": {
+        "from_phase": "BATTLE_PLAN",
+        "to_phase": "FORMATION"
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:26Z",
+      "data": {
+        "from_phase": "FORMATION",
+        "to_phase": "PERMISSION"
+      }
+    },
+    {
+      "type": "permission_granted",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:45Z",
+      "data": {}
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:29:45Z",
+      "data": {
+        "from_phase": "PERMISSION",
+        "to_phase": "UNDERWAY"
+      }
+    },
+    {
+      "type": "task_completed",
+      "checkpoint": 0,
+      "timestamp": "2026-04-29T23:45:35Z",
+      "data": {
+        "task_id": 1,
+        "notes": [
+          "Cartographer delivered topology+scenario API and topology.png. Notable finding: shortest-time routing causes baseline trucks to bypass E03 ramp via J2->J7->J5",
+          "so ramp_upgrade impact in baseline may be modest."
+        ]
+      }
+    },
+    {
+      "type": "checkpoint",
+      "checkpoint": 1,
+      "timestamp": "2026-04-29T23:47:26Z",
+      "data": {
+        "progress": {
+          "pending": 0,
+          "in_progress": 2,
+          "completed": 1,
+          "blocked": 0
+        },
+        "budget": {
+          "tokens_spent": 0,
+          "tokens_remaining": 100,
+          "pct_consumed": 0.0,
+          "burn_rate_per_checkpoint": 0
+        },
+        "hull_summary": {
+          "green": 4,
+          "amber": 0,
+          "red": 0,
+          "critical": 0
+        },
+        "blockers": [],
+        "standing_order_violations": [],
+        "admiral_decision": "continue",
+        "admiral_rationale": "Cartographer delivered. Resolute dispatched and Scribe waiting on results. Two captains underway, no blockers."
+      }
+    },
+    {
+      "type": "task_completed",
+      "checkpoint": 1,
+      "timestamp": "2026-04-29T23:58:59Z",
+      "data": {
+        "task_id": 2,
+        "notes": "Resolute delivered SimPy engine + runner + outputs. All 6 scenarios x 30 reps. Baseline ~1620 t/h. ramp_closed reroutes via bypass at 1610 t/h. ramp_upgrade has near-zero impact (1629). crusher_slowdown drops to 820. trucks_12 saturates at 1625. Top reported bottleneck E03_UP is startup stampede artifact; D_CRUSH is true steady-state bottleneck."
+      }
+    },
+    {
+      "type": "checkpoint",
+      "checkpoint": 2,
+      "timestamp": "2026-04-30T00:00:19Z",
+      "data": {
+        "progress": {
+          "pending": 0,
+          "in_progress": 1,
+          "completed": 2,
+          "blocked": 0
+        },
+        "budget": {
+          "tokens_spent": 25,
+          "tokens_remaining": 75,
+          "pct_consumed": 25.0,
+          "burn_rate_per_checkpoint": 25
+        },
+        "hull_summary": {
+          "green": 4,
+          "amber": 0,
+          "red": 0,
+          "critical": 0
+        },
+        "blockers": [],
+        "standing_order_violations": [],
+        "admiral_decision": "continue",
+        "admiral_rationale": "Resolute delivered all simulation outputs. 6 scenarios x 30 reps complete. Scribe writing README. Vigilant dispatched for red-cell review in parallel."
+      }
+    },
+    {
+      "type": "task_completed",
+      "checkpoint": 2,
+      "timestamp": "2026-04-30T00:02:31Z",
+      "data": {
+        "task_id": 3,
+        "notes": "Scribe shipped README.md (312 lines) and conceptual_model.md (178 lines). All 6 decision questions answered."
+      }
+    },
+    {
+      "type": "mission_complete",
+      "checkpoint": 3,
+      "timestamp": "2026-04-30T00:28:41Z",
+      "data": {
+        "outcome_achieved": true,
+        "tasks_completed": 3,
+        "tasks_total": 6,
+        "total_tokens_consumed": 25,
+        "budget_pct_consumed": 25.0,
+        "duration_minutes": 35,
+        "ships_used": 3,
+        "reliefs": 0,
+        "standing_order_violations_total": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "mission": {
+    "outcome": "Deliver a SimPy discrete-event simulation of the synthetic mine with all six required scenarios and the required artifact set (conceptual_model.md, results.csv, summary.json, event_log.csv, README.md, plus optional topology.png)",
+    "status": "complete",
+    "phase": "STAND_DOWN",
+    "started_at": "2026-04-29T23:26:46Z",
+    "checkpoint_number": 3
+  },
+  "progress": {
+    "pending": 0,
+    "in_progress": 1,
+    "completed": 2,
+    "blocked": 0,
+    "total": 3
+  },
+  "budget": {
+    "tokens_spent": 25,
+    "tokens_remaining": 75,
+    "pct_consumed": 25.0,
+    "burn_rate_per_checkpoint": 25,
+    "burn_rate_per_task": 12,
+    "projected_budget_at_completion": 38
+  },
+  "squadron": [
+    {
+      "ship_name": "HMS Cartographer",
+      "ship_class": null,
+      "role": "captain",
+      "hull_integrity_pct": 95,
+      "hull_integrity_status": "Green",
+      "relief_requested": false,
+      "task_id": null,
+      "task_name": null,
+      "task_status": null
+    },
+    {
+      "ship_name": "HMS Resolute",
+      "ship_class": null,
+      "role": "captain",
+      "hull_integrity_pct": 90,
+      "hull_integrity_status": "Green",
+      "relief_requested": false,
+      "task_id": null,
+      "task_name": null,
+      "task_status": null
+    }
+  ],
+  "blockers": [],
+  "recent_events": [],
+  "last_updated": "2026-04-30T00:28:41Z"
+}

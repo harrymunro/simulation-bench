@@ -1,0 +1,434 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "scenario_id": "baseline",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12960.0,
+      "total_tonnes_ci95_low": 12891.637870191798,
+      "total_tonnes_ci95_high": 13028.362129808202,
+      "tonnes_per_hour_mean": 1620.0,
+      "tonnes_per_hour_ci95_low": 1611.4547337739748,
+      "tonnes_per_hour_ci95_high": 1628.5452662260252,
+      "average_cycle_time_min": 28.937170553413956,
+      "truck_utilisation_mean": 0.7825221856736115,
+      "loader_utilisation": {
+        "L_N": 0.5021163969155868,
+        "L_S": 0.9122142567657939
+      },
+      "crusher_utilisation": 0.9502227945839965,
+      "average_loader_queue_time_min": 1.295156253354265,
+      "average_crusher_queue_time_min": 4.648896463675319,
+      "edge_mean_queue_time_min": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 6.033731245813149,
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.15412432041869378,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.1339374421879153,
+        "E09_FROM_LOAD_S": 0.001276922379141311,
+        "E09_TO_LOAD_S": 0.005743228743339837
+      },
+      "edge_mean_utilisation": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 0.03272243951275367,
+        "E05_FROM_CRUSH": 0.36136333581593866,
+        "E05_TO_CRUSH": 0.43434530736180216,
+        "E07_FROM_LOAD_N": 0.18256699408750132,
+        "E07_TO_LOAD_N": 0.1581304635303579,
+        "E09_FROM_LOAD_S": 0.47244592622911236,
+        "E09_TO_LOAD_S": 0.40615193878999295
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 4.648896463675319,
+          "mean_utilisation": 0.9502227945839965
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 1.6353029919073094,
+          "mean_utilisation": 0.9122142567657939
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 0.415311406673116,
+          "mean_utilisation": 0.5021163969155868
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.001276922379141311,
+          "mean_utilisation": 0.47244592622911236
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.15412432041869378,
+          "mean_utilisation": 0.43434530736180216
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.92
+    },
+    "trucks_4": {
+      "scenario_id": "trucks_4",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 7813.333333333333,
+      "total_tonnes_ci95_low": 7776.9932908536275,
+      "total_tonnes_ci95_high": 7849.673375813039,
+      "tonnes_per_hour_mean": 976.6666666666666,
+      "tonnes_per_hour_ci95_low": 972.1241613567034,
+      "tonnes_per_hour_ci95_high": 981.2091719766298,
+      "average_cycle_time_min": 24.106495618343374,
+      "truck_utilisation_mean": 0.9456917614964585,
+      "loader_utilisation": {
+        "L_N": 0.3477046588502581,
+        "L_S": 0.5125378266405212
+      },
+      "crusher_utilisation": 0.5717218859675443,
+      "average_loader_queue_time_min": 0.38656058943714766,
+      "average_crusher_queue_time_min": 0.7652838344977926,
+      "edge_mean_queue_time_min": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 1.4504560677251022,
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.11402316815000962,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.058355918617361766,
+        "E09_FROM_LOAD_S": 0.0004927984344120593,
+        "E09_TO_LOAD_S": 0.0037504681313801002
+      },
+      "edge_mean_utilisation": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 0.01300752223005851,
+        "E05_FROM_CRUSH": 0.21807449367483484,
+        "E05_TO_CRUSH": 0.2590864087753374,
+        "E07_FROM_LOAD_N": 0.12629098630524474,
+        "E07_TO_LOAD_N": 0.10929586241165644,
+        "E09_FROM_LOAD_S": 0.2649382610894463,
+        "E09_TO_LOAD_S": 0.22803035747922357
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 0.7652838344977926,
+          "mean_utilisation": 0.5717218859675443
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 0.49342135947873544,
+          "mean_utilisation": 0.5125378266405212
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 0.1559922053777806,
+          "mean_utilisation": 0.3477046588502581
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.0004927984344120593,
+          "mean_utilisation": 0.2649382610894463
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.11402316815000962,
+          "mean_utilisation": 0.2590864087753374
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.56
+    },
+    "trucks_12": {
+      "scenario_id": "trucks_12",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12996.666666666666,
+      "total_tonnes_ci95_low": 12897.88080057494,
+      "total_tonnes_ci95_high": 13095.452532758392,
+      "tonnes_per_hour_mean": 1624.5833333333333,
+      "tonnes_per_hour_ci95_low": 1612.2351000718675,
+      "tonnes_per_hour_ci95_high": 1636.931566594799,
+      "average_cycle_time_min": 42.662436069631646,
+      "truck_utilisation_mean": 0.5406504385782237,
+      "loader_utilisation": {
+        "L_N": 0.5500945996745932,
+        "L_S": 0.9186595354696346
+      },
+      "crusher_utilisation": 0.9546311798710354,
+      "average_loader_queue_time_min": 1.9451744182718276,
+      "average_crusher_queue_time_min": 17.1590082880599,
+      "edge_mean_queue_time_min": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 9.201563151824457,
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.1666505795543217,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.42509429918687386,
+        "E09_FROM_LOAD_S": 0.000760672278666025,
+        "E09_TO_LOAD_S": 0.010891758184284714
+      },
+      "edge_mean_utilisation": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 0.045744442415877384,
+        "E05_FROM_CRUSH": 0.3625678523172524,
+        "E05_TO_CRUSH": 0.4481286229560463,
+        "E07_FROM_LOAD_N": 0.20144581339532697,
+        "E07_TO_LOAD_N": 0.17329614293920134,
+        "E09_FROM_LOAD_S": 0.4736024013682727,
+        "E09_TO_LOAD_S": 0.40821294611014763
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 17.1590082880599,
+          "mean_utilisation": 0.9546311798710354
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 2.2012112012914167,
+          "mean_utilisation": 0.9186595354696346
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 1.3471279552710946,
+          "mean_utilisation": 0.5500945996745932
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.000760672278666025,
+          "mean_utilisation": 0.4736024013682727
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.1666505795543217,
+          "mean_utilisation": 0.4481286229560463
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.94
+    },
+    "ramp_upgrade": {
+      "scenario_id": "ramp_upgrade",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 13033.333333333334,
+      "total_tonnes_ci95_low": 12957.164709332752,
+      "total_tonnes_ci95_high": 13109.501957333916,
+      "tonnes_per_hour_mean": 1629.1666666666667,
+      "tonnes_per_hour_ci95_low": 1619.645588666594,
+      "tonnes_per_hour_ci95_high": 1638.6877446667395,
+      "average_cycle_time_min": 28.791720600786327,
+      "truck_utilisation_mean": 0.7830937874884413,
+      "loader_utilisation": {
+        "L_N": 0.4975032841844548,
+        "L_S": 0.9179106241000927
+      },
+      "crusher_utilisation": 0.9516023457631104,
+      "average_loader_queue_time_min": 1.383685410395945,
+      "average_crusher_queue_time_min": 4.627327159206106,
+      "edge_mean_queue_time_min": {
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.1459365521754424,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.13646121177729328,
+        "E09_FROM_LOAD_S": 0.0009225659393844351,
+        "E09_TO_LOAD_S": 0.18272511506443398
+      },
+      "edge_mean_utilisation": {
+        "E05_FROM_CRUSH": 0.3631948168190649,
+        "E05_TO_CRUSH": 0.4356511957152587,
+        "E07_FROM_LOAD_N": 0.18202575068200402,
+        "E07_TO_LOAD_N": 0.15690169347717917,
+        "E09_FROM_LOAD_S": 0.47559019133626607,
+        "E09_TO_LOAD_S": 0.409892982218065
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 4.627327159206106,
+          "mean_utilisation": 0.9516023457631104
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 1.7461474513016086,
+          "mean_utilisation": 0.9179106241000927
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 0.43204494897782425,
+          "mean_utilisation": 0.4975032841844548
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.0009225659393844351,
+          "mean_utilisation": 0.47559019133626607
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.1459365521754424,
+          "mean_utilisation": 0.4356511957152587
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.91
+    },
+    "crusher_slowdown": {
+      "scenario_id": "crusher_slowdown",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 6560.0,
+      "total_tonnes_ci95_low": 6493.059275513965,
+      "total_tonnes_ci95_high": 6626.940724486035,
+      "tonnes_per_hour_mean": 820.0,
+      "tonnes_per_hour_ci95_low": 811.6324094392456,
+      "tonnes_per_hour_ci95_high": 828.3675905607544,
+      "average_cycle_time_min": 55.92310414531688,
+      "truck_utilisation_mean": 0.4893451420359231,
+      "loader_utilisation": {
+        "L_N": 0.3740067642427599,
+        "L_S": 0.41784615421620475
+      },
+      "crusher_utilisation": 0.955907712721151,
+      "average_loader_queue_time_min": 0.39629971485983995,
+      "average_crusher_queue_time_min": 27.911499175215354,
+      "edge_mean_queue_time_min": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 6.033731245813149,
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.16705308728368348,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.18086687886679648,
+        "E09_FROM_LOAD_S": 0.00014457920969872495,
+        "E09_TO_LOAD_S": 0.0006265831406460757
+      },
+      "edge_mean_utilisation": {
+        "E03_DOWN": 0.0,
+        "E03_UP": 0.03272243951275367,
+        "E05_FROM_CRUSH": 0.18122030700055025,
+        "E05_TO_CRUSH": 0.23062650306966637,
+        "E07_FROM_LOAD_N": 0.13441630571130078,
+        "E07_TO_LOAD_N": 0.11676776565882485,
+        "E09_FROM_LOAD_S": 0.2132437538254962,
+        "E09_TO_LOAD_S": 0.1842543241943043
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 27.911499175215354,
+          "mean_utilisation": 0.955907712721151
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 0.3602528020460574,
+          "mean_utilisation": 0.41784615421620475
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 0.4534361697853838,
+          "mean_utilisation": 0.3740067642427599
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.16705308728368348,
+          "mean_utilisation": 0.23062650306966637
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.00014457920969872495,
+          "mean_utilisation": 0.2132437538254962
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.5
+    },
+    "ramp_closed": {
+      "scenario_id": "ramp_closed",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_mean": 12883.333333333334,
+      "total_tonnes_ci95_low": 12795.032816188346,
+      "total_tonnes_ci95_high": 12971.633850478322,
+      "tonnes_per_hour_mean": 1610.4166666666667,
+      "tonnes_per_hour_ci95_low": 1599.3791020235433,
+      "tonnes_per_hour_ci95_high": 1621.4542313097902,
+      "average_cycle_time_min": 29.114385446920373,
+      "truck_utilisation_mean": 0.7822073586682194,
+      "loader_utilisation": {
+        "L_N": 0.49898959805415666,
+        "L_S": 0.9087082432278248
+      },
+      "crusher_utilisation": 0.9457148032360712,
+      "average_loader_queue_time_min": 1.4012819351423293,
+      "average_crusher_queue_time_min": 4.678749696202492,
+      "edge_mean_queue_time_min": {
+        "E05_FROM_CRUSH": 0.0,
+        "E05_TO_CRUSH": 0.16402548584135607,
+        "E07_FROM_LOAD_N": 0.0,
+        "E07_TO_LOAD_N": 0.13800630141927864,
+        "E09_FROM_LOAD_S": 0.000525699766172744,
+        "E09_TO_LOAD_S": 0.17680021650829858
+      },
+      "edge_mean_utilisation": {
+        "E05_FROM_CRUSH": 0.3589562330709435,
+        "E05_TO_CRUSH": 0.43199761237833645,
+        "E07_FROM_LOAD_N": 0.18378915703509596,
+        "E07_TO_LOAD_N": 0.15926366229303662,
+        "E09_FROM_LOAD_S": 0.4651014001189652,
+        "E09_TO_LOAD_S": 0.4017274732122534
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "mean_queue_time_min": 4.678749696202492,
+          "mean_utilisation": 0.9457148032360712
+        },
+        {
+          "resource_id": "L_S",
+          "mean_queue_time_min": 1.776227867526835,
+          "mean_utilisation": 0.9087082432278248
+        },
+        {
+          "resource_id": "L_N",
+          "mean_queue_time_min": 0.449952257451398,
+          "mean_utilisation": 0.49898959805415666
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "mean_queue_time_min": 0.000525699766172744,
+          "mean_utilisation": 0.4651014001189652
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "mean_queue_time_min": 0.16402548584135607,
+          "mean_utilisation": 0.43199761237833645
+        }
+      ],
+      "warmup_minutes": 0.0,
+      "wallclock_seconds": 0.94
+    }
+  },
+  "key_assumptions": [
+    "Loader and crusher service times are truncated normal (mean and SD from input data).",
+    "Travel time per edge has multiplicative log-symmetric noise with CV=0.10.",
+    "Routing uses shortest-time Dijkstra over open edges; edge weights = distance / (max_speed * speed_factor) with empty=1.0 and loaded=0.85.",
+    "Dispatch policy is nearest_available_loader with tie-break by lowest expected cycle time including queue wait estimate.",
+    "Capacity-constrained edges (capacity<999) are modelled as SimPy Resources; per-direction counters.",
+    "All trucks start at PARK at t=0; the runner honours simulation.warmup_minutes (0 in shipped scenarios) by excluding pre-warmup events from utilisation, queue-time means, tonnes counting, and the tonnes/h denominator.",
+    "A cycle is counted toward delivered tonnes if warmup_minutes <= dump_start < shift_end (480 min); in-flight dumps complete during a 60-minute grace window so trucks already at the crusher record their delivery.",
+    "Per-replication seed is base_random_seed + replication_index for reproducibility.",
+    "Top bottlenecks are ranked by (mean utilisation desc, mean queue time desc) so high-utilisation steady-state constraints rank above pure startup transients."
+  ],
+  "model_limitations": [
+    "No equipment breakdowns, maintenance interruptions, or operator unavailability.",
+    "No shift changes, refuelling, or operator breaks during the 8-hour window.",
+    "Loaded and empty travel are modelled as separate directional resources; opposing traffic on a physically single-lane segment does not interact via meet-and-pass logic.",
+    "Bypass route capacity (E15-E17) is treated as unconstrained; in reality bypasses may have width or speed limits not captured here.",
+    "Ore is delivered in discrete 100-tonne payloads; partial deliveries are not modelled.",
+    "Truck acceleration/deceleration profiles and switchback effects are not represented; speed factor is constant per edge.",
+    "Loader and crusher service times use a simple truncated normal; bimodal or heavy-tailed effects (e.g. blocked chutes) are not captured.",
+    "Warmup support is implemented; current scenarios use warmup=0 so startup effects (e.g. all trucks dispatching from PARK at t=0 and converging on the ramp) remain visible. Use --warmup-minutes on the CLI for ad-hoc analysis under non-default warmup."
+  ],
+  "additional_scenarios_proposed": [],
+  "wallclock_seconds_total": 4.79
+}

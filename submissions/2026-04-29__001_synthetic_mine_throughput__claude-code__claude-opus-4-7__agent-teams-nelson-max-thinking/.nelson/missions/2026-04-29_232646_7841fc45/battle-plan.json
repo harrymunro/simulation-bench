@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Build topology + scenario loaders + topology.png",
+      "owner": "cartographer",
+      "deliverable": "Working src/topology.py and src/scenario.py modules with NetworkX graph + resource registry; tools/draw_topology.py producing topology.png",
+      "dependencies": [],
+      "dependents": [],
+      "station_tier": 2,
+      "file_ownership": [],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    },
+    {
+      "id": "2",
+      "name": "Build SimPy simulation engine, metrics, and runner; produce all output files",
+      "owner": "resolute",
+      "deliverable": "src/simulation.py, src/metrics.py, src/run_experiments.py, run.py, requirements.txt; results.csv, summary.json, event_log.csv for 6 scenarios x 30 reps",
+      "dependencies": [],
+      "dependents": [],
+      "station_tier": 2,
+      "file_ownership": [],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    },
+    {
+      "id": "3",
+      "name": "Write conceptual_model.md and README.md",
+      "owner": "scribe",
+      "deliverable": "conceptual_model.md (boundary, entities, resources, events, state, assumptions, performance measures) and README.md (install, run, results, decision answers, bottlenecks, limitations)",
+      "dependencies": [],
+      "dependents": [],
+      "station_tier": 1,
+      "file_ownership": [],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    },
+    {
+      "id": 1,
+      "name": "Build topology + scenario loaders + topology.png",
+      "owner": "cartographer",
+      "deliverable": "Working src/topology.py and src/scenario.py modules with NetworkX graph + resource registry; tools/draw_topology.py producing topology.png",
+      "dependencies": [],
+      "dependents": [
+        2
+      ],
+      "station_tier": 2,
+      "file_ownership": [
+        "src/__init__.py",
+        "src/topology.py",
+        "src/scenario.py",
+        "tools/__init__.py",
+        "tools/draw_topology.py",
+        "topology.png"
+      ],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    },
+    {
+      "id": 2,
+      "name": "Build SimPy simulation engine, metrics, and runner; produce all output files",
+      "owner": "resolute",
+      "deliverable": "src/simulation.py, src/metrics.py, src/run_experiments.py, run.py, requirements.txt; results.csv, summary.json, event_log.csv for 6 scenarios x 30 reps",
+      "dependencies": [
+        1
+      ],
+      "dependents": [
+        3
+      ],
+      "station_tier": 2,
+      "file_ownership": [
+        "src/simulation.py",
+        "src/metrics.py",
+        "src/run_experiments.py",
+        "run.py",
+        "requirements.txt",
+        "results.csv",
+        "summary.json",
+        "event_log.csv"
+      ],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    },
+    {
+      "id": 3,
+      "name": "Write conceptual_model.md and README.md",
+      "owner": "scribe",
+      "deliverable": "conceptual_model.md (boundary, entities, resources, events, state, assumptions, performance measures) and README.md (install, run, results, decision answers, bottlenecks, limitations)",
+      "dependencies": [
+        2
+      ],
+      "dependents": [],
+      "station_tier": 1,
+      "file_ownership": [
+        "conceptual_model.md",
+        "README.md"
+      ],
+      "modification_targets": [],
+      "validation_required": null,
+      "rollback_note_required": false,
+      "admiralty_action_required": false
+    }
+  ],
+  "squadron": {
+    "mode": "agent-team",
+    "admiral": {
+      "ship_name": "admiral",
+      "model": "opus"
+    },
+    "captains": [
+      {
+        "ship_name": "cartographer",
+        "ship_class": "frigate",
+        "model": "opus",
+        "task_id": 1
+      },
+      {
+        "ship_name": "resolute",
+        "ship_class": "flagship",
+        "model": "opus",
+        "task_id": 2
+      },
+      {
+        "ship_name": "scribe",
+        "ship_class": "frigate",
+        "model": "sonnet",
+        "task_id": 3
+      }
+    ],
+    "red_cell": {
+      "ship_name": "vigilant",
+      "model": "sonnet"
+    }
+  },
+  "created_at": "2026-04-29T23:29:18Z",
+  "amended_at": null
+}

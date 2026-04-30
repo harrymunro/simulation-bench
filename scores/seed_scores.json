@@ -134,5 +134,39 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Strong submission",
     "notes": "Solid SimPy DES with all 6 scenarios and 30 reps; travel-time noise CV ignored and loader utilisation reflects last replication only."
+  },
+  {
+    "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__plan-mode",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-29",
+    "conceptual_modelling": 19,
+    "data_topology": 15,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 14,
+    "code_quality": 10,
+    "traceability": 5,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Clean SimPy DES with rigorous data-derived/introduced assumption split and full event-log auditability; only minor dead code and warmup-discard nit."
+  },
+  {
+    "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__agent-teams-nelson-max-thinking",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-29",
+    "conceptual_modelling": 19,
+    "data_topology": 15,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 14,
+    "code_quality": 9,
+    "traceability": 5,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Clean SimPy DES with rigorous warmup-aware metrics and full event-log auditability; Nelson red-cell review correctly flagged a dead module-level dict that wasn't removed before submission, plus the unused PriorityResource priority parameter."
   }
 ]

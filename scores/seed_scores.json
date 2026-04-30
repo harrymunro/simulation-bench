@@ -168,5 +168,22 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Strong submission",
     "notes": "Clean SimPy DES with rigorous warmup-aware metrics and full event-log auditability; Nelson red-cell review correctly flagged a dead module-level dict that wasn't removed before submission, plus the unused PriorityResource priority parameter."
+  },
+  {
+    "submission_id": "2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking",
+    "reviewer": "claude-code",
+    "review_date": "2026-04-30",
+    "conceptual_modelling": 19,
+    "data_topology": 15,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 15,
+    "code_quality": 10,
+    "traceability": 5,
+    "automated_checks_passed": 43,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Exemplary conceptual model and decision-question answers; behavioural checks all pass; 14 automated fails are a flat-vs-nested summary.json schema mismatch, not a model defect."
   }
 ]

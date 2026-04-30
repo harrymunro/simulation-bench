@@ -1,0 +1,517 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "submission_dir": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking",
+  "outputs_dir": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking",
+  "automated_checks": {
+    "passed": 43,
+    "total": 57,
+    "pass_rate": 0.7543859649122807,
+    "checks": [
+      {
+        "name": "output_exists_conceptual_model.md",
+        "passed": true,
+        "description": "Required output file conceptual_model.md should exist."
+      },
+      {
+        "name": "output_exists_README.md",
+        "passed": true,
+        "description": "Required output file README.md should exist."
+      },
+      {
+        "name": "output_exists_results.csv",
+        "passed": true,
+        "description": "Required output file results.csv should exist."
+      },
+      {
+        "name": "output_exists_summary.json",
+        "passed": true,
+        "description": "Required output file summary.json should exist."
+      },
+      {
+        "name": "output_exists_event_log.csv",
+        "passed": true,
+        "description": "Required output file event_log.csv should exist."
+      },
+      {
+        "name": "summary_has_benchmark_id",
+        "passed": true,
+        "description": "summary.json should include benchmark_id."
+      },
+      {
+        "name": "summary_has_scenarios_object",
+        "passed": true,
+        "description": "summary.json should include a scenarios object."
+      },
+      {
+        "name": "scenario_present_baseline",
+        "passed": true,
+        "description": "summary.json should include scenario baseline."
+      },
+      {
+        "name": "scenario_present_trucks_4",
+        "passed": true,
+        "description": "summary.json should include scenario trucks_4."
+      },
+      {
+        "name": "scenario_present_trucks_12",
+        "passed": true,
+        "description": "summary.json should include scenario trucks_12."
+      },
+      {
+        "name": "scenario_present_ramp_upgrade",
+        "passed": true,
+        "description": "summary.json should include scenario ramp_upgrade."
+      },
+      {
+        "name": "scenario_present_crusher_slowdown",
+        "passed": true,
+        "description": "summary.json should include scenario crusher_slowdown."
+      },
+      {
+        "name": "scenario_present_ramp_closed",
+        "passed": true,
+        "description": "summary.json should include scenario ramp_closed."
+      },
+      {
+        "name": "baseline_has_replications",
+        "passed": true,
+        "description": "baseline should include replications."
+      },
+      {
+        "name": "baseline_has_shift_length_hours",
+        "passed": true,
+        "description": "baseline should include shift_length_hours."
+      },
+      {
+        "name": "baseline_has_total_tonnes_mean",
+        "passed": false,
+        "description": "baseline should include total_tonnes_mean."
+      },
+      {
+        "name": "baseline_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "baseline should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "trucks_4_has_replications",
+        "passed": true,
+        "description": "trucks_4 should include replications."
+      },
+      {
+        "name": "trucks_4_has_shift_length_hours",
+        "passed": true,
+        "description": "trucks_4 should include shift_length_hours."
+      },
+      {
+        "name": "trucks_4_has_total_tonnes_mean",
+        "passed": false,
+        "description": "trucks_4 should include total_tonnes_mean."
+      },
+      {
+        "name": "trucks_4_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "trucks_4 should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "trucks_12_has_replications",
+        "passed": true,
+        "description": "trucks_12 should include replications."
+      },
+      {
+        "name": "trucks_12_has_shift_length_hours",
+        "passed": true,
+        "description": "trucks_12 should include shift_length_hours."
+      },
+      {
+        "name": "trucks_12_has_total_tonnes_mean",
+        "passed": false,
+        "description": "trucks_12 should include total_tonnes_mean."
+      },
+      {
+        "name": "trucks_12_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "trucks_12 should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "ramp_upgrade_has_replications",
+        "passed": true,
+        "description": "ramp_upgrade should include replications."
+      },
+      {
+        "name": "ramp_upgrade_has_shift_length_hours",
+        "passed": true,
+        "description": "ramp_upgrade should include shift_length_hours."
+      },
+      {
+        "name": "ramp_upgrade_has_total_tonnes_mean",
+        "passed": false,
+        "description": "ramp_upgrade should include total_tonnes_mean."
+      },
+      {
+        "name": "ramp_upgrade_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "ramp_upgrade should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "crusher_slowdown_has_replications",
+        "passed": true,
+        "description": "crusher_slowdown should include replications."
+      },
+      {
+        "name": "crusher_slowdown_has_shift_length_hours",
+        "passed": true,
+        "description": "crusher_slowdown should include shift_length_hours."
+      },
+      {
+        "name": "crusher_slowdown_has_total_tonnes_mean",
+        "passed": false,
+        "description": "crusher_slowdown should include total_tonnes_mean."
+      },
+      {
+        "name": "crusher_slowdown_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "crusher_slowdown should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "ramp_closed_has_replications",
+        "passed": true,
+        "description": "ramp_closed should include replications."
+      },
+      {
+        "name": "ramp_closed_has_shift_length_hours",
+        "passed": true,
+        "description": "ramp_closed should include shift_length_hours."
+      },
+      {
+        "name": "ramp_closed_has_total_tonnes_mean",
+        "passed": false,
+        "description": "ramp_closed should include total_tonnes_mean."
+      },
+      {
+        "name": "ramp_closed_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "ramp_closed should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "trucks_12_ramp_upgrade_has_replications",
+        "passed": true,
+        "description": "trucks_12_ramp_upgrade should include replications."
+      },
+      {
+        "name": "trucks_12_ramp_upgrade_has_shift_length_hours",
+        "passed": true,
+        "description": "trucks_12_ramp_upgrade should include shift_length_hours."
+      },
+      {
+        "name": "trucks_12_ramp_upgrade_has_total_tonnes_mean",
+        "passed": false,
+        "description": "trucks_12_ramp_upgrade should include total_tonnes_mean."
+      },
+      {
+        "name": "trucks_12_ramp_upgrade_has_tonnes_per_hour_mean",
+        "passed": false,
+        "description": "trucks_12_ramp_upgrade should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "results_has_scenario_id",
+        "passed": true,
+        "description": "results.csv should include scenario_id."
+      },
+      {
+        "name": "results_has_replication",
+        "passed": true,
+        "description": "results.csv should include replication."
+      },
+      {
+        "name": "results_has_random_seed",
+        "passed": true,
+        "description": "results.csv should include random_seed."
+      },
+      {
+        "name": "results_has_total_tonnes_delivered",
+        "passed": true,
+        "description": "results.csv should include total_tonnes_delivered."
+      },
+      {
+        "name": "results_has_tonnes_per_hour",
+        "passed": true,
+        "description": "results.csv should include tonnes_per_hour."
+      },
+      {
+        "name": "event_log_has_time_min",
+        "passed": true,
+        "description": "event_log.csv should include time_min."
+      },
+      {
+        "name": "event_log_has_replication",
+        "passed": true,
+        "description": "event_log.csv should include replication."
+      },
+      {
+        "name": "event_log_has_scenario_id",
+        "passed": true,
+        "description": "event_log.csv should include scenario_id."
+      },
+      {
+        "name": "event_log_has_truck_id",
+        "passed": true,
+        "description": "event_log.csv should include truck_id."
+      },
+      {
+        "name": "event_log_has_event_type",
+        "passed": true,
+        "description": "event_log.csv should include event_type."
+      },
+      {
+        "name": "trucks_12_gt_trucks_4",
+        "passed": true,
+        "description": "Higher fleet should usually outperform lower fleet."
+      },
+      {
+        "name": "baseline_gt_trucks_4",
+        "passed": true,
+        "description": "Baseline 8-truck case should usually outperform 4-truck case."
+      },
+      {
+        "name": "ramp_upgrade_ge_baseline",
+        "passed": true,
+        "description": "Ramp upgrade should usually improve or maintain throughput."
+      },
+      {
+        "name": "crusher_slowdown_lt_baseline",
+        "passed": true,
+        "description": "Slower crusher should usually reduce throughput."
+      },
+      {
+        "name": "ramp_closed_le_baseline",
+        "passed": true,
+        "description": "Ramp closure should usually not improve throughput."
+      },
+      {
+        "name": "truck_count_saturation_plausible",
+        "passed": true,
+        "description": "Throughput should show some saturation as trucks increase."
+      }
+    ]
+  },
+  "scenario_total_tonnes_means": {
+    "baseline": 12546.666666666666,
+    "crusher_slowdown": 6513.333333333333,
+    "ramp_closed": 12363.333333333334,
+    "ramp_upgrade": 12606.666666666666,
+    "trucks_12": 12906.666666666666,
+    "trucks_12_ramp_upgrade": 12953.333333333334,
+    "trucks_4": 7650.0
+  },
+  "quantitative_metrics": {
+    "loc": {
+      "python_file_count": 24,
+      "total_lines": 8549,
+      "code_lines": 6797,
+      "comment_lines": 547,
+      "blank_lines": 1205,
+      "files": [
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_rng.py",
+          "total_lines": 235,
+          "code_lines": 166,
+          "comment_lines": 20,
+          "blank_lines": 49
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/__init__.py",
+          "total_lines": 0,
+          "code_lines": 0,
+          "comment_lines": 0,
+          "blank_lines": 0
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_runner.py",
+          "total_lines": 387,
+          "code_lines": 284,
+          "comment_lines": 51,
+          "blank_lines": 52
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_aggregate.py",
+          "total_lines": 402,
+          "code_lines": 326,
+          "comment_lines": 23,
+          "blank_lines": 53
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_scenario_runner.py",
+          "total_lines": 347,
+          "code_lines": 273,
+          "comment_lines": 26,
+          "blank_lines": 48
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_io_writers.py",
+          "total_lines": 693,
+          "code_lines": 579,
+          "comment_lines": 30,
+          "blank_lines": 84
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/tests/test_cli.py",
+          "total_lines": 334,
+          "code_lines": 259,
+          "comment_lines": 29,
+          "blank_lines": 46
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/scripts/render_animation.py",
+          "total_lines": 411,
+          "code_lines": 321,
+          "comment_lines": 29,
+          "blank_lines": 61
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/scripts/refresh_summary_narrative.py",
+          "total_lines": 256,
+          "code_lines": 198,
+          "comment_lines": 8,
+          "blank_lines": 50
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/scripts/render_topology.py",
+          "total_lines": 238,
+          "code_lines": 177,
+          "comment_lines": 27,
+          "blank_lines": 34
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/scenarios.py",
+          "total_lines": 378,
+          "code_lines": 291,
+          "comment_lines": 20,
+          "blank_lines": 67
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/metrics.py",
+          "total_lines": 392,
+          "code_lines": 305,
+          "comment_lines": 28,
+          "blank_lines": 59
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/scenario_runner.py",
+          "total_lines": 361,
+          "code_lines": 288,
+          "comment_lines": 23,
+          "blank_lines": 50
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/aggregate.py",
+          "total_lines": 526,
+          "code_lines": 414,
+          "comment_lines": 29,
+          "blank_lines": 83
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/io_writers.py",
+          "total_lines": 967,
+          "code_lines": 800,
+          "comment_lines": 53,
+          "blank_lines": 114
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/runner.py",
+          "total_lines": 207,
+          "code_lines": 163,
+          "comment_lines": 8,
+          "blank_lines": 36
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/rng.py",
+          "total_lines": 238,
+          "code_lines": 177,
+          "comment_lines": 22,
+          "blank_lines": 39
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/events.py",
+          "total_lines": 118,
+          "code_lines": 91,
+          "comment_lines": 6,
+          "blank_lines": 21
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/__init__.py",
+          "total_lines": 151,
+          "code_lines": 147,
+          "comment_lines": 0,
+          "blank_lines": 4
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/model.py",
+          "total_lines": 556,
+          "code_lines": 459,
+          "comment_lines": 50,
+          "blank_lines": 47
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/cli.py",
+          "total_lines": 692,
+          "code_lines": 564,
+          "comment_lines": 30,
+          "blank_lines": 98
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/routing.py",
+          "total_lines": 220,
+          "code_lines": 164,
+          "comment_lines": 14,
+          "blank_lines": 42
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/topology.py",
+          "total_lines": 424,
+          "code_lines": 341,
+          "comment_lines": 21,
+          "blank_lines": 62
+        },
+        {
+          "path": "submissions/2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking/src/mine_sim/__main__.py",
+          "total_lines": 16,
+          "code_lines": 10,
+          "comment_lines": 0,
+          "blank_lines": 6
+        }
+      ]
+    },
+    "files": {
+      "file_count": 110,
+      "by_suffix": {
+        ".csv": 41,
+        ".gif": 1,
+        ".ini": 1,
+        ".json": 20,
+        ".md": 3,
+        ".png": 1,
+        ".py": 24,
+        ".sh": 1,
+        ".toml": 1,
+        ".txt": 6,
+        ".yaml": 9,
+        "[no_suffix]": 2
+      }
+    },
+    "runtime_seconds": null,
+    "return_code": null,
+    "timed_out": null,
+    "token_usage": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": null,
+      "token_count_method": "unknown",
+      "estimated_cost_usd": null
+    }
+  },
+  "notes": [
+    "Automated checks are not a substitute for human review.",
+    "Behavioural checks are broad sanity checks, not exact answer keys.",
+    "Token usage is reported only if supplied by the benchmark runner."
+  ]
+}

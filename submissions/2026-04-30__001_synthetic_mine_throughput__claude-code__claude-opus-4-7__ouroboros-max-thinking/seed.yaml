@@ -1,0 +1,175 @@
+goal: >-
+  Build a SimPy discrete-event simulation that estimates ore throughput to the
+  primary crusher over an 8-hour shift for the synthetic mine in benchmark 001,
+  run all six required scenarios plus one combo scenario, and answer the
+  operational decision questions with quantitative confidence intervals.
+
+constraints:
+  - Use Python with SimPy as the discrete-event engine
+  - Allowed libraries only - simpy, numpy, pandas, scipy, matplotlib, networkx, pyyaml
+  - All randomness reproducible from base_random_seed in scenario YAML; per-replication seed = base_seed + replication_index
+  - Simulate exactly 480 minutes; hard cut at t=480 (only dump events completed before then count toward throughput)
+  - Routing - static shortest-time per (origin, destination, scenario) via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed when scenario closes edges
+  - Capacity-constrained directed edges (capacity <= 1) modelled as independent SimPy Resources, mirroring the CSV literally
+  - Travel-time noise - lognormal multiplier per edge traversal with mean 1 and cv 0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor
+  - Loading and dumping - normal_truncated using each loader/crusher mean and sd, truncated at max(0.1, sample)
+  - Dispatch policy - assign each empty truck to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time)
+  - Initial dispatch - all trucks released simultaneously at t=0
+  - WASTE and MAINT excluded from active simulation; documented as out-of-scope
+  - 95% confidence intervals via Student-t with n-1 degrees of freedom
+  - Reachability self-check at scenario load - fail loudly if any required OD pair (PARK<->LOAD_N, PARK<->LOAD_S, LOAD_N<->CRUSH, LOAD_S<->CRUSH) is unreachable
+  - Package layout - src/mine_sim/ with python -m mine_sim CLI exposing run and run-all
+
+acceptance_criteria:
+  - conceptual_model.md documents system boundary, entities, resources, events, state variables, data-derived vs introduced assumptions, limitations, and performance measures
+  - results.csv has one row per (scenario, replication) with scenario_id, replication, random_seed, total_tonnes_delivered, tonnes_per_hour, average_truck_cycle_time_min, average_truck_utilisation, crusher_utilisation, average_loader_queue_time_min, average_crusher_queue_time_min
+  - summary.json contains all seven scenarios with replications=30, shift_length_hours=8, total_tonnes_mean / ci95_low / ci95_high, tonnes_per_hour_mean / ci95_low / ci95_high, average_cycle_time_min, truck_utilisation_mean, loader_utilisation per loader, crusher_utilisation, average_loader_queue_time_min, average_crusher_queue_time_min, top_bottlenecks ranked by composite (utilisation * mean queue wait), key_assumptions, model_limitations, additional_scenarios_proposed
+  - event_log.csv records key truck-cycle events (dispatch, arrive_loader, start_load, end_load, depart_loader, arrive_crusher, start_dump, end_dump, depart_crusher) plus capacity-1 edge enter and leave, with required columns time_min, replication, scenario_id, truck_id, event_type, from_node, to_node, location, loaded, payload_tonnes, resource_id, queue_length
+  - README.md covers install, run, reproduce, conceptual model summary, assumptions, routing/dispatching logic, key results, answers to the six operational decision questions, bottlenecks, limitations, suggested improvements
+  - Six required scenarios (baseline, trucks_4, trucks_12, ramp_upgrade, crusher_slowdown, ramp_closed) each run with 30 replications and reproducible seeds
+  - Seventh combo scenario (trucks_12 plus ramp_upgrade) included with its own scenario YAML and 30 replications
+  - topology.png rendered from data showing nodes by type, edges, and capacity-1 segments highlighted
+  - animation.gif rendered from one replication's event log
+  - Reachability self-check passes for all required OD pairs across all seven scenarios
+  - python -m mine_sim run-all reproduces all results from a clean install of the documented requirements
+
+ontology_schema:
+  name: MineThroughputModel
+  description: >-
+    Discrete-event simulation domain model for the synthetic mine haulage
+    system, capturing topology, fleet, constrained resources, scenarios, and
+    measurement instrumentation.
+  fields:
+    - name: nodes
+      type: array
+      description: Mine topology nodes from nodes.csv (PARK, junctions J1-J8, LOAD_N, LOAD_S, CRUSH, WASTE, MAINT) with type and coordinates
+    - name: edges
+      type: array
+      description: Directed edges from edges.csv with distance_m, max_speed_kph, road_type, capacity, closed flag
+    - name: trucks
+      type: array
+      description: Truck entities with payload_tonnes, empty/loaded speed factors, start node
+    - name: loaders
+      type: array
+      description: Loader resources at LOAD_N (mean 6.5 min) and LOAD_S (mean 4.5 min), each capacity 1
+    - name: crusher
+      type: object
+      description: Single dump resource at CRUSH with normal-truncated dump time (mean 3.5 min, sd 0.8)
+    - name: edge_resources
+      type: object
+      description: SimPy Resource per directed edge with capacity <= 1 (E03_UP, E03_DOWN, E05_*, E07_*, E09_*)
+    - name: scenarios
+      type: array
+      description: Seven scenario configurations including the combo extra
+    - name: routes
+      type: object
+      description: Precomputed shortest-time paths per (scenario, origin, destination) and their cumulative free-flow times
+    - name: replication
+      type: object
+      description: Single 8-hour simulated shift with deterministic per-rep seed
+    - name: events
+      type: array
+      description: Event-log records produced by the simulation, used for both auditing and animation
+    - name: metrics
+      type: object
+      description: Per-replication metrics aggregated into per-scenario summary with Student-t CIs
+
+evaluation_principles:
+  - name: conceptual_clarity
+    description: System boundary, entities, resources, events, state, assumptions (split data-derived vs introduced), limitations, and performance measures clearly documented
+    weight: 0.15
+  - name: topology_fidelity
+    description: Routes and travel times computed from the input graph; capacity-1 edges enforced as SimPy resources; closed edges removed for ramp_closed
+    weight: 0.15
+  - name: simulation_correctness
+    description: SimPy used properly for trucks, loaders, crusher, and constrained edges; tonnes count only completed dump events at CRUSH
+    weight: 0.20
+  - name: experimental_rigour
+    description: 30 replications per scenario with controlled seeds, Student-t 95% CIs reported, stochastic times realistic
+    weight: 0.15
+  - name: decision_relevance
+    description: All six operational decision questions answered quantitatively with named bottlenecks and the optional combo scenario informing trade-offs
+    weight: 0.15
+  - name: traceability
+    description: event_log.csv supports inspection of routing and queueing for any replication
+    weight: 0.10
+  - name: reproducibility
+    description: Clean-environment install plus CLI reproduces identical numerical outputs
+    weight: 0.10
+
+exit_conditions:
+  - name: all_scenarios_complete
+    description: All seven scenarios produce 30 replications
+    criteria: results.csv has at least 210 rows (7 scenarios * 30 reps)
+  - name: summary_complete
+    description: summary.json contains all scenarios with meaningful (non-zero) values and Student-t CIs
+    criteria: Required schema fields present and numeric for every scenario
+  - name: decision_questions_answered
+    description: README answers the six required operational decision questions with quantitative support
+    criteria: Each question section references at least one number (mean or CI) drawn from summary.json
+  - name: artefacts_present
+    description: All required and optional output files exist and are non-empty
+    criteria: conceptual_model.md, results.csv, summary.json, event_log.csv, README.md, topology.png, animation.gif
+
+project_type: greenfield
+
+context_references:
+  - path: prompt.md
+    role: primary
+    summary: Benchmark task brief with required outputs, scenarios, and evaluation criteria
+  - path: data/nodes.csv
+    role: reference
+    summary: Mine topology nodes with type, coordinates, optional service times
+  - path: data/edges.csv
+    role: reference
+    summary: Directed edges with distance, max_speed_kph, road_type, capacity, closed flag
+  - path: data/trucks.csv
+    role: reference
+    summary: Twelve trucks (T01-T12) at PARK, payload 100 t, speed factors
+  - path: data/loaders.csv
+    role: reference
+    summary: Loaders at LOAD_N (slower, closer) and LOAD_S (faster, further)
+  - path: data/dump_points.csv
+    role: reference
+    summary: Crusher D_CRUSH and waste D_WASTE
+  - path: data/scenarios/baseline.yaml
+    role: reference
+    summary: Baseline scenario with routing, dispatching, stochasticity, fleet sections
+  - path: data/scenarios/trucks_4.yaml
+    role: reference
+    summary: Lower fleet size override
+  - path: data/scenarios/trucks_12.yaml
+    role: reference
+    summary: Higher fleet size override
+  - path: data/scenarios/ramp_upgrade.yaml
+    role: reference
+    summary: Ramp capacity and speed override
+  - path: data/scenarios/crusher_slowdown.yaml
+    role: reference
+    summary: Slower crusher service override
+  - path: data/scenarios/ramp_closed.yaml
+    role: reference
+    summary: Main ramp closed; reroute via bypass
+
+existing_patterns:
+  - Scenario YAML inheritance via "inherits - baseline" with edge_overrides / dump_point_overrides / node_overrides / fleet override blocks
+  - Capacity-1 directed edges represent shared single-lane road segments enforced via SimPy Resource
+  - normal_truncated for loading and dumping; lognormal multiplier for per-edge travel
+  - Hard separation of ore cycle (PARK -> LOAD -> CRUSH -> LOAD -> ...) from optional WASTE / MAINT work
+
+existing_dependencies:
+  - simpy
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - networkx
+  - pyyaml
+
+metadata:
+  benchmark_id: 001_synthetic_mine_throughput
+  submission_id: 2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking
+  generated_via: ouroboros-skill seed (Path B fallback - MCP server unavailable)
+  ambiguity_score_estimate: 0.10
+  interview_rounds: 3
+  open_questions_remaining: []

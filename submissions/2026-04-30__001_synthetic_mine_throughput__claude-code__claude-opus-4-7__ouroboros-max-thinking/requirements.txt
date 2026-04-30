@@ -1,0 +1,20 @@
+# Exact versions used to produce the artefacts shipped in this submission.
+# Lower bounds (in pyproject.toml) are looser; this file pins the *known
+# working* combination so `pip install -r requirements.txt` reproduces the
+# same numerical outputs on Python 3.13.
+#
+# Allowed libraries (Seed constraint):
+#   simpy, numpy, pandas, scipy, matplotlib, networkx, pyyaml
+# Pillow is a transitive matplotlib dependency used by FuncAnimation when
+# rendering animation.gif.
+
+simpy==4.1.1
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+matplotlib==3.10.9
+networkx==3.6.1
+PyYAML==6.0.3
+
+# Test runner — only required to execute the test suite, not to run-all.
+pytest==9.0.3

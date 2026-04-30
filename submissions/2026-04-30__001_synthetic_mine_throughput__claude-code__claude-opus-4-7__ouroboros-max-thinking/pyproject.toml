@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mine_sim"
+version = "0.1.0"
+description = "SimPy discrete-event simulation of an 8-hour ore haulage shift in a synthetic mine (Simulation Bench benchmark 001)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Simulation Bench submission" },
+]
+keywords = ["simpy", "simulation", "mining", "discrete-event", "throughput"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Simulation",
+]
+# Allowed-libraries-only constraint (Seed): simpy, numpy, pandas, scipy,
+# matplotlib, networkx, pyyaml. Lower bounds pinned to versions known to
+# work with this code; the matching exact-version lock lives in
+# requirements.txt for byte-stable reproduction.
+dependencies = [
+    "simpy>=4.0,<5",
+    "numpy>=1.26,<3",
+    "pandas>=2.1,<4",
+    "scipy>=1.11,<2",
+    "matplotlib>=3.8,<4",
+    "networkx>=3.2,<4",
+    "PyYAML>=6.0,<7",
+    # Pillow is pulled in transitively by matplotlib (used for animation.gif);
+    # not pinned here to avoid version-clash with matplotlib's own pin.
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4,<9",
+]
+
+[project.scripts]
+mine-sim = "mine_sim.cli:main"
+
+[project.urls]
+"Source" = "https://github.com/simulation-bench/submissions"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["mine_sim*"]
+
+[tool.setuptools.package-data]
+mine_sim = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "unit: fast, isolated unit tests",
+    "integration: cross-module integration tests",
+]

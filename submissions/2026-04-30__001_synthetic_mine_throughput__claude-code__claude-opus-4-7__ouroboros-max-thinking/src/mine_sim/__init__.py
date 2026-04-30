@@ -1,0 +1,151 @@
+"""Mine throughput discrete-event simulation package.
+
+Implements a SimPy model of an 8-hour ore haulage shift in a synthetic mine,
+supporting multiple scenario configurations, capacity-constrained edges, and
+reproducible Monte Carlo experimentation.
+"""
+
+from mine_sim.aggregate import (
+    DEFAULT_CONFIDENCE_LEVEL,
+    BottleneckEntry,
+    CrusherSummary,
+    EdgeSummary,
+    LoaderSummary,
+    RunSummary,
+    ScenarioSummary,
+    StatSummary,
+    aggregate_run,
+    aggregate_scenario,
+    from_multi_scenario_result,
+    student_t_ci_95,
+)
+from mine_sim.cli import (
+    DEFAULT_DATA_DIR,
+    DEFAULT_OUTPUT_DIR,
+    DEFAULT_SCENARIOS_DIR,
+    RunOutputPaths,
+    ScenarioOutputPaths,
+    build_parser,
+    main as cli_main,
+    write_run_outputs,
+    write_scenario_outputs,
+)
+from mine_sim.io_writers import (
+    DEFAULT_ADDITIONAL_SCENARIOS_PROPOSED,
+    DEFAULT_KEY_ASSUMPTIONS,
+    DEFAULT_MODEL_LIMITATIONS,
+    RESULTS_CSV_COLUMNS,
+    write_event_log_csv,
+    write_results_csv,
+    write_run_summary_json,
+    write_scenario_summary_json,
+)
+from mine_sim.metrics import (
+    CrusherMetrics,
+    EdgeMetrics,
+    LoaderMetrics,
+    MetricsRecorder,
+    ReplicationMetrics,
+)
+from mine_sim.rng import (
+    DEFAULT_TRUNCATION_FLOOR,
+    STREAM_NAMES,
+    ReplicationRNG,
+    lognormal_noise_multiplier,
+    make_replication_rng,
+    replication_seed,
+    truncated_normal,
+)
+from mine_sim.routing import (
+    REQUIRED_OD_PAIRS,
+    ReachabilityError,
+    Route,
+    RoutingTable,
+    assert_reachable,
+    compute_routes,
+)
+from mine_sim.runner import ReplicationResult, run_replication, run_replications
+from mine_sim.scenario_runner import (
+    MultiScenarioRunResult,
+    ProgressCallback,
+    ReplicationProgress,
+    ScenarioRunResult,
+    run_all_scenarios,
+    run_required_scenarios,
+    run_scenario,
+)
+from mine_sim.scenarios import (
+    REQUIRED_SCENARIO_IDS,
+    ScenarioConfig,
+    load_all_scenarios,
+    load_scenario,
+)
+from mine_sim.topology import Topology, build_topology
+
+__version__ = "0.1.0"
+
+__all__ = [
+    "BottleneckEntry",
+    "CrusherMetrics",
+    "CrusherSummary",
+    "DEFAULT_ADDITIONAL_SCENARIOS_PROPOSED",
+    "DEFAULT_CONFIDENCE_LEVEL",
+    "DEFAULT_DATA_DIR",
+    "DEFAULT_KEY_ASSUMPTIONS",
+    "DEFAULT_MODEL_LIMITATIONS",
+    "DEFAULT_OUTPUT_DIR",
+    "DEFAULT_SCENARIOS_DIR",
+    "DEFAULT_TRUNCATION_FLOOR",
+    "EdgeMetrics",
+    "EdgeSummary",
+    "LoaderMetrics",
+    "LoaderSummary",
+    "MetricsRecorder",
+    "MultiScenarioRunResult",
+    "ProgressCallback",
+    "REQUIRED_OD_PAIRS",
+    "REQUIRED_SCENARIO_IDS",
+    "RESULTS_CSV_COLUMNS",
+    "ReachabilityError",
+    "ReplicationMetrics",
+    "ReplicationProgress",
+    "ReplicationRNG",
+    "ReplicationResult",
+    "Route",
+    "RoutingTable",
+    "RunOutputPaths",
+    "RunSummary",
+    "STREAM_NAMES",
+    "ScenarioConfig",
+    "ScenarioOutputPaths",
+    "ScenarioRunResult",
+    "ScenarioSummary",
+    "StatSummary",
+    "Topology",
+    "aggregate_run",
+    "aggregate_scenario",
+    "assert_reachable",
+    "build_parser",
+    "build_topology",
+    "cli_main",
+    "compute_routes",
+    "from_multi_scenario_result",
+    "load_all_scenarios",
+    "load_scenario",
+    "lognormal_noise_multiplier",
+    "make_replication_rng",
+    "replication_seed",
+    "run_all_scenarios",
+    "run_replication",
+    "run_replications",
+    "run_required_scenarios",
+    "run_scenario",
+    "student_t_ci_95",
+    "truncated_normal",
+    "write_event_log_csv",
+    "write_results_csv",
+    "write_run_outputs",
+    "write_run_summary_json",
+    "write_scenario_outputs",
+    "write_scenario_summary_json",
+]

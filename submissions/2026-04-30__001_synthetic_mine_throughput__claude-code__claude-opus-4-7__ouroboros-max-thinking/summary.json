@@ -1,0 +1,3004 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "scenario_id": "baseline",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 12546.666667,
+        "ci95_low": 12491.42646,
+        "ci95_high": 12601.906874,
+        "std": 147.935991,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 1568.333333,
+        "ci95_low": 1561.428307,
+        "ci95_high": 1575.238359,
+        "std": 18.491999,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 29.660399,
+        "ci95_low": 29.527727,
+        "ci95_high": 29.793072,
+        "std": 0.355303,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.994422,
+        "ci95_low": 0.99384,
+        "ci95_high": 0.995003,
+        "std": 0.001556,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.911607,
+        "ci95_low": 0.907362,
+        "ci95_high": 0.915852,
+        "std": 0.011368,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 2.50709,
+        "ci95_low": 2.405992,
+        "ci95_high": 2.608189,
+        "std": 0.270747,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 3.279038,
+        "ci95_low": 3.105964,
+        "ci95_high": 3.452112,
+        "std": 0.4635,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.601581,
+            "ci95_low": 0.595071,
+            "ci95_high": 0.608091,
+            "std": 0.017435,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 2.618506,
+            "ci95_low": 2.495675,
+            "ci95_high": 2.741336,
+            "std": 0.328946,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 44.3,
+            "ci95_low": 43.789045,
+            "ci95_high": 44.810955,
+            "std": 1.368362,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.803143,
+            "ci95_low": 0.79463,
+            "ci95_high": 0.811655,
+            "std": 0.022797,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 2.449391,
+            "ci95_low": 2.322927,
+            "ci95_high": 2.575854,
+            "std": 0.338675,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 85.333333,
+            "ci95_low": 84.767176,
+            "ci95_high": 85.89949,
+            "std": 1.516196,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.911607,
+          "ci95_low": 0.907362,
+          "ci95_high": 0.915852,
+          "std": 0.011368,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 3.279038,
+          "ci95_low": 3.105964,
+          "ci95_high": 3.452112,
+          "std": 0.4635,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 125.466667,
+          "ci95_low": 124.914265,
+          "ci95_high": 126.019069,
+          "std": 1.47936,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E03_DOWN": {
+          "edge_id": "E03_DOWN",
+          "utilisation": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E03_UP": {
+          "edge_id": "E03_UP",
+          "utilisation": {
+            "mean": 0.052746,
+            "ci95_low": 0.052132,
+            "ci95_high": 0.053359,
+            "std": 0.001643,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 10.890609,
+            "ci95_low": 10.727612,
+            "ci95_high": 11.053605,
+            "std": 0.436512,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 3.164733,
+            "ci95_low": 3.127922,
+            "ci95_high": 3.201544,
+            "std": 0.098581,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 8.0,
+            "ci95_low": 8.0,
+            "ci95_high": 8.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.351171,
+            "ci95_low": 0.349337,
+            "ci95_high": 0.353004,
+            "std": 0.004911,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000893,
+            "ci95_low": 0.000217,
+            "ci95_high": 0.001569,
+            "std": 0.001811,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.34707,
+            "ci95_low": 1.342926,
+            "ci95_high": 1.351213,
+            "std": 0.011096,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 125.133333,
+            "ci95_low": 124.572295,
+            "ci95_high": 125.694372,
+            "std": 1.502488,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.420842,
+            "ci95_low": 0.418574,
+            "ci95_high": 0.42311,
+            "std": 0.006074,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.150605,
+            "ci95_low": 0.140048,
+            "ci95_high": 0.161162,
+            "std": 0.028273,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.586026,
+            "ci95_low": 1.581245,
+            "ci95_high": 1.590806,
+            "std": 0.012802,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 127.366667,
+            "ci95_low": 126.750491,
+            "ci95_high": 127.982842,
+            "std": 1.650148,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.219214,
+            "ci95_low": 0.216676,
+            "ci95_high": 0.221752,
+            "std": 0.006797,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.389809,
+            "ci95_low": 2.375487,
+            "ci95_high": 2.404131,
+            "std": 0.038354,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 44.033333,
+            "ci95_low": 43.54812,
+            "ci95_high": 44.518547,
+            "std": 1.299425,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.191156,
+            "ci95_low": 0.189069,
+            "ci95_high": 0.193244,
+            "std": 0.005589,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.014375,
+            "ci95_low": 0.010832,
+            "ci95_high": 0.017918,
+            "std": 0.009489,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.030075,
+            "ci95_low": 2.018737,
+            "ci95_high": 2.041414,
+            "std": 0.030364,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 45.2,
+            "ci95_low": 44.746367,
+            "ci95_high": 45.653633,
+            "std": 1.214851,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.416421,
+            "ci95_low": 0.412653,
+            "ci95_high": 0.420188,
+            "std": 0.01009,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.004326,
+            "ci95_low": 0.001752,
+            "ci95_high": 0.0069,
+            "std": 0.006894,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.355096,
+            "ci95_low": 2.343477,
+            "ci95_high": 2.366714,
+            "std": 0.031114,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 84.866667,
+            "ci95_low": 84.331956,
+            "ci95_high": 85.401378,
+            "std": 1.431983,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.361034,
+            "ci95_low": 0.358756,
+            "ci95_high": 0.363312,
+            "std": 0.0061,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.015961,
+            "ci95_low": 0.01208,
+            "ci95_high": 0.019841,
+            "std": 0.010393,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.001987,
+            "ci95_low": 1.994417,
+            "ci95_high": 2.009556,
+            "std": 0.020272,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 86.566667,
+            "ci95_low": 86.0147,
+            "ci95_high": 87.118633,
+            "std": 1.478194,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.911607,
+          "mean_queue_wait_min": 3.279038,
+          "composite_score": 2.989194
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.803143,
+          "mean_queue_wait_min": 2.449391,
+          "composite_score": 1.96721
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.601581,
+          "mean_queue_wait_min": 2.618506,
+          "composite_score": 1.575243
+        },
+        {
+          "resource_id": "E03_UP",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.052746,
+          "mean_queue_wait_min": 10.890609,
+          "composite_score": 0.574431
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.420842,
+          "mean_queue_wait_min": 0.150605,
+          "composite_score": 0.063381
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "trucks_4": {
+      "scenario_id": "trucks_4",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 7650.0,
+        "ci95_low": 7611.083146,
+        "ci95_high": 7688.916854,
+        "std": 104.22125,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 956.25,
+        "ci95_low": 951.385393,
+        "ci95_high": 961.114607,
+        "std": 13.027656,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 24.418577,
+        "ci95_low": 24.299544,
+        "ci95_high": 24.53761,
+        "std": 0.318776,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.996168,
+        "ci95_low": 0.995441,
+        "ci95_high": 0.996895,
+        "std": 0.001947,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.556981,
+        "ci95_low": 0.55255,
+        "ci95_high": 0.561412,
+        "std": 0.011866,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 0.690894,
+        "ci95_low": 0.647821,
+        "ci95_high": 0.733966,
+        "std": 0.11535,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 0.69713,
+        "ci95_low": 0.64953,
+        "ci95_high": 0.744729,
+        "std": 0.127473,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.322521,
+            "ci95_low": 0.314497,
+            "ci95_high": 0.330545,
+            "std": 0.021488,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.640979,
+            "ci95_low": 0.533094,
+            "ci95_high": 0.748865,
+            "std": 0.288922,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 23.566667,
+            "ci95_low": 23.0147,
+            "ci95_high": 24.118633,
+            "std": 1.478194,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.516733,
+            "ci95_low": 0.509515,
+            "ci95_high": 0.523951,
+            "std": 0.01933,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.710502,
+            "ci95_low": 0.652839,
+            "ci95_high": 0.768166,
+            "std": 0.154425,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 55.1,
+            "ci95_low": 54.307279,
+            "ci95_high": 55.892721,
+            "std": 2.122945,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.556981,
+          "ci95_low": 0.55255,
+          "ci95_high": 0.561412,
+          "std": 0.011866,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 0.69713,
+          "ci95_low": 0.64953,
+          "ci95_high": 0.744729,
+          "std": 0.127473,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 76.5,
+          "ci95_low": 76.110831,
+          "ci95_high": 76.889169,
+          "std": 1.042213,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E03_DOWN": {
+          "edge_id": "E03_DOWN",
+          "utilisation": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E03_UP": {
+          "edge_id": "E03_UP",
+          "utilisation": {
+            "mean": 0.026139,
+            "ci95_low": 0.025669,
+            "ci95_high": 0.02661,
+            "std": 0.00126,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 4.467327,
+            "ci95_low": 4.349859,
+            "ci95_high": 4.584796,
+            "std": 0.314586,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 3.136727,
+            "ci95_low": 3.080274,
+            "ci95_high": 3.193181,
+            "std": 0.151186,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 4.0,
+            "ci95_low": 4.0,
+            "ci95_high": 4.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.214677,
+            "ci95_low": 0.21319,
+            "ci95_high": 0.216165,
+            "std": 0.003984,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000572,
+            "ci95_low": -8.5e-05,
+            "ci95_high": 0.001228,
+            "std": 0.001758,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.350516,
+            "ci95_low": 1.344308,
+            "ci95_high": 1.356724,
+            "std": 0.016626,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 76.3,
+            "ci95_low": 75.918316,
+            "ci95_high": 76.681684,
+            "std": 1.022168,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.255324,
+            "ci95_low": 0.253708,
+            "ci95_high": 0.25694,
+            "std": 0.004328,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.102811,
+            "ci95_low": 0.091574,
+            "ci95_high": 0.114049,
+            "std": 0.030094,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.584795,
+            "ci95_low": 1.578713,
+            "ci95_high": 1.590876,
+            "std": 0.016286,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 77.333333,
+            "ci95_low": 76.91346,
+            "ci95_high": 77.753207,
+            "std": 1.124441,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.11507,
+            "ci95_low": 0.111845,
+            "ci95_high": 0.118294,
+            "std": 0.008635,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.366428,
+            "ci95_low": 2.34542,
+            "ci95_high": 2.387435,
+            "std": 0.056259,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 23.333333,
+            "ci95_low": 22.750439,
+            "ci95_high": 23.916228,
+            "std": 1.561019,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.100536,
+            "ci95_low": 0.098338,
+            "ci95_high": 0.102734,
+            "std": 0.005887,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.004926,
+            "ci95_low": 0.000147,
+            "ci95_high": 0.009704,
+            "std": 0.012797,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.022172,
+            "ci95_low": 2.005531,
+            "ci95_high": 2.038812,
+            "std": 0.044565,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 23.866667,
+            "ci95_low": 23.359648,
+            "ci95_high": 24.373685,
+            "std": 1.357821,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.268335,
+            "ci95_low": 0.264534,
+            "ci95_high": 0.272135,
+            "std": 0.010178,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000994,
+            "ci95_low": -1.6e-05,
+            "ci95_high": 0.002004,
+            "std": 0.002706,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.346368,
+            "ci95_low": 2.334254,
+            "ci95_high": 2.358483,
+            "std": 0.032444,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 54.9,
+            "ci95_low": 54.107279,
+            "ci95_high": 55.692721,
+            "std": 2.122945,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.231461,
+            "ci95_low": 0.228477,
+            "ci95_high": 0.234445,
+            "std": 0.007991,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.006332,
+            "ci95_low": 0.003812,
+            "ci95_high": 0.008853,
+            "std": 0.00675,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.994958,
+            "ci95_low": 1.984515,
+            "ci95_high": 2.005401,
+            "std": 0.027967,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 55.7,
+            "ci95_low": 54.939472,
+            "ci95_high": 56.460528,
+            "std": 2.036732,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.556981,
+          "mean_queue_wait_min": 0.69713,
+          "composite_score": 0.388288
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.516733,
+          "mean_queue_wait_min": 0.710502,
+          "composite_score": 0.36714
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.322521,
+          "mean_queue_wait_min": 0.640979,
+          "composite_score": 0.206729
+        },
+        {
+          "resource_id": "E03_UP",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.026139,
+          "mean_queue_wait_min": 4.467327,
+          "composite_score": 0.116773
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.255324,
+          "mean_queue_wait_min": 0.102811,
+          "composite_score": 0.02625
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "trucks_12": {
+      "scenario_id": "trucks_12",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 12906.666667,
+        "ci95_low": 12826.440013,
+        "ci95_high": 12986.89332,
+        "std": 214.850924,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 1613.333333,
+        "ci95_low": 1603.305002,
+        "ci95_high": 1623.361665,
+        "std": 26.856365,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 42.683402,
+        "ci95_low": 42.408501,
+        "ci95_high": 42.958303,
+        "std": 0.736198,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.98791,
+        "ci95_low": 0.987156,
+        "ci95_high": 0.988665,
+        "std": 0.00202,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.937067,
+        "ci95_low": 0.934207,
+        "ci95_high": 0.939926,
+        "std": 0.007659,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 3.473894,
+        "ci95_low": 3.336878,
+        "ci95_high": 3.61091,
+        "std": 0.366936,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 14.234655,
+        "ci95_low": 13.888087,
+        "ci95_high": 14.581224,
+        "std": 0.928127,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.640663,
+            "ci95_low": 0.632903,
+            "ci95_high": 0.648422,
+            "std": 0.02078,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 3.030277,
+            "ci95_low": 2.869517,
+            "ci95_high": 3.191037,
+            "std": 0.430523,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 47.366667,
+            "ci95_low": 46.816445,
+            "ci95_high": 47.916888,
+            "std": 1.473521,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.844934,
+            "ci95_low": 0.835144,
+            "ci95_high": 0.854725,
+            "std": 0.02622,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 3.711354,
+            "ci95_low": 3.540127,
+            "ci95_high": 3.882582,
+            "std": 0.458556,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 89.633333,
+            "ci95_low": 88.909515,
+            "ci95_high": 90.357151,
+            "std": 1.93842,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.937067,
+          "ci95_low": 0.934207,
+          "ci95_high": 0.939926,
+          "std": 0.007659,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 14.234655,
+          "ci95_low": 13.888087,
+          "ci95_high": 14.581224,
+          "std": 0.928127,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 129.066667,
+          "ci95_low": 128.2644,
+          "ci95_high": 129.868933,
+          "std": 2.148509,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E03_DOWN": {
+          "edge_id": "E03_DOWN",
+          "utilisation": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E03_UP": {
+          "edge_id": "E03_UP",
+          "utilisation": {
+            "mean": 0.078432,
+            "ci95_low": 0.077577,
+            "ci95_high": 0.079287,
+            "std": 0.00229,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 16.896822,
+            "ci95_low": 16.642584,
+            "ci95_high": 17.151061,
+            "std": 0.680864,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 3.137268,
+            "ci95_low": 3.103068,
+            "ci95_high": 3.171468,
+            "std": 0.091589,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 12.0,
+            "ci95_low": 12.0,
+            "ci95_high": 12.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.361146,
+            "ci95_low": 0.358559,
+            "ci95_high": 0.363732,
+            "std": 0.006927,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000812,
+            "ci95_low": 0.000111,
+            "ci95_high": 0.001513,
+            "std": 0.001877,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.34727,
+            "ci95_low": 1.343453,
+            "ci95_high": 1.351087,
+            "std": 0.010222,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 128.666667,
+            "ci95_low": 127.83845,
+            "ci95_high": 129.494883,
+            "std": 2.218004,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.445851,
+            "ci95_low": 0.442826,
+            "ci95_high": 0.448877,
+            "std": 0.008103,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.164807,
+            "ci95_low": 0.154506,
+            "ci95_high": 0.175107,
+            "std": 0.027586,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.589553,
+            "ci95_low": 1.585082,
+            "ci95_high": 1.594025,
+            "std": 0.011974,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 134.633333,
+            "ci95_low": 133.827777,
+            "ci95_high": 135.438889,
+            "std": 2.157318,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.234915,
+            "ci95_low": 0.231856,
+            "ci95_high": 0.237974,
+            "std": 0.008193,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.388816,
+            "ci95_low": 2.376884,
+            "ci95_high": 2.400747,
+            "std": 0.031953,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 47.2,
+            "ci95_low": 46.668295,
+            "ci95_high": 47.731705,
+            "std": 1.423933,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.201635,
+            "ci95_low": 0.198756,
+            "ci95_high": 0.204514,
+            "std": 0.00771,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.014353,
+            "ci95_low": 0.009456,
+            "ci95_high": 0.019249,
+            "std": 0.013114,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.007913,
+            "ci95_low": 1.997481,
+            "ci95_high": 2.018344,
+            "std": 0.027936,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 48.2,
+            "ci95_low": 47.576713,
+            "ci95_high": 48.823287,
+            "std": 1.669193,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.437121,
+            "ci95_low": 0.432988,
+            "ci95_high": 0.441254,
+            "std": 0.011069,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.005595,
+            "ci95_low": 0.002894,
+            "ci95_high": 0.008297,
+            "std": 0.007234,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.354825,
+            "ci95_low": 2.34639,
+            "ci95_high": 2.36326,
+            "std": 0.022591,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 89.1,
+            "ci95_low": 88.344546,
+            "ci95_high": 89.855454,
+            "std": 2.023142,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.378439,
+            "ci95_low": 0.374909,
+            "ci95_high": 0.381969,
+            "std": 0.009454,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.021421,
+            "ci95_low": 0.011985,
+            "ci95_high": 0.030857,
+            "std": 0.02527,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.999103,
+            "ci95_low": 1.992233,
+            "ci95_high": 2.005973,
+            "std": 0.018399,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 90.866667,
+            "ci95_low": 90.071624,
+            "ci95_high": 91.661709,
+            "std": 2.129163,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.937067,
+          "mean_queue_wait_min": 14.234655,
+          "composite_score": 13.338819
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.844934,
+          "mean_queue_wait_min": 3.711354,
+          "composite_score": 3.135851
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.640663,
+          "mean_queue_wait_min": 3.030277,
+          "composite_score": 1.941386
+        },
+        {
+          "resource_id": "E03_UP",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.078432,
+          "mean_queue_wait_min": 16.896822,
+          "composite_score": 1.325246
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.445851,
+          "mean_queue_wait_min": 0.164807,
+          "composite_score": 0.073479
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "ramp_upgrade": {
+      "scenario_id": "ramp_upgrade",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 12606.666667,
+        "ci95_low": 12545.479796,
+        "ci95_high": 12667.853538,
+        "std": 163.86145,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 1575.833333,
+        "ci95_low": 1568.184974,
+        "ci95_high": 1583.481692,
+        "std": 20.482681,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 29.546462,
+        "ci95_low": 29.404954,
+        "ci95_high": 29.68797,
+        "std": 0.378965,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.994723,
+        "ci95_low": 0.994066,
+        "ci95_high": 0.99538,
+        "std": 0.001759,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.915834,
+        "ci95_low": 0.911683,
+        "ci95_high": 0.919985,
+        "std": 0.011116,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 2.721649,
+        "ci95_low": 2.631236,
+        "ci95_high": 2.812062,
+        "std": 0.24213,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 3.297463,
+        "ci95_low": 3.138513,
+        "ci95_high": 3.456414,
+        "std": 0.425677,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.603468,
+            "ci95_low": 0.597362,
+            "ci95_high": 0.609574,
+            "std": 0.016353,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 2.54961,
+            "ci95_low": 2.428445,
+            "ci95_high": 2.670775,
+            "std": 0.324485,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 44.466667,
+            "ci95_low": 43.969221,
+            "ci95_high": 44.964112,
+            "std": 1.332183,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.807299,
+            "ci95_low": 0.799527,
+            "ci95_high": 0.815071,
+            "std": 0.020813,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 2.810961,
+            "ci95_low": 2.703243,
+            "ci95_high": 2.918679,
+            "std": 0.288474,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 85.766667,
+            "ci95_low": 85.189159,
+            "ci95_high": 86.344174,
+            "std": 1.546594,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.915834,
+          "ci95_low": 0.911683,
+          "ci95_high": 0.919985,
+          "std": 0.011116,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 3.297463,
+          "ci95_low": 3.138513,
+          "ci95_high": 3.456414,
+          "std": 0.425677,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 126.066667,
+          "ci95_low": 125.454798,
+          "ci95_high": 126.678535,
+          "std": 1.638614,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.352854,
+            "ci95_low": 0.351201,
+            "ci95_high": 0.354506,
+            "std": 0.004425,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000788,
+            "ci95_low": 0.000149,
+            "ci95_high": 0.001426,
+            "std": 0.001711,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.34925,
+            "ci95_low": 1.344887,
+            "ci95_high": 1.353613,
+            "std": 0.011683,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 125.533333,
+            "ci95_low": 124.947149,
+            "ci95_high": 126.119518,
+            "std": 1.569831,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.421397,
+            "ci95_low": 0.41897,
+            "ci95_high": 0.423824,
+            "std": 0.0065,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.149839,
+            "ci95_low": 0.13845,
+            "ci95_high": 0.161227,
+            "std": 0.030499,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.583956,
+            "ci95_low": 1.578668,
+            "ci95_high": 1.589244,
+            "std": 0.014161,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 127.7,
+            "ci95_low": 127.094318,
+            "ci95_high": 128.305682,
+            "std": 1.622046,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.218484,
+            "ci95_low": 0.215915,
+            "ci95_high": 0.221053,
+            "std": 0.006879,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.379869,
+            "ci95_low": 2.366139,
+            "ci95_high": 2.393598,
+            "std": 0.036769,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 44.066667,
+            "ci95_low": 43.607416,
+            "ci95_high": 44.525917,
+            "std": 1.229896,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.19136,
+            "ci95_low": 0.189377,
+            "ci95_high": 0.193342,
+            "std": 0.005309,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.015895,
+            "ci95_low": 0.010474,
+            "ci95_high": 0.021317,
+            "std": 0.014519,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.03227,
+            "ci95_low": 2.023017,
+            "ci95_high": 2.041522,
+            "std": 0.024779,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 45.2,
+            "ci95_low": 44.735889,
+            "ci95_high": 45.664111,
+            "std": 1.242911,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.419517,
+            "ci95_low": 0.416033,
+            "ci95_high": 0.423,
+            "std": 0.009329,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.004167,
+            "ci95_low": 0.001867,
+            "ci95_high": 0.006467,
+            "std": 0.006159,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.356959,
+            "ci95_low": 2.347856,
+            "ci95_high": 2.366061,
+            "std": 0.024377,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 85.433333,
+            "ci95_low": 84.847559,
+            "ci95_high": 86.019107,
+            "std": 1.568732,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.364576,
+            "ci95_low": 0.362019,
+            "ci95_high": 0.367132,
+            "std": 0.006848,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.61218,
+            "ci95_low": 0.601274,
+            "ci95_high": 0.623085,
+            "std": 0.029206,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.006166,
+            "ci95_low": 2.000152,
+            "ci95_high": 2.01218,
+            "std": 0.016106,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 87.233333,
+            "ci95_low": 86.592675,
+            "ci95_high": 87.873992,
+            "std": 1.715715,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.915834,
+          "mean_queue_wait_min": 3.297463,
+          "composite_score": 3.019929
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.807299,
+          "mean_queue_wait_min": 2.810961,
+          "composite_score": 2.269286
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.603468,
+          "mean_queue_wait_min": 2.54961,
+          "composite_score": 1.538608
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.364576,
+          "mean_queue_wait_min": 0.61218,
+          "composite_score": 0.223186
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.421397,
+          "mean_queue_wait_min": 0.149839,
+          "composite_score": 0.063142
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "crusher_slowdown": {
+      "scenario_id": "crusher_slowdown",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 6513.333333,
+        "ci95_low": 6456.37896,
+        "ci95_high": 6570.287707,
+        "std": 152.526613,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 814.166667,
+        "ci95_low": 807.04737,
+        "ci95_high": 821.285963,
+        "std": 19.065827,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 55.488254,
+        "ci95_low": 55.020586,
+        "ci95_high": 55.955922,
+        "std": 1.252437,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.973473,
+        "ci95_low": 0.971487,
+        "ci95_high": 0.97546,
+        "std": 0.005321,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.947676,
+        "ci95_low": 0.945675,
+        "ci95_high": 0.949677,
+        "std": 0.005359,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 0.641623,
+        "ci95_low": 0.569792,
+        "ci95_high": 0.713455,
+        "std": 0.192368,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 26.566543,
+        "ci95_low": 26.195048,
+        "ci95_high": 26.938037,
+        "std": 0.994881,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.329364,
+            "ci95_low": 0.320814,
+            "ci95_high": 0.337914,
+            "std": 0.022898,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.080543,
+            "ci95_low": 0.043791,
+            "ci95_high": 0.117295,
+            "std": 0.098424,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 24.3,
+            "ci95_low": 23.735402,
+            "ci95_high": 24.864598,
+            "std": 1.512021,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.445261,
+            "ci95_low": 0.435628,
+            "ci95_high": 0.454895,
+            "std": 0.0258,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.931278,
+            "ci95_low": 0.822841,
+            "ci95_high": 1.039716,
+            "std": 0.290401,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 47.233333,
+            "ci95_low": 46.408899,
+            "ci95_high": 48.057767,
+            "std": 2.207875,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.947676,
+          "ci95_low": 0.945675,
+          "ci95_high": 0.949677,
+          "std": 0.005359,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 26.566543,
+          "ci95_low": 26.195048,
+          "ci95_high": 26.938037,
+          "std": 0.994881,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 65.133333,
+          "ci95_low": 64.56379,
+          "ci95_high": 65.702877,
+          "std": 1.525266,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E03_DOWN": {
+          "edge_id": "E03_DOWN",
+          "utilisation": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E03_UP": {
+          "edge_id": "E03_UP",
+          "utilisation": {
+            "mean": 0.052746,
+            "ci95_low": 0.052132,
+            "ci95_high": 0.053359,
+            "std": 0.001643,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 10.890609,
+            "ci95_low": 10.727612,
+            "ci95_high": 11.053605,
+            "std": 0.436512,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 3.164733,
+            "ci95_low": 3.127922,
+            "ci95_high": 3.201544,
+            "std": 0.098581,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 8.0,
+            "ci95_low": 8.0,
+            "ci95_high": 8.0,
+            "std": 0.0,
+            "n": 30
+          }
+        },
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.18296,
+            "ci95_low": 0.181387,
+            "ci95_high": 0.184534,
+            "std": 0.004214,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.351832,
+            "ci95_low": 1.347235,
+            "ci95_high": 1.356429,
+            "std": 0.012311,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 64.966667,
+            "ci95_low": 64.416445,
+            "ci95_high": 65.516888,
+            "std": 1.473521,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.231771,
+            "ci95_low": 0.229314,
+            "ci95_high": 0.234229,
+            "std": 0.006581,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.139459,
+            "ci95_low": 0.126914,
+            "ci95_high": 0.152004,
+            "std": 0.033595,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.583957,
+            "ci95_low": 1.577304,
+            "ci95_high": 1.59061,
+            "std": 0.017817,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 70.233333,
+            "ci95_low": 69.585213,
+            "ci95_high": 70.881453,
+            "std": 1.735697,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.119784,
+            "ci95_low": 0.116928,
+            "ci95_high": 0.122639,
+            "std": 0.007647,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.382314,
+            "ci95_low": 2.366207,
+            "ci95_high": 2.398421,
+            "std": 0.043135,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 24.133333,
+            "ci95_low": 23.589705,
+            "ci95_high": 24.676962,
+            "std": 1.455864,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.102933,
+            "ci95_low": 0.100538,
+            "ci95_high": 0.105328,
+            "std": 0.006414,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.013834,
+            "ci95_low": 1.999504,
+            "ci95_high": 2.028163,
+            "std": 0.038375,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 24.533333,
+            "ci95_low": 23.998622,
+            "ci95_high": 25.068044,
+            "std": 1.431983,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.230057,
+            "ci95_low": 0.225674,
+            "ci95_high": 0.23444,
+            "std": 0.011738,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.00076,
+            "ci95_low": -0.000392,
+            "ci95_high": 0.001913,
+            "std": 0.003087,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.347582,
+            "ci95_low": 2.332881,
+            "ci95_high": 2.362283,
+            "std": 0.03937,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 47.033333,
+            "ci95_low": 46.227777,
+            "ci95_high": 47.838889,
+            "std": 2.157318,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.1979,
+            "ci95_low": 0.194452,
+            "ci95_high": 0.201349,
+            "std": 0.009236,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000145,
+            "ci95_low": -7.3e-05,
+            "ci95_high": 0.000362,
+            "std": 0.000583,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.992913,
+            "ci95_low": 1.983173,
+            "ci95_high": 2.002653,
+            "std": 0.026085,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 47.666667,
+            "ci95_low": 46.856053,
+            "ci95_high": 48.47728,
+            "std": 2.170862,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.947676,
+          "mean_queue_wait_min": 26.566543,
+          "composite_score": 25.176473
+        },
+        {
+          "resource_id": "E03_UP",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.052746,
+          "mean_queue_wait_min": 10.890609,
+          "composite_score": 0.574431
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.445261,
+          "mean_queue_wait_min": 0.931278,
+          "composite_score": 0.414662
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.231771,
+          "mean_queue_wait_min": 0.139459,
+          "composite_score": 0.032323
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.329364,
+          "mean_queue_wait_min": 0.080543,
+          "composite_score": 0.026528
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "ramp_closed": {
+      "scenario_id": "ramp_closed",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 12363.333333,
+        "ci95_low": 12297.930568,
+        "ci95_high": 12428.736099,
+        "std": 175.151822,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 1545.416667,
+        "ci95_low": 1537.241321,
+        "ci95_high": 1553.592012,
+        "std": 21.893978,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 30.108704,
+        "ci95_low": 29.970093,
+        "ci95_high": 30.247316,
+        "std": 0.371209,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.994325,
+        "ci95_low": 0.993811,
+        "ci95_high": 0.994839,
+        "std": 0.001376,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.898253,
+        "ci95_low": 0.893775,
+        "ci95_high": 0.90273,
+        "std": 0.01199,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 3.176232,
+        "ci95_low": 3.069593,
+        "ci95_high": 3.28287,
+        "std": 0.285583,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 3.207245,
+        "ci95_low": 3.060322,
+        "ci95_high": 3.354169,
+        "std": 0.393468,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.658173,
+            "ci95_low": 0.653388,
+            "ci95_high": 0.662959,
+            "std": 0.012816,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 4.879233,
+            "ci95_low": 4.698972,
+            "ci95_high": 5.059495,
+            "std": 0.482749,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 48.633333,
+            "ci95_low": 48.189523,
+            "ci95_high": 49.077144,
+            "std": 1.188547,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.744467,
+            "ci95_low": 0.734805,
+            "ci95_high": 0.754129,
+            "std": 0.025875,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 2.125733,
+            "ci95_low": 1.987419,
+            "ci95_high": 2.264046,
+            "std": 0.37041,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 78.833333,
+            "ci95_low": 78.286618,
+            "ci95_high": 79.380049,
+            "std": 1.464131,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.898253,
+          "ci95_low": 0.893775,
+          "ci95_high": 0.90273,
+          "std": 0.01199,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 3.207245,
+          "ci95_low": 3.060322,
+          "ci95_high": 3.354169,
+          "std": 0.393468,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 123.633333,
+          "ci95_low": 122.979306,
+          "ci95_high": 124.287361,
+          "std": 1.751518,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.346279,
+            "ci95_low": 0.344371,
+            "ci95_high": 0.348187,
+            "std": 0.00511,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.001119,
+            "ci95_low": 0.000253,
+            "ci95_high": 0.001985,
+            "std": 0.002319,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.348433,
+            "ci95_low": 1.344613,
+            "ci95_high": 1.352254,
+            "std": 0.010232,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 123.266667,
+            "ci95_low": 122.624135,
+            "ci95_high": 123.909199,
+            "std": 1.720732,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.415261,
+            "ci95_low": 0.413028,
+            "ci95_high": 0.417494,
+            "std": 0.00598,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.161427,
+            "ci95_low": 0.150463,
+            "ci95_high": 0.172391,
+            "std": 0.029363,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.588258,
+            "ci95_low": 1.583576,
+            "ci95_high": 1.592939,
+            "std": 0.012538,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 125.5,
+            "ci95_low": 124.913679,
+            "ci95_high": 126.086321,
+            "std": 1.570197,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.240989,
+            "ci95_low": 0.238625,
+            "ci95_high": 0.243353,
+            "std": 0.00633,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.388488,
+            "ci95_low": 2.375553,
+            "ci95_high": 2.401423,
+            "std": 0.034641,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 48.433333,
+            "ci95_low": 47.987361,
+            "ci95_high": 48.879305,
+            "std": 1.194335,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.210064,
+            "ci95_low": 0.207725,
+            "ci95_high": 0.212404,
+            "std": 0.006265,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 1.073342,
+            "ci95_low": 1.055472,
+            "ci95_high": 1.091213,
+            "std": 0.047857,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.024729,
+            "ci95_low": 2.015057,
+            "ci95_high": 2.034401,
+            "std": 0.025903,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 49.8,
+            "ci95_low": 49.296152,
+            "ci95_high": 50.303848,
+            "std": 1.349329,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.385338,
+            "ci95_low": 0.381949,
+            "ci95_high": 0.388727,
+            "std": 0.009076,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.004377,
+            "ci95_low": 0.002427,
+            "ci95_high": 0.006328,
+            "std": 0.005223,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.357145,
+            "ci95_low": 2.348653,
+            "ci95_high": 2.365637,
+            "std": 0.022741,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 78.466667,
+            "ci95_low": 77.872337,
+            "ci95_high": 79.060997,
+            "std": 1.591645,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.334398,
+            "ci95_low": 0.33198,
+            "ci95_high": 0.336816,
+            "std": 0.006476,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.014559,
+            "ci95_low": 0.010692,
+            "ci95_high": 0.018427,
+            "std": 0.010358,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.007319,
+            "ci95_low": 1.997806,
+            "ci95_high": 2.016832,
+            "std": 0.025476,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 79.966667,
+            "ci95_low": 79.443316,
+            "ci95_high": 80.490017,
+            "std": 1.401559,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.658173,
+          "mean_queue_wait_min": 4.879233,
+          "composite_score": 3.21138
+        },
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.898253,
+          "mean_queue_wait_min": 3.207245,
+          "composite_score": 2.880916
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.744467,
+          "mean_queue_wait_min": 2.125733,
+          "composite_score": 1.582538
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.210064,
+          "mean_queue_wait_min": 1.073342,
+          "composite_score": 0.225471
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.415261,
+          "mean_queue_wait_min": 0.161427,
+          "composite_score": 0.067034
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    },
+    "trucks_12_ramp_upgrade": {
+      "scenario_id": "trucks_12_ramp_upgrade",
+      "replications": 30,
+      "shift_length_hours": 8.0,
+      "total_tonnes_delivered": {
+        "mean": 12953.333333,
+        "ci95_low": 12869.702929,
+        "ci95_high": 13036.963738,
+        "std": 223.966336,
+        "n": 30
+      },
+      "tonnes_per_hour": {
+        "mean": 1619.166667,
+        "ci95_low": 1608.712866,
+        "ci95_high": 1629.620467,
+        "std": 27.995792,
+        "n": 30
+      },
+      "average_truck_cycle_time_min": {
+        "mean": 42.541378,
+        "ci95_low": 42.273665,
+        "ci95_high": 42.809091,
+        "std": 0.716949,
+        "n": 30
+      },
+      "average_truck_utilisation": {
+        "mean": 0.988183,
+        "ci95_low": 0.987532,
+        "ci95_high": 0.988833,
+        "std": 0.001742,
+        "n": 30
+      },
+      "crusher_utilisation": {
+        "mean": 0.940564,
+        "ci95_low": 0.937666,
+        "ci95_high": 0.943462,
+        "std": 0.007761,
+        "n": 30
+      },
+      "average_loader_queue_time_min": {
+        "mean": 3.963752,
+        "ci95_low": 3.805748,
+        "ci95_high": 4.121755,
+        "std": 0.423141,
+        "n": 30
+      },
+      "average_crusher_queue_time_min": {
+        "mean": 14.296978,
+        "ci95_low": 13.965957,
+        "ci95_high": 14.628,
+        "std": 0.886491,
+        "n": 30
+      },
+      "loaders": {
+        "L_N": {
+          "loader_id": "L_N",
+          "utilisation": {
+            "mean": 0.640686,
+            "ci95_low": 0.633425,
+            "ci95_high": 0.647947,
+            "std": 0.019445,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 3.125669,
+            "ci95_low": 2.952307,
+            "ci95_high": 3.299031,
+            "std": 0.464272,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 47.2,
+            "ci95_low": 46.677415,
+            "ci95_high": 47.722585,
+            "std": 1.399507,
+            "n": 30
+          }
+        },
+        "L_S": {
+          "loader_id": "L_S",
+          "utilisation": {
+            "mean": 0.849761,
+            "ci95_low": 0.838617,
+            "ci95_high": 0.860905,
+            "std": 0.029844,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 4.401933,
+            "ci95_low": 4.199838,
+            "ci95_high": 4.604028,
+            "std": 0.541219,
+            "n": 30
+          },
+          "services_completed": {
+            "mean": 90.366667,
+            "ci95_low": 89.53758,
+            "ci95_high": 91.195753,
+            "std": 2.220334,
+            "n": 30
+          }
+        }
+      },
+      "crusher": {
+        "dump_id": "D_CRUSH",
+        "utilisation": {
+          "mean": 0.940564,
+          "ci95_low": 0.937666,
+          "ci95_high": 0.943462,
+          "std": 0.007761,
+          "n": 30
+        },
+        "mean_queue_wait_min": {
+          "mean": 14.296978,
+          "ci95_low": 13.965957,
+          "ci95_high": 14.628,
+          "std": 0.886491,
+          "n": 30
+        },
+        "services_completed": {
+          "mean": 129.533333,
+          "ci95_low": 128.697029,
+          "ci95_high": 130.369637,
+          "std": 2.239663,
+          "n": 30
+        }
+      },
+      "edges": {
+        "E05_FROM_CRUSH": {
+          "edge_id": "E05_FROM_CRUSH",
+          "utilisation": {
+            "mean": 0.362475,
+            "ci95_low": 0.360074,
+            "ci95_high": 0.364876,
+            "std": 0.006429,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.000809,
+            "ci95_low": 0.000126,
+            "ci95_high": 0.001492,
+            "std": 0.001829,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.347725,
+            "ci95_low": 1.343515,
+            "ci95_high": 1.351935,
+            "std": 0.011276,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 129.1,
+            "ci95_low": 128.289288,
+            "ci95_high": 129.910712,
+            "std": 2.171127,
+            "n": 30
+          }
+        },
+        "E05_TO_CRUSH": {
+          "edge_id": "E05_TO_CRUSH",
+          "utilisation": {
+            "mean": 0.446615,
+            "ci95_low": 0.443862,
+            "ci95_high": 0.449368,
+            "std": 0.007372,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.162179,
+            "ci95_low": 0.153482,
+            "ci95_high": 0.170877,
+            "std": 0.023293,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.586467,
+            "ci95_low": 1.581068,
+            "ci95_high": 1.591867,
+            "std": 0.01446,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 135.133333,
+            "ci95_low": 134.2913,
+            "ci95_high": 135.975367,
+            "std": 2.255007,
+            "n": 30
+          }
+        },
+        "E07_FROM_LOAD_N": {
+          "edge_id": "E07_FROM_LOAD_N",
+          "utilisation": {
+            "mean": 0.232757,
+            "ci95_low": 0.229915,
+            "ci95_high": 0.235599,
+            "std": 0.007611,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0,
+            "std": 0.0,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.383735,
+            "ci95_low": 2.367863,
+            "ci95_high": 2.399606,
+            "std": 0.042505,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 46.866667,
+            "ci95_low": 46.420156,
+            "ci95_high": 47.313178,
+            "std": 1.195778,
+            "n": 30
+          }
+        },
+        "E07_TO_LOAD_N": {
+          "edge_id": "E07_TO_LOAD_N",
+          "utilisation": {
+            "mean": 0.201252,
+            "ci95_low": 0.198576,
+            "ci95_high": 0.203928,
+            "std": 0.007166,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.013991,
+            "ci95_low": 0.009343,
+            "ci95_high": 0.018639,
+            "std": 0.012447,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.017927,
+            "ci95_low": 2.008034,
+            "ci95_high": 2.027821,
+            "std": 0.026495,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 47.866667,
+            "ci95_low": 47.331956,
+            "ci95_high": 48.401378,
+            "std": 1.431983,
+            "n": 30
+          }
+        },
+        "E09_FROM_LOAD_S": {
+          "edge_id": "E09_FROM_LOAD_S",
+          "utilisation": {
+            "mean": 0.440749,
+            "ci95_low": 0.436165,
+            "ci95_high": 0.445333,
+            "std": 0.012276,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 0.004975,
+            "ci95_low": 0.002417,
+            "ci95_high": 0.007532,
+            "std": 0.00685,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 2.353135,
+            "ci95_low": 2.344126,
+            "ci95_high": 2.362144,
+            "std": 0.024127,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 89.9,
+            "ci95_low": 89.113368,
+            "ci95_high": 90.686632,
+            "std": 2.10664,
+            "n": 30
+          }
+        },
+        "E09_TO_LOAD_S": {
+          "edge_id": "E09_TO_LOAD_S",
+          "utilisation": {
+            "mean": 0.381888,
+            "ci95_low": 0.377851,
+            "ci95_high": 0.385925,
+            "std": 0.010811,
+            "n": 30
+          },
+          "mean_queue_wait_min": {
+            "mean": 1.381388,
+            "ci95_low": 1.362496,
+            "ci95_high": 1.400279,
+            "std": 0.050592,
+            "n": 30
+          },
+          "mean_traversal_time_min": {
+            "mean": 1.998937,
+            "ci95_low": 1.991415,
+            "ci95_high": 2.006459,
+            "std": 0.020143,
+            "n": 30
+          },
+          "traversal_count": {
+            "mean": 91.7,
+            "ci95_low": 90.822092,
+            "ci95_high": 92.577908,
+            "std": 2.351082,
+            "n": 30
+          }
+        }
+      },
+      "top_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "resource_kind": "crusher",
+          "utilisation_mean": 0.940564,
+          "mean_queue_wait_min": 14.296978,
+          "composite_score": 13.447226
+        },
+        {
+          "resource_id": "L_S",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.849761,
+          "mean_queue_wait_min": 4.401933,
+          "composite_score": 3.740592
+        },
+        {
+          "resource_id": "L_N",
+          "resource_kind": "loader",
+          "utilisation_mean": 0.640686,
+          "mean_queue_wait_min": 3.125669,
+          "composite_score": 2.002573
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.381888,
+          "mean_queue_wait_min": 1.381388,
+          "composite_score": 0.527536
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "resource_kind": "edge",
+          "utilisation_mean": 0.446615,
+          "mean_queue_wait_min": 0.162179,
+          "composite_score": 0.072432
+        }
+      ],
+      "key_assumptions": [
+        "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+        "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+        "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+        "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+        "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+        "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+        "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+        "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+        "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+        "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+        "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+      ],
+      "model_limitations": [
+        "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+        "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+        "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+        "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+        "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+        "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+        "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+        "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+        "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+        "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+        "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+      ],
+      "additional_scenarios_proposed": [
+        "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+        "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+        "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+        "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+        "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+        "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+        "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Hard cut at t=480 minutes: only end_dump events with time_min < 480 contribute tonnes; in-flight loads/dumps at the cut are discarded (operator-facing 'tonnes closed at shift end').",
+    "Static shortest-time routing per scenario via Dijkstra on free-flow edge times (distance / max_speed_kph), recomputed only when a scenario closes or upgrades edges.",
+    "Capacity-1 directed edges modelled as independent SimPy Resources, mirroring edges.csv literally (E03_UP and E03_DOWN are decoupled even on the shared physical ramp).",
+    "Travel-time noise: per-edge-traversal lognormal multiplier with mean 1 and cv=0.10; loaded trucks use loaded_speed_factor, empty trucks use empty_speed_factor.",
+    "Loading and dumping sampled as normal_truncated with per-resource (mean, sd), floored at max(0.1, sample) so durations stay strictly positive without biasing the mean.",
+    "Dispatch policy: each empty truck is assigned to argmin(travel_to_loader + current_queue_len * mean_load_time + own_load_time); current_queue_len includes the truck currently being served. Ties broken by lower loader_id.",
+    "Initial dispatch: all trucks released simultaneously at t=0 from PARK; no warmup, no staged ramp-up, no shift-handover modelling.",
+    "Crusher tonnes are credited at end_dump (not start_dump or arrive_crusher); each completed dump credits exactly payload_tonnes (100 t) per truck.",
+    "WASTE and MAINT are out of scope: their edges remain in the graph but are never traversed.",
+    "Per-replication seed = base_random_seed + replication_index, so each replication is independently reproducible while the full run is deterministic.",
+    "95% confidence intervals computed via Student-t with n-1=29 degrees of freedom over 30 replications."
+  ],
+  "model_limitations": [
+    "No truck breakdowns, refuelling, or maintenance windows: truck availability is treated as 1.00 across the entire 480-minute shift.",
+    "No operator-level decisions: shift handover, lunch breaks, and manual dispatcher overrides are not represented.",
+    "Static routing: trucks commit to their shortest-time path at dispatch and do not re-plan if a capacity-1 edge develops a long queue. A real dispatcher might divert through the bypass.",
+    "Independent edge directions: E03_UP and E03_DOWN are two separate single-lane SimPy Resources. If the physical ramp is genuinely one shared lane, real congestion will be worse than modelled.",
+    "Crusher always available: D_CRUSH never blocks. There is no downstream stockpile back-pressure, no full-bin signal, and no scheduled crusher maintenance.",
+    "Single homogeneous payload: every dump is exactly 100 t. Heterogeneous payloads, ore blending, and grade-dependent processing time are not modelled.",
+    "Free-flow edges have effectively infinite capacity (capacity = 999): trucks do not interact on multi-lane road segments. Real headway and following-distance effects are ignored.",
+    "No warmup trimming: the shift starts empty (all trucks at PARK, all queues empty). The empty-system bias is small because trucks reach steady-state within a few cycles, but is not zero.",
+    "Edge max-speeds and per-truck speed factors are deterministic. Only the per-edge lognormal multiplier (cv=0.10) introduces travel variability \u2014 weather, dust, visibility are not modelled.",
+    "Dispatch decisions use queue_length at the moment of decision; in-flight trucks do not feed back into subsequent dispatch decisions until they physically arrive.",
+    "Node coordinates from nodes.csv are used for visualisation only; haul-road bends and grade are not propagated into travel time."
+  ],
+  "additional_scenarios_proposed": [
+    "trucks_12_ramp_upgrade (included as the 7th scenario): combines fleet expansion (12 trucks) with the ramp upgrade. Tests whether the two investments are complementary, substitutive, or independent. Empirically super-additive \u2014 throughput rises from ~1568 tph baseline to ~1619 tph, materially above either intervention alone.",
+    "Crusher reliability scenario: inject random short outages on D_CRUSH (e.g. 5 min every 60 min) to size the surge-pile buffer requirement and quantify the operational cost of unplanned downtime.",
+    "Operator break schedule: stagger loader downtime around lunch/break windows to estimate the throughput penalty of synchronised vs staggered crew breaks.",
+    "Dynamic re-routing: re-plan when a queue at a capacity-1 edge exceeds a threshold (e.g. 2 waiting trucks). Quantifies the upper bound on lift available from a smarter dispatcher vs the static baseline.",
+    "Heterogeneous fleet mix: replace a subset of 100 t trucks with 150 t trucks to trade more cycles for higher per-cycle payload.",
+    "Crusher service-time upgrade: reduce mean dump time from 3.5 min to 2.5 min and re-run trucks_12 to test whether crusher service time becomes the binding constraint at higher fleet sizes.",
+    "Mid-shift loader outage: take L_N or L_S offline for 30 minutes mid-shift to size the single-loader fall-back tonnes and inform redundancy planning."
+  ]
+}

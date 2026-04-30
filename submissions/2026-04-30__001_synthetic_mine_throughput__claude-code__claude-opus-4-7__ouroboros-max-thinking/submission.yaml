@@ -1,0 +1,25 @@
+submission_id: 2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking
+date: 2026-04-30
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: claude-code
+  version: tbc
+  notes: ouroboros plugin v0.31.1 loaded
+model:
+  name: claude-opus-4-7
+  vendor: anthropic
+  notes: 1M context, max thinking budget, Claude Max plan
+run_tag: ouroboros-max-thinking
+operator: harry
+status: complete
+intervention:
+  category: ouroboros-orchestrated
+  notes: >-
+    Built via ouroboros plugin v0.31.1 (interview -> seed -> run). Path B
+    fallback for interview (MCP question generator unavailable);
+    background execution via ouroboros_start_execute_seed completed 10/11
+    ACs autonomously and produced all required outputs, plus an optional
+    7th combo scenario (trucks_12_ramp_upgrade), topology.png, and
+    animation.gif. Final AC (clean-environment reproducibility check)
+    failed inside the sandbox because the orchestrator venv lacked pip;
+    code itself is healthy (129/129 pytest passes; CLI verified).

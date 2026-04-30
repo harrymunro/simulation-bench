@@ -1,0 +1,25 @@
+# Virtualenvs (incl. the ones produced by scripts/verify_reproducibility.sh)
+.venv/
+.repro-venv/
+
+# Reproducibility checker scratch output (the byte-stable copies live at
+# the project root — comparing against them is the whole point).
+.repro-run/
+
+# Per-AC validation snapshots produced during orchestrated build. The
+# canonical results.csv / summary.json / event_log.csv at the project
+# root are the authoritative copies; runs/ duplicates them per AC.
+runs/
+
+# Python bytecode caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Build artefacts
+build/
+dist/
+
+# OS noise
+.DS_Store

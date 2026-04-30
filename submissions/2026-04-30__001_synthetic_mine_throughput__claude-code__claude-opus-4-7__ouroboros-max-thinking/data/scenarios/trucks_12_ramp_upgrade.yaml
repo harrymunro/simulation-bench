@@ -1,0 +1,17 @@
+scenario_id: trucks_12_ramp_upgrade
+inherits: baseline
+description: >-
+  Combo scenario: 12 trucks plus an upgraded main ramp. Tests whether ramp
+  capacity and speed unlocks the additional fleet that scenario trucks_12
+  alone cannot exploit.
+
+fleet:
+  truck_count: 12
+
+edge_overrides:
+  E03_UP:
+    capacity: 999
+    max_speed_kph: 28
+  E03_DOWN:
+    capacity: 999
+    max_speed_kph: 28

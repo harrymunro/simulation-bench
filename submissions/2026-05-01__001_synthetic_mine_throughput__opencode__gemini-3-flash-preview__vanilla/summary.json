@@ -1,0 +1,130 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12700.0,
+      "total_tonnes_ci95_low": 12611.201756294839,
+      "total_tonnes_ci95_high": 12788.798243705161,
+      "tonnes_per_hour_mean": 1587.5,
+      "tonnes_per_hour_ci95_low": 1576.4002195368548,
+      "tonnes_per_hour_ci95_high": 1598.5997804631452,
+      "average_cycle_time_min": 43.34804398972537,
+      "truck_utilisation_mean": 0.5446978256438465,
+      "crusher_utilisation": 0.9256194966087355,
+      "average_loader_queue_time_min": 4.2008665726348715,
+      "average_crusher_queue_time_min": 14.40920978110974,
+      "top_bottlenecks": [
+        "Crusher Capacity",
+        "Crusher Queueing"
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 6393.333333333333,
+      "total_tonnes_ci95_low": 6346.373013971791,
+      "total_tonnes_ci95_high": 6440.293652694875,
+      "tonnes_per_hour_mean": 799.1666666666666,
+      "tonnes_per_hour_ci95_low": 793.2966267464739,
+      "tonnes_per_hour_ci95_high": 805.0367065868594,
+      "average_cycle_time_min": 56.36055656566297,
+      "truck_utilisation_mean": 0.48338789106153596,
+      "crusher_utilisation": 0.9358934138333039,
+      "average_loader_queue_time_min": 1.7721763894441729,
+      "average_crusher_queue_time_min": 26.451427777389952,
+      "top_bottlenecks": [
+        "Crusher Capacity",
+        "Crusher Queueing"
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12350.0,
+      "total_tonnes_ci95_low": 12287.401884869343,
+      "total_tonnes_ci95_high": 12412.598115130657,
+      "tonnes_per_hour_mean": 1543.75,
+      "tonnes_per_hour_ci95_low": 1535.925235608668,
+      "tonnes_per_hour_ci95_high": 1551.574764391332,
+      "average_cycle_time_min": 30.148132657048436,
+      "truck_utilisation_mean": 0.7724535037492032,
+      "crusher_utilisation": 0.9026346706609539,
+      "average_loader_queue_time_min": 2.733230878560841,
+      "average_crusher_queue_time_min": 3.474403425130481,
+      "top_bottlenecks": [
+        "Crusher Capacity"
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12363.333333333334,
+      "total_tonnes_ci95_low": 12297.930567953365,
+      "total_tonnes_ci95_high": 12428.736098713303,
+      "tonnes_per_hour_mean": 1545.4166666666667,
+      "tonnes_per_hour_ci95_low": 1537.2413209941706,
+      "tonnes_per_hour_ci95_high": 1553.592012339163,
+      "average_cycle_time_min": 30.101911937318196,
+      "truck_utilisation_mean": 0.7719623519472653,
+      "crusher_utilisation": 0.9035141874366132,
+      "average_loader_queue_time_min": 2.73341560433327,
+      "average_crusher_queue_time_min": 3.4759882725994276,
+      "top_bottlenecks": [
+        "Crusher Capacity"
+      ]
+    },
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12350.0,
+      "total_tonnes_ci95_low": 12287.401884869343,
+      "total_tonnes_ci95_high": 12412.598115130657,
+      "tonnes_per_hour_mean": 1543.75,
+      "tonnes_per_hour_ci95_low": 1535.925235608668,
+      "tonnes_per_hour_ci95_high": 1551.574764391332,
+      "average_cycle_time_min": 30.148132657048436,
+      "truck_utilisation_mean": 0.7724535037492032,
+      "crusher_utilisation": 0.9026346706609539,
+      "average_loader_queue_time_min": 2.733230878560841,
+      "average_crusher_queue_time_min": 3.474403425130481,
+      "top_bottlenecks": [
+        "Crusher Capacity"
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 7600.0,
+      "total_tonnes_ci95_low": 7562.021038995444,
+      "total_tonnes_ci95_high": 7637.978961004556,
+      "tonnes_per_hour_mean": 950.0,
+      "tonnes_per_hour_ci95_low": 945.2526298744305,
+      "tonnes_per_hour_ci95_high": 954.7473701255695,
+      "average_cycle_time_min": 24.648199261872527,
+      "truck_utilisation_mean": 0.9255380322092951,
+      "crusher_utilisation": 0.5550053095433483,
+      "average_loader_queue_time_min": 0.8639461660122482,
+      "average_crusher_queue_time_min": 0.665168120247141,
+      "top_bottlenecks": [
+        "Truck Fleet Size"
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Trucks follow shortest-time path",
+    "Truncated normal distribution for service times",
+    "Lognormal noise for travel times"
+  ],
+  "model_limitations": [
+    "No maintenance or breakdowns modeled",
+    "Simplified traffic interactions"
+  ],
+  "additional_scenarios_proposed": [
+    {
+      "scenario_id": "crusher_expansion",
+      "description": "Adding a second crusher lane (capacity: 2) to alleviate the primary bottleneck."
+    }
+  ]
+}

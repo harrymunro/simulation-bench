@@ -1,0 +1,7 @@
+{
+  "wall_clock_seconds": 183,
+  "return_code": 0,
+  "timed_out": false,
+  "command": "opencode session (manual harness)",
+  "notes": "Runtime reported by operator; submission produced via opencode harness with gemini-3-flash-preview."
+}

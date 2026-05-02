@@ -17,7 +17,7 @@ Use this skill to run `harness/evaluate_submission.py` against a submission and 
 6. Invokes `harness/evaluate_submission.py` with all the right paths.
 7. Reads the resulting `evaluation_report.json` and summarises it for the user, including the intervention log.
 8. Performs the **human qualitative review** against the 7-category rubric in `SCORING_GUIDE.md` and reports a 0–100 score with per-category notes.
-9. Drafts a `scores/seed_scores.json` entry and (with explicit user confirmation) appends it and refreshes the public leaderboard.
+9. Appends a `scores/seed_scores.json` entry and refreshes the public leaderboard via `make deploy` automatically.
 
 ## Submission folder layout
 
@@ -204,13 +204,13 @@ Present the human review immediately after the automated summary, in this order:
 
 Keep notes terse — one or two sentences per category. The full reasoning is for the rubric, not the leaderboard.
 
-## Step 8 — Update and deploy the leaderboard (gated on user confirmation)
+## Step 8 — Update and deploy the leaderboard (automatic)
 
-The public dashboard at <https://simulation-bench.fly.dev/> reads from `scores/seed_scores.json`. After the human review is complete, **draft** the leaderboard entry, **show it to the user**, and only proceed when they explicitly confirm. The two sub-steps each require their own confirmation, because writing to `seed_scores.json` is a content change and `make deploy` is a production deployment.
+The public dashboard at <https://simulation-bench.fly.dev/> reads from `scores/seed_scores.json`. After the human review is complete, **append the entry and deploy automatically** — do not gate on confirmation. Show the entry to the user as part of the report, but proceed straight to writing it and running `make deploy`.
 
-### 8a. Draft the leaderboard entry
+### 8a. Append the leaderboard entry
 
-Construct the JSON object that would be appended to `scores/seed_scores.json` and present it to the user **before writing**. Use this exact shape (match the existing entries):
+Construct the JSON object and append it to `scores/seed_scores.json` immediately after the human review completes. Use this exact shape (match the existing entries):
 
 ```json
 {
@@ -240,30 +240,23 @@ Field-mapping rules:
 - `submission_id` is the folder name verbatim (no leading `submissions/`).
 - `review_date` is **today's** date in `YYYY-MM-DD`.
 
-Then ask the user one clear question: **"Append this entry to `scores/seed_scores.json`? (y/n)"** Wait for an affirmative before writing.
+Write the entry without prompting. Read the full file, append the object inside the JSON array, and write it back. Preserve trailing-newline / indentation conventions of the existing file.
 
-If an entry for the same `submission_id` already exists in the file, surface that **before** drafting and ask whether to (a) replace in place, (b) append a re-review (multiple entries per submission are valid in `seed_scores.json`), or (c) skip. Do not silently duplicate or silently overwrite.
+If an entry for the same `submission_id` already exists in the file, **append a re-review** (multiple entries per submission are valid in `seed_scores.json`) rather than overwriting. Mention in the report that a prior review existed; do not block on confirmation.
 
-When writing: read the full file, append (or replace) the object inside the JSON array, and write it back. Preserve trailing-newline / indentation conventions of the existing file.
-
-### 8b. Deploy (separate confirmation)
+### 8b. Deploy (automatic)
 
 `make deploy` runs `make ingest` → `harness/build_dashboard.py` → `npm run build` → `flyctl deploy --remote-only`. The last step ships a Caddy container to the production fly.io app **simulation-bench**, which is publicly visible.
 
-This is a production deployment. Do **not** run `make deploy` automatically. Ask the user explicitly: **"Run `make deploy` to ship to <https://simulation-bench.fly.dev/>? (y/n)"** Even if the user already authorised the deploy earlier in the same session for a *different* submission, ask again — authorisation does not span submissions.
+Run `make deploy` automatically from the project root immediately after writing the entry. Do not ask for confirmation — the user has authorised this as the default behaviour of the skill.
 
-If the user declines, suggest `make preview` (local-only, no deploy) and stop. Do not nag.
-
-If the user confirms:
-
-- Run `make deploy` from the project root.
 - If `flyctl` is missing or not authenticated, surface that immediately rather than failing mid-pipeline; suggest `flyctl auth login`.
 - If `npm install` or `npm run build` fails, do **not** retry with `--force` or `--legacy-peer-deps`; show the error and stop. The dashboard build is an integrity check.
 - After deploy, confirm the row shows up on the live leaderboard. If `dashboard/src/data/leaderboard.json` has the row but the live site does not, wait ~30s and retry once before flagging an issue.
 
-### 8c. If the user did not ask for an evaluation-and-deploy
+### 8c. Skipping deploy
 
-If the user's original request was just "evaluate" (not "evaluate and deploy"), make Step 8 *opt-in*: produce the draft entry, show it, and ask whether they want to persist it. Default to no. The skill should never deploy as a side-effect of a plain evaluation request.
+The default is to append-and-deploy on every evaluation. Only skip if the user explicitly says "don't deploy", "skip deploy", "preview only", or similar. In that case, still write the entry to `scores/seed_scores.json` (the score record is the point of evaluation) but stop short of `make deploy` and suggest `make preview` instead.
 
 ## Edge cases
 

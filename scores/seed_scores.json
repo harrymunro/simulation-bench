@@ -185,5 +185,22 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Strong submission",
     "notes": "Exemplary conceptual model and decision-question answers; behavioural checks all pass; 14 automated fails are a flat-vs-nested summary.json schema mismatch, not a model defect."
+  },
+  {
+    "submission_id": "2026-05-01__001_synthetic_mine_throughput__opencode__gemini-3-flash-preview__vanilla",
+    "reviewer": "claude-code",
+    "review_date": "2026-05-01",
+    "conceptual_modelling": 15,
+    "data_topology": 11,
+    "simulation_correctness": 15,
+    "experimental_design": 11,
+    "results_interpretation": 12,
+    "code_quality": 5,
+    "traceability": 3,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Partially trustworthy",
+    "notes": "Behaviourally sound DES with correct bottleneck conclusions; hardcoded absolute data path and missing payload values in event log block plug-and-play reuse."
   }
 ]

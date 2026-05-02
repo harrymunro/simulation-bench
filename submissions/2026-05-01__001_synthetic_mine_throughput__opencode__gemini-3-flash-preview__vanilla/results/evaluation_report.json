@@ -1,0 +1,329 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "submission_dir": "submissions/2026-05-01__001_synthetic_mine_throughput__opencode__gemini-3-flash-preview__vanilla",
+  "outputs_dir": "submissions/2026-05-01__001_synthetic_mine_throughput__opencode__gemini-3-flash-preview__vanilla",
+  "automated_checks": {
+    "passed": 53,
+    "total": 53,
+    "pass_rate": 1.0,
+    "checks": [
+      {
+        "name": "output_exists_conceptual_model.md",
+        "passed": true,
+        "description": "Required output file conceptual_model.md should exist."
+      },
+      {
+        "name": "output_exists_README.md",
+        "passed": true,
+        "description": "Required output file README.md should exist."
+      },
+      {
+        "name": "output_exists_results.csv",
+        "passed": true,
+        "description": "Required output file results.csv should exist."
+      },
+      {
+        "name": "output_exists_summary.json",
+        "passed": true,
+        "description": "Required output file summary.json should exist."
+      },
+      {
+        "name": "output_exists_event_log.csv",
+        "passed": true,
+        "description": "Required output file event_log.csv should exist."
+      },
+      {
+        "name": "summary_has_benchmark_id",
+        "passed": true,
+        "description": "summary.json should include benchmark_id."
+      },
+      {
+        "name": "summary_has_scenarios_object",
+        "passed": true,
+        "description": "summary.json should include a scenarios object."
+      },
+      {
+        "name": "scenario_present_baseline",
+        "passed": true,
+        "description": "summary.json should include scenario baseline."
+      },
+      {
+        "name": "scenario_present_trucks_4",
+        "passed": true,
+        "description": "summary.json should include scenario trucks_4."
+      },
+      {
+        "name": "scenario_present_trucks_12",
+        "passed": true,
+        "description": "summary.json should include scenario trucks_12."
+      },
+      {
+        "name": "scenario_present_ramp_upgrade",
+        "passed": true,
+        "description": "summary.json should include scenario ramp_upgrade."
+      },
+      {
+        "name": "scenario_present_crusher_slowdown",
+        "passed": true,
+        "description": "summary.json should include scenario crusher_slowdown."
+      },
+      {
+        "name": "scenario_present_ramp_closed",
+        "passed": true,
+        "description": "summary.json should include scenario ramp_closed."
+      },
+      {
+        "name": "trucks_12_has_replications",
+        "passed": true,
+        "description": "trucks_12 should include replications."
+      },
+      {
+        "name": "trucks_12_has_shift_length_hours",
+        "passed": true,
+        "description": "trucks_12 should include shift_length_hours."
+      },
+      {
+        "name": "trucks_12_has_total_tonnes_mean",
+        "passed": true,
+        "description": "trucks_12 should include total_tonnes_mean."
+      },
+      {
+        "name": "trucks_12_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "trucks_12 should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "crusher_slowdown_has_replications",
+        "passed": true,
+        "description": "crusher_slowdown should include replications."
+      },
+      {
+        "name": "crusher_slowdown_has_shift_length_hours",
+        "passed": true,
+        "description": "crusher_slowdown should include shift_length_hours."
+      },
+      {
+        "name": "crusher_slowdown_has_total_tonnes_mean",
+        "passed": true,
+        "description": "crusher_slowdown should include total_tonnes_mean."
+      },
+      {
+        "name": "crusher_slowdown_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "crusher_slowdown should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "ramp_closed_has_replications",
+        "passed": true,
+        "description": "ramp_closed should include replications."
+      },
+      {
+        "name": "ramp_closed_has_shift_length_hours",
+        "passed": true,
+        "description": "ramp_closed should include shift_length_hours."
+      },
+      {
+        "name": "ramp_closed_has_total_tonnes_mean",
+        "passed": true,
+        "description": "ramp_closed should include total_tonnes_mean."
+      },
+      {
+        "name": "ramp_closed_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "ramp_closed should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "ramp_upgrade_has_replications",
+        "passed": true,
+        "description": "ramp_upgrade should include replications."
+      },
+      {
+        "name": "ramp_upgrade_has_shift_length_hours",
+        "passed": true,
+        "description": "ramp_upgrade should include shift_length_hours."
+      },
+      {
+        "name": "ramp_upgrade_has_total_tonnes_mean",
+        "passed": true,
+        "description": "ramp_upgrade should include total_tonnes_mean."
+      },
+      {
+        "name": "ramp_upgrade_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "ramp_upgrade should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "baseline_has_replications",
+        "passed": true,
+        "description": "baseline should include replications."
+      },
+      {
+        "name": "baseline_has_shift_length_hours",
+        "passed": true,
+        "description": "baseline should include shift_length_hours."
+      },
+      {
+        "name": "baseline_has_total_tonnes_mean",
+        "passed": true,
+        "description": "baseline should include total_tonnes_mean."
+      },
+      {
+        "name": "baseline_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "baseline should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "trucks_4_has_replications",
+        "passed": true,
+        "description": "trucks_4 should include replications."
+      },
+      {
+        "name": "trucks_4_has_shift_length_hours",
+        "passed": true,
+        "description": "trucks_4 should include shift_length_hours."
+      },
+      {
+        "name": "trucks_4_has_total_tonnes_mean",
+        "passed": true,
+        "description": "trucks_4 should include total_tonnes_mean."
+      },
+      {
+        "name": "trucks_4_has_tonnes_per_hour_mean",
+        "passed": true,
+        "description": "trucks_4 should include tonnes_per_hour_mean."
+      },
+      {
+        "name": "results_has_scenario_id",
+        "passed": true,
+        "description": "results.csv should include scenario_id."
+      },
+      {
+        "name": "results_has_replication",
+        "passed": true,
+        "description": "results.csv should include replication."
+      },
+      {
+        "name": "results_has_random_seed",
+        "passed": true,
+        "description": "results.csv should include random_seed."
+      },
+      {
+        "name": "results_has_total_tonnes_delivered",
+        "passed": true,
+        "description": "results.csv should include total_tonnes_delivered."
+      },
+      {
+        "name": "results_has_tonnes_per_hour",
+        "passed": true,
+        "description": "results.csv should include tonnes_per_hour."
+      },
+      {
+        "name": "event_log_has_time_min",
+        "passed": true,
+        "description": "event_log.csv should include time_min."
+      },
+      {
+        "name": "event_log_has_replication",
+        "passed": true,
+        "description": "event_log.csv should include replication."
+      },
+      {
+        "name": "event_log_has_scenario_id",
+        "passed": true,
+        "description": "event_log.csv should include scenario_id."
+      },
+      {
+        "name": "event_log_has_truck_id",
+        "passed": true,
+        "description": "event_log.csv should include truck_id."
+      },
+      {
+        "name": "event_log_has_event_type",
+        "passed": true,
+        "description": "event_log.csv should include event_type."
+      },
+      {
+        "name": "trucks_12_gt_trucks_4",
+        "passed": true,
+        "description": "Higher fleet should usually outperform lower fleet."
+      },
+      {
+        "name": "baseline_gt_trucks_4",
+        "passed": true,
+        "description": "Baseline 8-truck case should usually outperform 4-truck case."
+      },
+      {
+        "name": "ramp_upgrade_ge_baseline",
+        "passed": true,
+        "description": "Ramp upgrade should usually improve or maintain throughput."
+      },
+      {
+        "name": "crusher_slowdown_lt_baseline",
+        "passed": true,
+        "description": "Slower crusher should usually reduce throughput."
+      },
+      {
+        "name": "ramp_closed_le_baseline",
+        "passed": true,
+        "description": "Ramp closure should usually not improve throughput."
+      },
+      {
+        "name": "truck_count_saturation_plausible",
+        "passed": true,
+        "description": "Throughput should show some saturation as trucks increase."
+      }
+    ]
+  },
+  "scenario_total_tonnes_means": {
+    "trucks_12": 12700.0,
+    "crusher_slowdown": 6393.333333333333,
+    "ramp_closed": 12350.0,
+    "ramp_upgrade": 12363.333333333334,
+    "baseline": 12350.0,
+    "trucks_4": 7600.0
+  },
+  "quantitative_metrics": {
+    "loc": {
+      "python_file_count": 1,
+      "total_lines": 492,
+      "code_lines": 377,
+      "comment_lines": 34,
+      "blank_lines": 81,
+      "files": [
+        {
+          "path": "submissions/2026-05-01__001_synthetic_mine_throughput__opencode__gemini-3-flash-preview__vanilla/simulation.py",
+          "total_lines": 492,
+          "code_lines": 377,
+          "comment_lines": 34,
+          "blank_lines": 81
+        }
+      ]
+    },
+    "files": {
+      "file_count": 10,
+      "by_suffix": {
+        ".csv": 2,
+        ".json": 3,
+        ".md": 2,
+        ".py": 1,
+        ".txt": 1,
+        "[no_suffix]": 1
+      }
+    },
+    "runtime_seconds": null,
+    "return_code": 0,
+    "timed_out": false,
+    "token_usage": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": 63100,
+      "token_count_method": "reported",
+      "estimated_cost_usd": null
+    }
+  },
+  "notes": [
+    "Automated checks are not a substitute for human review.",
+    "Behavioural checks are broad sanity checks, not exact answer keys.",
+    "Token usage is reported only if supplied by the benchmark runner."
+  ]
+}

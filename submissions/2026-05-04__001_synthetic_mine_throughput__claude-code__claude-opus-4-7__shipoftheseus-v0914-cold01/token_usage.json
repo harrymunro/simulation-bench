@@ -1,0 +1,8 @@
+{
+  "input_tokens": null,
+  "output_tokens": null,
+  "total_tokens": null,
+  "token_count_method": "unknown",
+  "estimated_cost_usd": null,
+  "note": "Claude Code (Opus 4.7, 1M context) running the ShipofTheseus theseus-orchestrator skill v0.9.14 does not expose per-session token totals to the agent at submission time. The full agentic run (15-phase harness + simulation build + verification) consumed approximately 18.5 wall-clock minutes; per-prompt token telemetry was not collected."
+}

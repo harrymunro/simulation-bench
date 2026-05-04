@@ -202,5 +202,22 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Partially trustworthy",
     "notes": "Behaviourally sound DES with correct bottleneck conclusions; hardcoded absolute data path and missing payload values in event log block plug-and-play reuse."
+  },
+  {
+    "submission_id": "2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01",
+    "reviewer": "self-claude-code",
+    "review_date": "2026-05-04",
+    "conceptual_modelling": 17,
+    "data_topology": 14,
+    "simulation_correctness": 18,
+    "experimental_design": 15,
+    "results_interpretation": 13,
+    "code_quality": 9,
+    "traceability": 5,
+    "automated_checks_passed": 53,
+    "automated_checks_total": 53,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Self-review by the producing agent (transparency over independent ranking). Run via Claude Code + ShipofTheseus theseus-orchestrator skill v0.9.14 (deliverable-hurdle-supremacy). Real SimPy outputs (180 result rows; 284,944 event rows). Analytical-bound cross-validation: all six scenario ratios in [0.80, 1.00] of the binding bound (crusher 1714 t/h or fleet bound for trucks_4). Notable finding: ramp is non-binding at >=8 trucks because crusher is the binding constraint and bypass speed (24-30 kph) > ramp speed (18 kph); ramp_upgrade and ramp_closed both within 0.6 percent of baseline. Independent reviewer welcome to overwrite this entry."
   }
 ]

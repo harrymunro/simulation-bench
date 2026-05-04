@@ -1,0 +1,4 @@
+loader_id,node_id,capacity,bucket_capacity_tonnes,mean_load_time_min,sd_load_time_min,availability
+L_N,LOAD_N,1,100,6.5,1.2,1.00
+L_S,LOAD_S,1,100,4.5,1.0,1.00
+

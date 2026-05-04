@@ -1,0 +1,26 @@
+submission_id: 2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01
+date: 2026-05-04
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: claude-code
+  version: "1M-context"
+  notes: "Claude Code with the ShipofTheseus theseus-orchestrator skill v0.9.14 (deliverable-hurdle-supremacy). 15-phase autonomous workflow with multiverse universe selection (3 universes), 5-sub-phase TDD, sprint-regression loop, and analytical-bound cross-validation."
+model:
+  name: claude-opus-4-7
+  vendor: anthropic
+  notes: "1M context window; default thinking budget"
+run_tag: shipoftheseus-v0914-cold01
+operator: whyjp
+status: complete
+intervention:
+  category: autonomous
+  notes: "Phase-04-only interrupt policy honoured; all phase-04 answers were pre-baked by the caller spec (cold-mode benchmark invocation). No human ack during the 18.5-minute autonomous run. Valid categories: autonomous|hints|manual_repair|failed|unrecorded."
+constraints_followed:
+  internet_access: false
+  max_wall_clock_minutes: 90  # harness total budget (single run < 45 min)
+  human_interventions_allowed: 0
+  python_version: "3.13"
+  cold_mode: true
+  external_url_visits: 0
+  prior_solution_reference: 0
+notes: "Cold fresh run — no prior synthetic_mine_throughput_* directories were read. Only data/ from the input prompt was consumed. Internal harness traces (phase artifacts, multiverse universes, sprints, score self-rating) live in the upstream ShipofTheseus repo at .ShipofTheseus/synthetic_mine_throughput_v0914_cold01/."

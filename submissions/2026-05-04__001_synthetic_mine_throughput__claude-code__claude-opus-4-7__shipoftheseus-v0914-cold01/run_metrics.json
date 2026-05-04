@@ -1,0 +1,129 @@
+{
+  "command": "python run_experiment.py",
+  "submission_dir": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01",
+  "started_at": "2026-05-04T10:02:36.307267+00:00",
+  "ended_at": "2026-05-04T10:02:40.920606+00:00",
+  "runtime_seconds": 4.613326,
+  "timed_out": false,
+  "return_code": 0,
+  "stdout_tail": "[run_experiment] starting 6 scenarios\n  baseline: 30 reps, 54656 events, mean t/h=1620.0, elapsed=0.6s\n  trucks_4: 30 reps, 32864 events, mean t/h=984.6, elapsed=0.4s\n  trucks_12: 30 reps, 58320 events, mean t/h=1704.2, elapsed=0.6s\n  ramp_upgrade: 30 reps, 54589 events, mean t/h=1617.9, elapsed=0.6s\n  crusher_slowdown: 30 reps, 30117 events, mean t/h=853.3, elapsed=0.5s\n  ramp_closed: 30 reps, 54398 events, mean t/h=1610.8, elapsed=0.7s\n[run_experiment] done in 3.4s (180 result rows, 284944 event rows)\n",
+  "stderr_tail": "",
+  "loc": {
+    "python_file_count": 14,
+    "total_lines": 1091,
+    "code_lines": 892,
+    "comment_lines": 24,
+    "blank_lines": 175,
+    "files": [
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\run_experiment.py",
+        "total_lines": 142,
+        "code_lines": 120,
+        "comment_lines": 1,
+        "blank_lines": 21
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\analysis.py",
+        "total_lines": 71,
+        "code_lines": 61,
+        "comment_lines": 2,
+        "blank_lines": 8
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\entities.py",
+        "total_lines": 221,
+        "code_lines": 188,
+        "comment_lines": 8,
+        "blank_lines": 25
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\event_log.py",
+        "total_lines": 51,
+        "code_lines": 43,
+        "comment_lines": 0,
+        "blank_lines": 8
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\experiment.py",
+        "total_lines": 112,
+        "code_lines": 89,
+        "comment_lines": 2,
+        "blank_lines": 21
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\resources.py",
+        "total_lines": 118,
+        "code_lines": 98,
+        "comment_lines": 5,
+        "blank_lines": 15
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\scenario.py",
+        "total_lines": 49,
+        "code_lines": 40,
+        "comment_lines": 0,
+        "blank_lines": 9
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\topology.py",
+        "total_lines": 138,
+        "code_lines": 117,
+        "comment_lines": 1,
+        "blank_lines": 20
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\mine_sim\\__init__.py",
+        "total_lines": 2,
+        "code_lines": 2,
+        "comment_lines": 0,
+        "blank_lines": 0
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\tests\\test_analytical.py",
+        "total_lines": 42,
+        "code_lines": 28,
+        "comment_lines": 1,
+        "blank_lines": 13
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\tests\\test_conservation.py",
+        "total_lines": 45,
+        "code_lines": 33,
+        "comment_lines": 1,
+        "blank_lines": 11
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\tests\\test_repro.py",
+        "total_lines": 42,
+        "code_lines": 32,
+        "comment_lines": 1,
+        "blank_lines": 9
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\tests\\test_topology.py",
+        "total_lines": 58,
+        "code_lines": 41,
+        "comment_lines": 2,
+        "blank_lines": 15
+      },
+      {
+        "path": "submissions\\2026-05-04__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__shipoftheseus-v0914-cold01\\tests\\__init__.py",
+        "total_lines": 0,
+        "code_lines": 0,
+        "comment_lines": 0,
+        "blank_lines": 0
+      }
+    ]
+  },
+  "files": {
+    "file_count": 31,
+    "by_suffix": {
+      ".csv": 5,
+      ".json": 2,
+      ".md": 2,
+      ".py": 14,
+      ".txt": 1,
+      ".yaml": 7
+    }
+  }
+}

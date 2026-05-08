@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "outcome_achieved": true,
+  "planned_outcome": "Deliver a SimPy discrete-event simulation of synthetic mine ore throughput producing all required artifacts (results.csv, summary.json, event_log.csv, conceptual_model.md, README.md, topology.png, animation.gif) for 7 scenarios (6 required + trucks_12+ramp_upgrade combo)",
+  "actual_outcome": "Built complete SimPy mine throughput simulation. All 7 scenarios x 30 replications produced results.csv (210 rows), summary.json (7 scenarios with Student-t CIs), event_log.csv (36k events, first 3 reps per scenario), conceptual_model.md, README.md (with operational answers), topology.png, animation.gif. Reachability self-check tested. All design choices honour the interview-decisions memory exactly.",
+  "success_metric_result": "All required artefacts exist; summary.json values non-zero and meaningful across 7 scenarios; reachability self-check fails loudly on broken graphs; experiment runtime 1.2 seconds.",
+  "duration_minutes": 14,
+  "budget": {
+    "tokens_consumed": 60000,
+    "tokens_budgeted": null,
+    "pct_consumed": 6.0
+  },
+  "fleet": {
+    "ships_used": 1,
+    "reliefs": 0,
+    "max_concurrent_ships": 1
+  },
+  "tasks": {
+    "completed": 0,
+    "total": 14,
+    "by_station_tier": {
+      "0": 0,
+      "1": 2,
+      "2": 8,
+      "3": 4
+    }
+  },
+  "quality": {
+    "standing_order_violations": 0,
+    "blockers_raised": 0,
+    "blockers_resolved": 0,
+    "avg_blocker_duration_minutes": null
+  },
+  "open_risks": [],
+  "follow_ups": [],
+  "mentioned_in_despatches": [],
+  "reusable_patterns": {
+    "adopt": [],
+    "avoid": []
+  },
+  "created_at": "2026-05-08T18:29:53Z"
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "outcome": "Deliver a SimPy discrete-event simulation of synthetic mine ore throughput producing all required artifacts (results.csv, summary.json, event_log.csv, conceptual_model.md, README.md, topology.png, animation.gif) for 7 scenarios (6 required + trucks_12+ramp_upgrade combo)",
+  "success_metric": "All 7 scenarios run >=30 reps, summary.json contains non-zero meaningful values with Student-t 95% CIs, evaluate-submission harness passes, reachability self-check enforced, follows interview-decisions memory exactly",
+  "deadline": "this session",
+  "budget": {
+    "token_limit": null,
+    "time_limit_minutes": null
+  },
+  "constraints": [],
+  "out_of_scope": [],
+  "stop_criteria": [],
+  "handoff_artifacts": [],
+  "circuit_breakers": {},
+  "created_at": "2026-05-08T18:10:50Z",
+  "estimate_skipped": true,
+  "estimate_skip_reason": "Design decisions pinned by interview-decisions memory; single-package Python build with linear dependencies; auto mode prefers action."
+}

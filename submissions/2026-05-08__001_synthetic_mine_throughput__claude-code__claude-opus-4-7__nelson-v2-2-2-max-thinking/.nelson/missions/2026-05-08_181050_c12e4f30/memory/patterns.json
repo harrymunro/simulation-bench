@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated_at": "2026-05-08T18:29:53Z",
+  "pattern_count": 1,
+  "patterns": [
+    {
+      "mission_id": "",
+      "completed_at": "2026-05-08T18:29:53Z",
+      "outcome_achieved": true,
+      "planned_outcome": "Deliver a SimPy discrete-event simulation of synthetic mine ore throughput producing all required artifacts (results.csv, summary.json, event_log.csv, conceptual_model.md, README.md, topology.png, animation.gif) for 7 scenarios (6 required + trucks_12+ramp_upgrade combo)",
+      "adopt": [],
+      "avoid": [],
+      "standing_order_violations": [],
+      "damage_control_events": 0,
+      "quality": {
+        "violations": 0,
+        "blockers_raised": 0,
+        "blockers_resolved": 0,
+        "task_completion_rate": 0.0
+      }
+    }
+  ]
+}

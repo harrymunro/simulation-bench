@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {"id": 1, "name": "Scaffolding & Data Loading", "owner": "Admiral", "deliverable": "src/mine_sim/{data,scenarios,topology}.py + requirements.txt; reachability self-check", "station_tier": 2, "depends_on": []},
+    {"id": 2, "name": "Routing & Dispatch", "owner": "Admiral", "deliverable": "src/mine_sim/routing.py with Dijkstra cache + dispatch min(travel + queue*mean_load + own_load)", "station_tier": 2, "depends_on": [1]},
+    {"id": 3, "name": "SimPy Simulation Engine", "owner": "Admiral", "deliverable": "src/mine_sim/simulation.py with one Resource per cap-1 edge, lognormal travel cv=0.10, normal-truncated load/dump, hard cut at 480min, full event log", "station_tier": 3, "depends_on": [2]},
+    {"id": 4, "name": "Experiment Runner & Stats", "owner": "Admiral", "deliverable": "src/mine_sim/{experiment,stats,__main__}.py; CLI; results.csv, summary.json, event_log.csv with Student-t 95% CI", "station_tier": 2, "depends_on": [3]},
+    {"id": 5, "name": "Visualisation", "owner": "Admiral", "deliverable": "src/mine_sim/visualise.py; topology.png + animation.gif", "station_tier": 1, "depends_on": [3]},
+    {"id": 6, "name": "Documentation", "owner": "Admiral", "deliverable": "conceptual_model.md and README.md with operational answers", "station_tier": 2, "depends_on": [4]},
+    {"id": 7, "name": "Execute, Validate, Finalise", "owner": "Admiral", "deliverable": "Run all 7 scenarios, validate outputs, set submission.yaml status: complete", "station_tier": 3, "depends_on": [4, 5, 6]}
+  ],
+  "squadron": {
+    "admiral": "Nelson",
+    "admiral_model": "claude-opus-4-7",
+    "captains": [
+      {"name": "HMS Solo", "ship_class": "flagship", "model": "claude-opus-4-7", "task_id": 1}
+    ],
+    "mode": "single-session"
+  }
+}

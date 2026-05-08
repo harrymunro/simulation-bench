@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:10:57Z",
+      "data": {
+        "from_phase": "SAILING_ORDERS",
+        "to_phase": "ESTIMATE"
+      }
+    },
+    {
+      "type": "estimate_skipped",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:11:48Z",
+      "data": {
+        "reason": "Design decisions pinned by interview-decisions memory; single-package Python build with linear dependencies; auto mode prefers action."
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:11:50Z",
+      "data": {
+        "from_phase": "ESTIMATE",
+        "to_phase": "BATTLE_PLAN"
+      }
+    },
+    {
+      "type": "battle_plan_approved",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:10Z",
+      "data": {
+        "task_count": 14,
+        "parallel_tracks": 14,
+        "critical_path_length": 1,
+        "standing_order_check": {
+          "triggered": [],
+          "remedies": []
+        }
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:10Z",
+      "data": {
+        "from_phase": "BATTLE_PLAN",
+        "to_phase": "FORMATION"
+      }
+    },
+    {
+      "type": "squadron_formed",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:10Z",
+      "data": {
+        "captain_count": 1,
+        "has_red_cell": false,
+        "execution_mode": "single-session",
+        "standing_order_check": {
+          "triggered": [],
+          "remedies": []
+        }
+      }
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:10Z",
+      "data": {
+        "from_phase": "FORMATION",
+        "to_phase": "PERMISSION"
+      }
+    },
+    {
+      "type": "permission_granted",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:24Z",
+      "data": {}
+    },
+    {
+      "type": "phase_transition",
+      "checkpoint": 0,
+      "timestamp": "2026-05-08T18:14:24Z",
+      "data": {
+        "from_phase": "PERMISSION",
+        "to_phase": "UNDERWAY"
+      }
+    },
+    {
+      "type": "checkpoint",
+      "checkpoint": 1,
+      "timestamp": "2026-05-08T18:25:38Z",
+      "data": {
+        "progress": {
+          "pending": 2,
+          "in_progress": 0,
+          "completed": 5,
+          "blocked": 0
+        },
+        "budget": {
+          "tokens_spent": 60000,
+          "tokens_remaining": 940000,
+          "pct_consumed": 6.0,
+          "burn_rate_per_checkpoint": 60000
+        },
+        "hull_summary": {
+          "green": 1,
+          "amber": 0,
+          "red": 0,
+          "critical": 0
+        },
+        "blockers": [],
+        "standing_order_violations": [],
+        "admiral_decision": "continue",
+        "admiral_rationale": "Engine working, results look correct, time to document and seal off"
+      }
+    },
+    {
+      "type": "mission_complete",
+      "checkpoint": 2,
+      "timestamp": "2026-05-08T18:29:53Z",
+      "data": {
+        "outcome_achieved": true,
+        "tasks_completed": 0,
+        "tasks_total": 14,
+        "total_tokens_consumed": 60000,
+        "budget_pct_consumed": 6.0,
+        "duration_minutes": 14,
+        "ships_used": 1,
+        "reliefs": 0,
+        "standing_order_violations_total": 0
+      }
+    }
+  ]
+}

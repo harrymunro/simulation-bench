@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "mission": {
+    "outcome": "Deliver a SimPy discrete-event simulation of synthetic mine ore throughput producing all required artifacts (results.csv, summary.json, event_log.csv, conceptual_model.md, README.md, topology.png, animation.gif) for 7 scenarios (6 required + trucks_12+ramp_upgrade combo)",
+    "status": "complete",
+    "phase": "STAND_DOWN",
+    "started_at": "2026-05-08T18:10:50Z",
+    "checkpoint_number": 2
+  },
+  "progress": {
+    "pending": 2,
+    "in_progress": 0,
+    "completed": 5,
+    "blocked": 0,
+    "total": 7
+  },
+  "budget": {
+    "tokens_spent": 60000,
+    "tokens_remaining": 940000,
+    "pct_consumed": 6.0,
+    "burn_rate_per_checkpoint": 60000,
+    "burn_rate_per_task": 12000,
+    "projected_budget_at_completion": 84000
+  },
+  "squadron": [
+    {
+      "ship_name": "HMS Solo",
+      "ship_class": "flagship",
+      "role": "captain",
+      "hull_integrity_pct": 100,
+      "hull_integrity_status": "Green",
+      "relief_requested": false,
+      "task_id": 1,
+      "task_name": null,
+      "task_status": null
+    }
+  ],
+  "blockers": [],
+  "recent_events": [],
+  "last_updated": "2026-05-08T18:29:53Z"
+}

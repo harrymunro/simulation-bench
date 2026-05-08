@@ -1,0 +1,17 @@
+submission_id: 2026-05-08__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__nelson-v2-2-2-max-thinking
+date: 2026-05-08
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: claude-code
+  version: tbc
+  notes: Claude Code CLI with Nelson v2.2.2
+model:
+  name: claude-opus-4-7
+  vendor: anthropic
+  notes: max thinking budget
+run_tag: nelson-v2-2-2-max-thinking
+operator: harry
+status: complete
+intervention:
+  category: nelson-orchestration
+  notes: "Built end-to-end with Nelson v2.2.2 single-session mode. Design pinned by interview-decisions memory (one SimPy Resource per cap-1 edge, lognormal cv=0.10 travel noise, normal-truncated load/dump, dispatch=min(travel + queue*mean_load + own_load), simultaneous t=0 dispatch, hard cut at 480min, Student-t n-1 95% CIs, per-rep seed=base+rep_idx, WASTE/MAINT excluded, reachability self-check fails loudly). 7 scenarios x 30 reps each."

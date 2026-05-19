@@ -1,0 +1,14 @@
+scenario_id: trucks_12_ramp_upgrade
+inherits: baseline
+description: Proposed Combo - 12 Trucks and Upgraded Ramp
+
+fleet:
+  truck_count: 12
+
+edge_overrides:
+  E03_UP:
+    capacity: 999
+    max_speed_kph: 28
+  E03_DOWN:
+    capacity: 999
+    max_speed_kph: 28

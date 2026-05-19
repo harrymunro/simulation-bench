@@ -1,0 +1,232 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12473.333333333334,
+      "total_tonnes_ci95_low": 12427.40826941461,
+      "total_tonnes_ci95_high": 12519.258397252059,
+      "tonnes_per_hour_mean": 1559.1666666666667,
+      "tonnes_per_hour_ci95_low": 1553.4260336768261,
+      "tonnes_per_hour_ci95_high": 1564.9072996565073,
+      "average_cycle_time_min": 29.831440296793314,
+      "truck_utilisation_mean": 0.7705827387094296,
+      "loader_utilisation": {
+        "L_N": 0.5959402349322338,
+        "L_S": 0.7983699476320456
+      },
+      "crusher_utilisation": 0.9110723882513379,
+      "average_loader_queue_time_min": 2.5003977115420977,
+      "average_crusher_queue_time_min": 3.445048545369142,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N",
+        "E03_UP",
+        "E05_TO_CRUSH",
+        "E09_TO_LOAD_S",
+        "E07_TO_LOAD_N",
+        "E09_FROM_LOAD_S",
+        "E05_FROM_CRUSH"
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 7693.333333333333,
+      "total_tonnes_ci95_low": 7655.438864004081,
+      "total_tonnes_ci95_high": 7731.227802662585,
+      "tonnes_per_hour_mean": 961.6666666666666,
+      "tonnes_per_hour_ci95_low": 956.9298580005101,
+      "tonnes_per_hour_ci95_high": 966.4034753328232,
+      "average_cycle_time_min": 24.337951873836698,
+      "truck_utilisation_mean": 0.9315092496454936,
+      "loader_utilisation": {
+        "L_N": 0.3306491459304611,
+        "L_S": 0.508949528342744
+      },
+      "crusher_utilisation": 0.5601017079358355,
+      "average_loader_queue_time_min": 0.5987095925513093,
+      "average_crusher_queue_time_min": 0.6400969376202461,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N",
+        "E03_UP",
+        "E05_TO_CRUSH",
+        "E09_FROM_LOAD_S",
+        "E09_TO_LOAD_S",
+        "E07_TO_LOAD_N",
+        "E07_FROM_LOAD_N",
+        "E05_FROM_CRUSH"
+      ]
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12903.333333333334,
+      "total_tonnes_ci95_low": 12798.870093278849,
+      "total_tonnes_ci95_high": 13007.796573387819,
+      "tonnes_per_hour_mean": 1612.9166666666667,
+      "tonnes_per_hour_ci95_low": 1599.858761659856,
+      "tonnes_per_hour_ci95_high": 1625.9745716734774,
+      "average_cycle_time_min": 42.6493233559166,
+      "truck_utilisation_mean": 0.5465427764227206,
+      "loader_utilisation": {
+        "L_N": 0.6360653538569673,
+        "L_S": 0.845236607090863
+      },
+      "crusher_utilisation": 0.937951089779019,
+      "average_loader_queue_time_min": 3.380249772916037,
+      "average_crusher_queue_time_min": 14.212138529603518,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N",
+        "E03_UP",
+        "E05_TO_CRUSH",
+        "E09_TO_LOAD_S",
+        "E07_TO_LOAD_N",
+        "E09_FROM_LOAD_S",
+        "E05_FROM_CRUSH",
+        "E07_FROM_LOAD_N"
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12603.333333333334,
+      "total_tonnes_ci95_low": 12532.292482352088,
+      "total_tonnes_ci95_high": 12674.37418431458,
+      "tonnes_per_hour_mean": 1575.4166666666667,
+      "tonnes_per_hour_ci95_low": 1566.536560294011,
+      "tonnes_per_hour_ci95_high": 1584.2967730393225,
+      "average_cycle_time_min": 29.533323506709912,
+      "truck_utilisation_mean": 0.7757679872627333,
+      "loader_utilisation": {
+        "L_N": 0.606401284056142,
+        "L_S": 0.8027619888310195
+      },
+      "crusher_utilisation": 0.9172217350351765,
+      "average_loader_queue_time_min": 2.729156384768072,
+      "average_crusher_queue_time_min": 3.220380374012066,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N",
+        "E09_TO_LOAD_S",
+        "E05_TO_CRUSH",
+        "E07_TO_LOAD_N",
+        "E09_FROM_LOAD_S",
+        "E05_FROM_CRUSH"
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 6526.666666666667,
+      "total_tonnes_ci95_low": 6464.698987424003,
+      "total_tonnes_ci95_high": 6588.634345909331,
+      "tonnes_per_hour_mean": 815.8333333333334,
+      "tonnes_per_hour_ci95_low": 808.0873734280003,
+      "tonnes_per_hour_ci95_high": 823.5792932386664,
+      "average_cycle_time_min": 55.359857625631335,
+      "truck_utilisation_mean": 0.48759954884339457,
+      "loader_utilisation": {
+        "L_N": 0.33452216905923887,
+        "L_S": 0.4418368148447167
+      },
+      "crusher_utilisation": 0.9469217296436044,
+      "average_loader_queue_time_min": 0.5335347838989322,
+      "average_crusher_queue_time_min": 26.43170616442003,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "E03_UP",
+        "L_S",
+        "E05_TO_CRUSH",
+        "L_N",
+        "E09_FROM_LOAD_S",
+        "E09_TO_LOAD_S"
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12273.333333333334,
+      "total_tonnes_ci95_low": 12209.080134451731,
+      "total_tonnes_ci95_high": 12337.586532214937,
+      "tonnes_per_hour_mean": 1534.1666666666667,
+      "tonnes_per_hour_ci95_low": 1526.1350168064664,
+      "tonnes_per_hour_ci95_high": 1542.198316526867,
+      "average_cycle_time_min": 30.319018633766674,
+      "truck_utilisation_mean": 0.7622439024659823,
+      "loader_utilisation": {
+        "L_N": 0.6560047676875008,
+        "L_S": 0.7392049361244825
+      },
+      "crusher_utilisation": 0.9003609394061047,
+      "average_loader_queue_time_min": 3.3850129736805217,
+      "average_crusher_queue_time_min": 3.501640896504038,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_N",
+        "L_S",
+        "E07_TO_LOAD_N",
+        "E05_TO_CRUSH",
+        "E09_TO_LOAD_S",
+        "E09_FROM_LOAD_S",
+        "E05_FROM_CRUSH",
+        "E07_FROM_LOAD_N"
+      ]
+    },
+    "trucks_12_ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12906.666666666666,
+      "total_tonnes_ci95_low": 12804.319023439988,
+      "total_tonnes_ci95_high": 13009.014309893344,
+      "tonnes_per_hour_mean": 1613.3333333333333,
+      "tonnes_per_hour_ci95_low": 1600.5398779299985,
+      "tonnes_per_hour_ci95_high": 1626.126788736668,
+      "average_cycle_time_min": 42.69484696178806,
+      "truck_utilisation_mean": 0.5434764138992636,
+      "loader_utilisation": {
+        "L_N": 0.6362087319261112,
+        "L_S": 0.8347721658598588
+      },
+      "crusher_utilisation": 0.9425583695774317,
+      "average_loader_queue_time_min": 3.5711650698033233,
+      "average_crusher_queue_time_min": 14.693241192716044,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N",
+        "E09_TO_LOAD_S",
+        "E05_TO_CRUSH",
+        "E07_TO_LOAD_N",
+        "E09_FROM_LOAD_S",
+        "E05_FROM_CRUSH"
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Lognormal noise (10% CV) is applied to individual edge-traversal travel times to represent operational variances and prevent non-physical negative times.",
+    "Stochastic loading and dumping service times are truncated normal distributions: max(0.1 min, normal(mean, sd)).",
+    "Empty trucks are dynamically dispatched to loaders from PARK or CRUSH using a min expected completion score: travel_time + (queue_len + active) * loader_mean_load + loader_mean_load.",
+    "All capacity-constrained edges of capacity 1 (such as ramps E03_UP/E03_DOWN, crusher approach, pit roads) are modeled as distinct queuing resources.",
+    "Operations at the waste dump (WASTE) and maintenance bay (MAINT) are omitted since they are outside the primary crusher throughput objective boundary."
+  ],
+  "model_limitations": [
+    "Ramp opposite-direction single-lane mutual exclusions are modeled as independent separate resources (E03_UP and E03_DOWN do not block each other).",
+    "Trucks have perfect global information about queue lengths and active loadings at the exact moment of dispatch.",
+    "No mechanical breakdowns, operator breaks, or weather delays are modeled."
+  ],
+  "additional_scenarios_proposed": [
+    {
+      "scenario_id": "trucks_12_ramp_upgrade",
+      "description": "Proposed combination scenario of larger fleet size (12 trucks) and fully upgraded ramp capacity & speeds to analyze their combined synergetic effect.",
+      "throughput_gain_over_baseline_pct": 3.4740780331373498
+    }
+  ]
+}

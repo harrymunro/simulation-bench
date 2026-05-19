@@ -14,9 +14,12 @@ dashboard/.astro/
 # Inside submissions/, exclude temporary artifacts but keep results/.
 submissions/*/.git/
 submissions/*/__pycache__/
+submissions/*/.venv/
+submissions/*/.nelson/
 
 # Global excludes
 **/__pycache__/
+**/.venv/
 **/.DS_Store
 .beads/
 .dolt/

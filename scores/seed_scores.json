@@ -48,7 +48,7 @@
     "automated_checks_total": 53,
     "behavioural_checks_passed": 6,
     "recommendation": "Marginal-to-solid",
-    "notes": "Ramp scenarios incidentally no-ops because Dijkstra baseline already bypasses E03 — agent did not catch this. Single 415-line sim.py."
+    "notes": "Ramp scenarios incidentally no-ops because Dijkstra baseline already bypasses E03 \u2014 agent did not catch this. Single 415-line sim.py."
   },
   {
     "submission_id": "2026-04-25__001_synthetic_mine_throughput__pi-agent__gemini-3-1-pro-preview__vanilla-customtools",
@@ -202,5 +202,39 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Partially trustworthy",
     "notes": "Behaviourally sound DES with correct bottleneck conclusions; hardcoded absolute data path and missing payload values in event log block plug-and-play reuse."
+  },
+  {
+    "submission_id": "2026-05-08__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__nelson-v2-2-2-max-thinking",
+    "reviewer": "claude-code",
+    "review_date": "2026-05-08",
+    "conceptual_modelling": 19,
+    "data_topology": 14,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 14,
+    "code_quality": 9,
+    "traceability": 5,
+    "automated_checks_passed": 57,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Nelson multi-agent run: complete 7-scenario deliverables, clean 10-module package, all behavioural checks pass; minor over-count in dispatch heuristic and unpopulated run_metrics/token_usage."
+  },
+  {
+    "submission_id": "2026-05-19__001_synthetic_mine_throughput__antigravity__gemini-3-5-flash",
+    "reviewer": "claude-code",
+    "review_date": "2026-05-19",
+    "conceptual_modelling": 18,
+    "data_topology": 14,
+    "simulation_correctness": 18,
+    "experimental_design": 13,
+    "results_interpretation": 14,
+    "code_quality": 7,
+    "traceability": 5,
+    "automated_checks_passed": 57,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Antigravity + Gemini 3.5 Flash: complete 7-scenario SimPy DES, 100% automated pass, exemplary conceptual model and decision answers; absolute path in README and missing requirements.txt/run_metrics/token_usage drag code-quality and telemetry."
   }
 ]

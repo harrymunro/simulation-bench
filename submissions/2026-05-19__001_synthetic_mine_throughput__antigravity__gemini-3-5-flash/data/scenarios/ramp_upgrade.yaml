@@ -1,0 +1,12 @@
+scenario_id: ramp_upgrade
+inherits: baseline
+description: Upgrade the narrow main ramp
+
+edge_overrides:
+  E03_UP:
+    capacity: 999
+    max_speed_kph: 28
+  E03_DOWN:
+    capacity: 999
+    max_speed_kph: 28
+

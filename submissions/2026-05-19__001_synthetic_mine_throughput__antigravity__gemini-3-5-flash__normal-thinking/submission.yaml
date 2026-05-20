@@ -1,0 +1,17 @@
+submission_id: 2026-05-19__001_synthetic_mine_throughput__antigravity__gemini-3-5-flash__normal-thinking
+date: 2026-05-19
+benchmark_id: 001_synthetic_mine_throughput
+harness:
+  name: antigravity
+  version: tbc
+  notes: Antigravity CLI
+model:
+  name: gemini-3-5-flash
+  vendor: google
+  notes: normal thinking level
+run_tag: normal-thinking
+operator: harry
+status: scaffolded
+intervention:
+  category: unrecorded
+  notes: ""

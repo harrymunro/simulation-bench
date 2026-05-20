@@ -1,0 +1,10 @@
+scenario_id: ramp_closed
+inherits: baseline
+description: Main ramp unavailable; traffic should reroute via bypass if possible
+
+edge_overrides:
+  E03_UP:
+    closed: true
+  E03_DOWN:
+    closed: true
+

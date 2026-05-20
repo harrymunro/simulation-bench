@@ -1,0 +1,632 @@
+{
+  "benchmark_id": "001_synthetic_mine_throughput",
+  "scenarios": {
+    "baseline": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12503.33,
+      "total_tonnes_ci95_low": 12416.46,
+      "total_tonnes_ci95_high": 12590.21,
+      "tonnes_per_hour_mean": 1562.92,
+      "tonnes_per_hour_ci95_low": 1552.06,
+      "tonnes_per_hour_ci95_high": 1573.78,
+      "average_cycle_time_min": 29.76,
+      "truck_utilisation_mean": 0.7761,
+      "loader_utilisation": {
+        "L_N": 0.6045,
+        "L_S": 0.8043
+      },
+      "crusher_utilisation": 0.9155,
+      "average_loader_queue_time_min": 2.51,
+      "average_crusher_queue_time_min": 3.35,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.915509116005779,
+          "average_queue_wait_min": 3.337840170399462,
+          "composite_score": 3.05582310377099
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.8043481882626231,
+          "average_queue_wait_min": 2.464490118076718,
+          "composite_score": 1.982308161466146
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.6044558648389546,
+          "average_queue_wait_min": 2.565636008765478,
+          "composite_score": 1.5508137325403009
+        },
+        {
+          "resource_id": "E03_UP",
+          "average_utilisation": 0.053158739313844586,
+          "average_queue_wait_min": 10.858938051374993,
+          "composite_score": 0.5772474570982308
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.42142539197588724,
+          "average_queue_wait_min": 0.15179891480133426,
+          "composite_score": 0.0639719171716666
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.35859735222414035,
+          "average_queue_wait_min": 0.014152447542414456,
+          "composite_score": 0.005075030216200866
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.19174883216688432,
+          "average_queue_wait_min": 0.015561491393490275,
+          "composite_score": 0.0029838978014767818
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.41439367250842807,
+          "average_queue_wait_min": 0.003804005524960172,
+          "composite_score": 0.0015763558197305965
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.35130067184693853,
+          "average_queue_wait_min": 0.0010080611193692358,
+          "composite_score": 0.00035413254849718946
+        },
+        {
+          "resource_id": "E03_DOWN",
+          "average_utilisation": 0.0,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.21965285370947457,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        }
+      ]
+    },
+    "trucks_4": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 7623.33,
+      "total_tonnes_ci95_low": 7594.44,
+      "total_tonnes_ci95_high": 7652.23,
+      "tonnes_per_hour_mean": 952.92,
+      "tonnes_per_hour_ci95_low": 949.3,
+      "tonnes_per_hour_ci95_high": 956.53,
+      "average_cycle_time_min": 24.49,
+      "truck_utilisation_mean": 0.9282,
+      "loader_utilisation": {
+        "L_N": 0.3216,
+        "L_S": 0.5126
+      },
+      "crusher_utilisation": 0.5629,
+      "average_loader_queue_time_min": 0.7,
+      "average_crusher_queue_time_min": 0.74,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.5629167414595616,
+          "average_queue_wait_min": 0.7365938102480905,
+          "composite_score": 0.41464098744413774
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.5125629967104012,
+          "average_queue_wait_min": 0.6901830248852765,
+          "composite_score": 0.3537622795138467
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.3216360004957442,
+          "average_queue_wait_min": 0.7019391283054999,
+          "composite_score": 0.22576889381965
+        },
+        {
+          "resource_id": "E03_UP",
+          "average_utilisation": 0.026318468596303015,
+          "average_queue_wait_min": 4.542996376542272,
+          "composite_score": 0.11956470746914616
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.2556752728581998,
+          "average_queue_wait_min": 0.09014450834262325,
+          "composite_score": 0.023047721767168468
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.2308831971109795,
+          "average_queue_wait_min": 0.008028174305112294,
+          "composite_score": 0.0018535705505285426
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.1030393838519225,
+          "average_queue_wait_min": 0.008114285934095154,
+          "composite_score": 0.0008360910230474862
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.26738790473568946,
+          "average_queue_wait_min": 0.0011664904755832465,
+          "composite_score": 0.0003119054441603422
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.21478471379747283,
+          "average_queue_wait_min": 0.0007775461916216326,
+          "composite_score": 0.0001670050362317673
+        },
+        {
+          "resource_id": "E03_DOWN",
+          "average_utilisation": 0.0,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.11782346180885404,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        }
+      ]
+    },
+    "trucks_12": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12896.67,
+      "total_tonnes_ci95_low": 12810.35,
+      "total_tonnes_ci95_high": 12982.98,
+      "tonnes_per_hour_mean": 1612.08,
+      "tonnes_per_hour_ci95_low": 1601.29,
+      "tonnes_per_hour_ci95_high": 1622.87,
+      "average_cycle_time_min": 42.67,
+      "truck_utilisation_mean": 0.5484,
+      "loader_utilisation": {
+        "L_N": 0.6428,
+        "L_S": 0.8502
+      },
+      "crusher_utilisation": 0.9415,
+      "average_loader_queue_time_min": 3.39,
+      "average_crusher_queue_time_min": 14.25,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.9414765963289959,
+          "average_queue_wait_min": 14.232974079516165,
+          "composite_score": 13.400011992021703
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.8502005286127094,
+          "average_queue_wait_min": 3.6529431027736368,
+          "composite_score": 3.105734156970297
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.6427529733033882,
+          "average_queue_wait_min": 3.123925097122172,
+          "composite_score": 2.007912144552352
+        },
+        {
+          "resource_id": "E03_UP",
+          "average_utilisation": 0.07939026425801327,
+          "average_queue_wait_min": 17.124822200537583,
+          "composite_score": 1.359544159872171
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.44718168300294153,
+          "average_queue_wait_min": 0.15911103882332658,
+          "composite_score": 0.07115154212536155
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.3814420990573642,
+          "average_queue_wait_min": 0.02565149975378214,
+          "composite_score": 0.00978456191005212
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.4373939589053955,
+          "average_queue_wait_min": 0.007574335743300088,
+          "composite_score": 0.003312968696840667
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.2040955744551424,
+          "average_queue_wait_min": 0.01596605413481651,
+          "composite_score": 0.003258600990427277
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.3623131993949634,
+          "average_queue_wait_min": 0.0012563374528052678,
+          "composite_score": 0.00045518764204559547
+        },
+        {
+          "resource_id": "E03_DOWN",
+          "average_utilisation": 0.0,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.23144355133587574,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        }
+      ]
+    },
+    "ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12556.67,
+      "total_tonnes_ci95_low": 12488.25,
+      "total_tonnes_ci95_high": 12625.09,
+      "tonnes_per_hour_mean": 1569.58,
+      "tonnes_per_hour_ci95_low": 1561.03,
+      "tonnes_per_hour_ci95_high": 1578.14,
+      "average_cycle_time_min": 29.66,
+      "truck_utilisation_mean": 0.7765,
+      "loader_utilisation": {
+        "L_N": 0.6105,
+        "L_S": 0.8097
+      },
+      "crusher_utilisation": 0.9185,
+      "average_loader_queue_time_min": 2.72,
+      "average_crusher_queue_time_min": 3.32,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.9184531020928743,
+          "average_queue_wait_min": 3.3160181953001047,
+          "composite_score": 3.045607198069796
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.8096943844958938,
+          "average_queue_wait_min": 2.8108030013897536,
+          "composite_score": 2.2758914061494875
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.6105043973287333,
+          "average_queue_wait_min": 2.633596663377865,
+          "composite_score": 1.6078223437824664
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.3618569423784241,
+          "average_queue_wait_min": 0.612482293953669,
+          "composite_score": 0.2216309701509978
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.4224727339219935,
+          "average_queue_wait_min": 0.15188976602053242,
+          "composite_score": 0.06416928470546625
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.19112432919118355,
+          "average_queue_wait_min": 0.016935138376991205,
+          "composite_score": 0.003236716962062313
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.41646629835452476,
+          "average_queue_wait_min": 0.0061882946970563,
+          "composite_score": 0.0025772161856099725
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.35117304488809614,
+          "average_queue_wait_min": 0.0011402036265252913,
+          "composite_score": 0.0004004087793193361
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.21937622147047786,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        }
+      ]
+    },
+    "crusher_slowdown": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 6530.0,
+      "total_tonnes_ci95_low": 6455.22,
+      "total_tonnes_ci95_high": 6604.78,
+      "tonnes_per_hour_mean": 816.25,
+      "tonnes_per_hour_ci95_low": 806.9,
+      "tonnes_per_hour_ci95_high": 825.6,
+      "average_cycle_time_min": 55.29,
+      "truck_utilisation_mean": 0.4895,
+      "loader_utilisation": {
+        "L_N": 0.336,
+        "L_S": 0.4409
+      },
+      "crusher_utilisation": 0.9551,
+      "average_loader_queue_time_min": 0.49,
+      "average_crusher_queue_time_min": 26.48,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "E03_UP",
+        "L_S"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.9551226642268404,
+          "average_queue_wait_min": 26.442521683844596,
+          "composite_score": 25.25585175954965
+        },
+        {
+          "resource_id": "E03_UP",
+          "average_utilisation": 0.053158739313844586,
+          "average_queue_wait_min": 10.858938051374993,
+          "composite_score": 0.5772474570982308
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.44092291394886646,
+          "average_queue_wait_min": 0.8782383534159364,
+          "composite_score": 0.3872354139298091
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.33600030129728614,
+          "average_queue_wait_min": 0.10531994915132573,
+          "composite_score": 0.0353875346474603
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.2346839982056088,
+          "average_queue_wait_min": 0.1358582179602919,
+          "composite_score": 0.03188374978001036
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.23014529677982548,
+          "average_queue_wait_min": 0.001351693324155133,
+          "composite_score": 0.0003110858612429919
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.19894161090628112,
+          "average_queue_wait_min": 8.744515404208486e-05,
+          "composite_score": 1.7396479811080262e-05
+        },
+        {
+          "resource_id": "E03_DOWN",
+          "average_utilisation": 0.0,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.1061972717540928,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.12158462601417172,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.18371275512563712,
+          "average_queue_wait_min": 0.0,
+          "composite_score": 0.0
+        }
+      ]
+    },
+    "ramp_closed": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12393.33,
+      "total_tonnes_ci95_low": 12341.51,
+      "total_tonnes_ci95_high": 12445.16,
+      "tonnes_per_hour_mean": 1549.17,
+      "tonnes_per_hour_ci95_low": 1542.69,
+      "tonnes_per_hour_ci95_high": 1555.65,
+      "average_cycle_time_min": 30.04,
+      "truck_utilisation_mean": 0.7707,
+      "loader_utilisation": {
+        "L_N": 0.6604,
+        "L_S": 0.7525
+      },
+      "crusher_utilisation": 0.9024,
+      "average_loader_queue_time_min": 3.5,
+      "average_crusher_queue_time_min": 3.13,
+      "top_bottlenecks": [
+        "L_N",
+        "D_CRUSH",
+        "L_S"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.6604491668413769,
+          "average_queue_wait_min": 4.7871308320294865,
+          "composite_score": 3.1616565695745416
+        },
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.9023601296993273,
+          "average_queue_wait_min": 3.1247493882286146,
+          "composite_score": 2.8196492632398664
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.7525154734507729,
+          "average_queue_wait_min": 2.2057352024991617,
+          "composite_score": 1.659849870215693
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.20938904556051813,
+          "average_queue_wait_min": 1.0649138277951453,
+          "composite_score": 0.22298129000622344
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.41701205880908343,
+          "average_queue_wait_min": 0.1500846569169454,
+          "composite_score": 0.06258711177659035
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.3376795342122254,
+          "average_queue_wait_min": 0.013616437379060656,
+          "composite_score": 0.004597992231791138
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.388241244914941,
+          "average_queue_wait_min": 0.005603094923985818,
+          "composite_score": 0.0021753525486648407
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.34790620909341025,
+          "average_queue_wait_min": 0.00036868133758711255,
+          "composite_score": 0.00012826652652342014
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.23993352717760288,
+          "average_queue_wait_min": 5.527989065922703e-05,
+          "composite_score": 1.3263499147860565e-05
+        }
+      ]
+    },
+    "trucks_12_ramp_upgrade": {
+      "replications": 30,
+      "shift_length_hours": 8,
+      "total_tonnes_mean": 12876.67,
+      "total_tonnes_ci95_low": 12790.24,
+      "total_tonnes_ci95_high": 12963.1,
+      "tonnes_per_hour_mean": 1609.58,
+      "tonnes_per_hour_ci95_low": 1598.78,
+      "tonnes_per_hour_ci95_high": 1620.39,
+      "average_cycle_time_min": 42.72,
+      "truck_utilisation_mean": 0.5467,
+      "loader_utilisation": {
+        "L_N": 0.6467,
+        "L_S": 0.8512
+      },
+      "crusher_utilisation": 0.947,
+      "average_loader_queue_time_min": 3.81,
+      "average_crusher_queue_time_min": 14.37,
+      "top_bottlenecks": [
+        "D_CRUSH",
+        "L_S",
+        "L_N"
+      ],
+      "detailed_bottlenecks": [
+        {
+          "resource_id": "D_CRUSH",
+          "average_utilisation": 0.9470012025043532,
+          "average_queue_wait_min": 14.353620753780728,
+          "composite_score": 13.592896114121789
+        },
+        {
+          "resource_id": "L_S",
+          "average_utilisation": 0.8511861839062788,
+          "average_queue_wait_min": 4.448309788526163,
+          "composite_score": 3.78633983372853
+        },
+        {
+          "resource_id": "L_N",
+          "average_utilisation": 0.6466624820651105,
+          "average_queue_wait_min": 3.181088443823315,
+          "composite_score": 2.0570905487514244
+        },
+        {
+          "resource_id": "E09_TO_LOAD_S",
+          "average_utilisation": 0.3793906053335806,
+          "average_queue_wait_min": 1.3854612606772823,
+          "composite_score": 0.5256309863545798
+        },
+        {
+          "resource_id": "E05_TO_CRUSH",
+          "average_utilisation": 0.44802821650763314,
+          "average_queue_wait_min": 0.16258926705809773,
+          "composite_score": 0.0728445793433228
+        },
+        {
+          "resource_id": "E07_TO_LOAD_N",
+          "average_utilisation": 0.20391296233128023,
+          "average_queue_wait_min": 0.015484566476095083,
+          "composite_score": 0.0031575038205561815
+        },
+        {
+          "resource_id": "E09_FROM_LOAD_S",
+          "average_utilisation": 0.4398021094848985,
+          "average_queue_wait_min": 0.00456471858684882,
+          "composite_score": 0.002007572863701036
+        },
+        {
+          "resource_id": "E05_FROM_CRUSH",
+          "average_utilisation": 0.36096300162629535,
+          "average_queue_wait_min": 0.0011697684818592344,
+          "composite_score": 0.0004222431424197439
+        },
+        {
+          "resource_id": "E07_FROM_LOAD_N",
+          "average_utilisation": 0.23282032007503947,
+          "average_queue_wait_min": 0.0004471510031582447,
+          "composite_score": 0.00010410583967717751
+        }
+      ]
+    }
+  },
+  "key_assumptions": [
+    "Shift length is strictly hard cut at 480 minutes (8 hours) with simultaneous start of all trucks from the parking node.",
+    "Shortest-time routing is precomputed and cached per scenario via NetworkX Dijkstra on free-flow speeds.",
+    "Truck speed scales dynamically: 100% when empty, 85% when loaded, applied as multipliers on edge max speeds.",
+    "Stochastic edge travel times are sampled using lognormal noise with coefficient of variation CV=0.10.",
+    "Stochastic loading and dumping times are modeled as truncated normal distributions with a lower bound of 0.1 minutes.",
+    "Truck dispatch follows a dynamic heuristic that minimizes expected completion time: travel_time + queue_len * mean_load_time + own_load_time."
+  ],
+  "model_limitations": [
+    "Truck and loader maintenance, breakdowns, and refueling events are excluded from the model boundaries.",
+    "Maneuvering, spotting, and crusher hopper level constraints are simplified.",
+    "Waste and maintenance routing have been excluded based on the analysis boundary."
+  ],
+  "additional_scenarios_proposed": [
+    {
+      "scenario_id": "trucks_12_ramp_upgrade",
+      "description": "Combination of 12-truck fleet expansion and main narrow ramp upgrade. Proves that fleet expansion is highly effective only when the ramp constraint is eliminated, resulting in a dramatic synergistic improvement in mine throughput."
+    }
+  ]
+}

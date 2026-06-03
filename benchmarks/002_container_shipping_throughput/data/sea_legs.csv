@@ -1,0 +1,25 @@
+leg_id,from_node,to_node,distance_nm,max_speed_kn,leg_type,capacity,closed,metadata
+L01_SHA_MAL,CNSHA,MALACCA,2150,25,ocean,999,false,Shanghai to Malacca Strait
+L01_MAL_SHA,MALACCA,CNSHA,2150,25,ocean,999,false,Malacca Strait to Shanghai (return)
+L02_SIN_MAL,SGSIN,MALACCA,150,14,strait,999,false,Singapore to Malacca Strait
+L02_MAL_SIN,MALACCA,SGSIN,150,14,strait,999,false,Malacca Strait to Singapore (return)
+L03_MAL_IOX,MALACCA,IOX,1500,25,ocean,999,false,Malacca Strait to Indian Ocean junction
+L03_IOX_MAL,IOX,MALACCA,1500,25,ocean,999,false,Indian Ocean junction to Malacca Strait (return)
+L04_IOX_BAB,IOX,BAB,2300,25,ocean,999,false,Indian Ocean junction to Bab-el-Mandeb (Suez routing)
+L04_BAB_IOX,BAB,IOX,2300,25,ocean,999,false,Bab-el-Mandeb to Indian Ocean junction (return)
+L05_BAB_SUZ,BAB,SUEZSOUTH,1300,13,strait,999,false,Red Sea transit to Suez southern entrance
+L05_SUZ_BAB,SUEZSOUTH,BAB,1300,13,strait,999,false,Suez southern entrance to Red Sea (return)
+L06_CANAL_NB,SUEZSOUTH,PORTSAID,100,8,canal,3,false,"Suez Canal northbound transit; capacity-constrained convoy chokepoint"
+L06_CANAL_SB,PORTSAID,SUEZSOUTH,100,8,canal,3,false,"Suez Canal southbound transit; same physical constraint, separate direction"
+L07_PSD_GIB,PORTSAID,GIB,1900,22,ocean,999,false,Mediterranean transit Port Said to Gibraltar
+L07_GIB_PSD,GIB,PORTSAID,1900,22,ocean,999,false,Gibraltar to Port Said (return)
+L08_GIB_RTM,GIB,NLRTM,1500,24,ocean,999,false,Gibraltar to Rotterdam (Atlantic)
+L08_RTM_GIB,NLRTM,GIB,1500,24,ocean,999,false,Rotterdam to Gibraltar (return)
+L09_RTM_HAM,NLRTM,DEHAM,400,16,coastal,999,false,Rotterdam to Hamburg feeder hop
+L09_HAM_RTM,DEHAM,NLRTM,400,16,coastal,999,false,Hamburg to Rotterdam feeder hop
+L10_IOX_CAPE,IOX,CAPE,4000,25,ocean,999,false,Indian Ocean junction to Cape of Good Hope
+L10_CAPE_IOX,CAPE,IOX,4000,25,ocean,999,false,Cape of Good Hope to Indian Ocean junction (return)
+L11_CAPE_WAFR,CAPE,WAFR,3500,25,ocean,999,false,Cape of Good Hope to West Africa Atlantic
+L11_WAFR_CAPE,WAFR,CAPE,3500,25,ocean,999,false,West Africa Atlantic to Cape of Good Hope (return)
+L12_WAFR_RTM,WAFR,NLRTM,2800,24,ocean,999,false,West Africa Atlantic to Rotterdam
+L12_RTM_WAFR,NLRTM,WAFR,2800,24,ocean,999,false,Rotterdam to West Africa Atlantic (return)

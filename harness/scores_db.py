@@ -17,7 +17,7 @@ from typing import Optional
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = REPO_ROOT / "scores" / "scores.db"
 
-SCHEMA = """
+SCHEMA_TABLES = """
 CREATE TABLE IF NOT EXISTS submissions (
     submission_id         TEXT PRIMARY KEY,
     run_date              TEXT NOT NULL,
@@ -39,6 +39,8 @@ CREATE TABLE IF NOT EXISTS scores (
     score_id                  INTEGER PRIMARY KEY AUTOINCREMENT,
     submission_id             TEXT NOT NULL REFERENCES submissions(submission_id) ON DELETE CASCADE,
     reviewer                  TEXT NOT NULL,
+    reviewer_model            TEXT,
+    reviewer_harness          TEXT,
     review_date               TEXT NOT NULL,
     conceptual_modelling      INTEGER NOT NULL CHECK (conceptual_modelling BETWEEN 0 AND 20),
     data_topology             INTEGER NOT NULL CHECK (data_topology BETWEEN 0 AND 15),
@@ -59,7 +61,11 @@ CREATE TABLE IF NOT EXISTS scores (
 
 CREATE INDEX IF NOT EXISTS idx_scores_submission ON scores(submission_id);
 CREATE INDEX IF NOT EXISTS idx_scores_total      ON scores(total_score);
+"""
 
+# The leaderboard view is (re)created after column migrations so it can reference
+# columns added to pre-existing databases.
+SCHEMA_VIEW = """
 DROP VIEW IF EXISTS leaderboard;
 CREATE VIEW leaderboard AS
 SELECT
@@ -84,6 +90,8 @@ SELECT
     sc.code_quality,
     sc.traceability,
     sc.reviewer,
+    sc.reviewer_model,
+    sc.reviewer_harness,
     sc.review_date,
     sc.recommendation,
     sc.notes
@@ -127,6 +135,8 @@ class ScoreRecord:
     behavioural_checks_passed: Optional[int] = None
     recommendation: Optional[str] = None
     notes: Optional[str] = None
+    reviewer_model: Optional[str] = None
+    reviewer_harness: Optional[str] = None
 
     @property
     def total_score(self) -> int:
@@ -180,13 +190,26 @@ _NEW_SUBMISSION_COLUMNS = (
     ("intervention_category", "TEXT"),
 )
 
+_NEW_SCORE_COLUMNS = (
+    ("reviewer_model", "TEXT"),
+    ("reviewer_harness", "TEXT"),
+)
+
+
+def _add_missing_columns(conn: sqlite3.Connection, table: str, columns) -> None:
+    existing = {row[1] for row in conn.execute(f"PRAGMA table_info({table})")}
+    for name, sql_type in columns:
+        if name not in existing:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {name} {sql_type}")
+
 
 def init_schema(conn: sqlite3.Connection) -> None:
-    conn.executescript(SCHEMA)
-    existing = {row[1] for row in conn.execute("PRAGMA table_info(submissions)")}
-    for name, sql_type in _NEW_SUBMISSION_COLUMNS:
-        if name not in existing:
-            conn.execute(f"ALTER TABLE submissions ADD COLUMN {name} {sql_type}")
+    # Create tables first, then migrate any pre-existing DB to add new columns,
+    # then (re)create the view so it can reference the migrated columns.
+    conn.executescript(SCHEMA_TABLES)
+    _add_missing_columns(conn, "submissions", _NEW_SUBMISSION_COLUMNS)
+    _add_missing_columns(conn, "scores", _NEW_SCORE_COLUMNS)
+    conn.executescript(SCHEMA_VIEW)
     conn.commit()
 
 
@@ -235,15 +258,17 @@ def insert_score(conn: sqlite3.Connection, score: ScoreRecord) -> int:
     cursor = conn.execute(
         """
         INSERT INTO scores (
-            submission_id, reviewer, review_date,
+            submission_id, reviewer, reviewer_model, reviewer_harness, review_date,
             conceptual_modelling, data_topology, simulation_correctness,
             experimental_design, results_interpretation, code_quality, traceability,
             total_score,
             automated_checks_passed, automated_checks_total, behavioural_checks_passed,
             recommendation, notes
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(submission_id, reviewer, review_date) DO UPDATE SET
+            reviewer_model            = excluded.reviewer_model,
+            reviewer_harness          = excluded.reviewer_harness,
             conceptual_modelling      = excluded.conceptual_modelling,
             data_topology             = excluded.data_topology,
             simulation_correctness    = excluded.simulation_correctness,
@@ -261,6 +286,8 @@ def insert_score(conn: sqlite3.Connection, score: ScoreRecord) -> int:
         (
             score.submission_id,
             score.reviewer,
+            score.reviewer_model,
+            score.reviewer_harness,
             score.review_date,
             score.conceptual_modelling,
             score.data_topology,

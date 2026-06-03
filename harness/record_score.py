@@ -128,6 +128,8 @@ def _record_from_dict(conn, payload: dict, *, submissions_root: Path | None = No
     score = ScoreRecord(
         submission_id=payload["submission_id"],
         reviewer=payload["reviewer"],
+        reviewer_model=payload.get("reviewer_model"),
+        reviewer_harness=payload.get("reviewer_harness"),
         review_date=payload["review_date"],
         conceptual_modelling=int(payload["conceptual_modelling"]),
         data_topology=int(payload["data_topology"]),
@@ -158,6 +160,8 @@ def main() -> int:
 
     parser.add_argument("--submission")
     parser.add_argument("--reviewer")
+    parser.add_argument("--reviewer-model", help="Model that performed the review, e.g. claude-opus-4-8")
+    parser.add_argument("--reviewer-harness", help="Harness that drove the reviewing model, e.g. claude-code")
     parser.add_argument("--review-date")
     parser.add_argument("--conceptual", type=int)
     parser.add_argument("--data", type=int)
@@ -197,6 +201,8 @@ def main() -> int:
     payload = {
         "submission_id": args.submission,
         "reviewer": args.reviewer,
+        "reviewer_model": args.reviewer_model,
+        "reviewer_harness": args.reviewer_harness,
         "review_date": args.review_date,
         "conceptual_modelling": args.conceptual,
         "data_topology": args.data,

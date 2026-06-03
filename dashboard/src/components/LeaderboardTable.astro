@@ -26,6 +26,9 @@ interface Row {
   tokenCountMethod: string | null;
   runtimeSeconds: number | null;
   interventionCategory: string;
+  reviewer: string | null;
+  reviewerModel: string | null;
+  reviewerHarness: string | null;
 }
 
 interface Props {
@@ -33,6 +36,7 @@ interface Props {
 }
 
 const { rows } = Astro.props;
+const benchmarks = Array.from(new Set(rows.map((r) => r.benchmarkId))).sort();
 
 function formatTokens(n: number | null): string {
   if (n === null || n === undefined) return "—";
@@ -56,7 +60,19 @@ function tokenTooltip(r: Row): string {
   parts.push(`method: ${r.tokenCountMethod ?? "unknown"}`);
   return parts.join(" · ");
 }
+
+function reviewerLabel(r: Row): string {
+  return r.reviewerModel ?? r.reviewer ?? "—";
+}
 ---
+<div class="leaderboard-controls">
+  <label for="benchmark-filter">Benchmark:</label>
+  <select id="benchmark-filter">
+    <option value="__all__">All benchmarks</option>
+    {benchmarks.map((b) => <option value={b}>{b}</option>)}
+  </select>
+  <span id="leaderboard-count" class="count"></span>
+</div>
 <table id="leaderboard">
   <thead>
     <tr>
@@ -78,11 +94,12 @@ function tokenTooltip(r: Row): string {
       <th data-sort="interventionCategory" data-type="string">
         <a href="/methodology/protocol/#8-recording-interventions">Intervention</a>
       </th>
+      <th data-sort="reviewerModel" data-type="string">Reviewer</th>
     </tr>
   </thead>
   <tbody>
     {rows.map((row, i) => (
-      <tr data-row={JSON.stringify(row)}>
+      <tr data-row={JSON.stringify(row)} data-benchmark={row.benchmarkId}>
         <td>{i + 1}</td>
         <td>{row.runDate}</td>
         <td>{row.benchmarkId}</td>
@@ -95,6 +112,7 @@ function tokenTooltip(r: Row): string {
         <td title={tokenTooltip(row)}>{formatTokens(row.totalTokens)}</td>
         <td>{formatSeconds(row.runtimeSeconds)}</td>
         <td><InterventionBadge category={row.interventionCategory} /></td>
+        <td title={row.reviewerHarness ? `via ${row.reviewerHarness}` : ""}>{reviewerLabel(row)}</td>
       </tr>
     ))}
   </tbody>
@@ -102,10 +120,38 @@ function tokenTooltip(r: Row): string {
 
 <script>
   const table = document.getElementById("leaderboard") as HTMLTableElement | null;
+  const filter = document.getElementById("benchmark-filter") as HTMLSelectElement | null;
+  const count = document.getElementById("leaderboard-count");
   if (table) {
     const tbody = table.querySelector("tbody")!;
     let activeKey: string | null = null;
     let activeDir: 1 | -1 = -1;
+
+    function visibleRows(): HTMLTableRowElement[] {
+      return Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr")).filter(
+        (r) => r.style.display !== "none"
+      );
+    }
+
+    function renumber() {
+      visibleRows().forEach((r, i) => {
+        r.querySelector("td")!.textContent = String(i + 1);
+      });
+    }
+
+    function applyFilter() {
+      const selected = filter?.value ?? "__all__";
+      const all = Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr"));
+      let shown = 0;
+      all.forEach((r) => {
+        const match = selected === "__all__" || r.getAttribute("data-benchmark") === selected;
+        r.style.display = match ? "" : "none";
+        if (match) shown += 1;
+      });
+      if (count) count.textContent = `Showing ${shown} of ${all.length}`;
+      renumber();
+    }
+
     table.querySelectorAll("th[data-sort]").forEach((th) => {
       th.addEventListener("click", () => {
         const key = th.getAttribute("data-sort")!;
@@ -117,8 +163,8 @@ function tokenTooltip(r: Row): string {
           activeKey = key;
           activeDir = defaultDesc ? -1 : 1;
         }
-        const rows = Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr"));
-        rows.sort((a, b) => {
+        const rowsArr = Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr"));
+        rowsArr.sort((a, b) => {
           if (key === "rank") return 0;
           const aRow = JSON.parse(a.getAttribute("data-row")!);
           const bRow = JSON.parse(b.getAttribute("data-row")!);
@@ -129,11 +175,30 @@ function tokenTooltip(r: Row): string {
           if (type === "number") return ((aVal as number) - (bVal as number)) * activeDir;
           return String(aVal).localeCompare(String(bVal)) * activeDir;
         });
-        rows.forEach((r, i) => {
-          r.querySelector("td")!.textContent = String(i + 1);
-          tbody.appendChild(r);
-        });
+        rowsArr.forEach((r) => tbody.appendChild(r));
+        applyFilter();
       });
     });
+
+    filter?.addEventListener("change", applyFilter);
+    applyFilter();
   }
 </script>
+
+<style>
+  .leaderboard-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  .leaderboard-controls select {
+    padding: 0.25rem 0.5rem;
+    font: inherit;
+  }
+  .leaderboard-controls .count {
+    color: var(--muted, #888);
+    font-size: 0.9em;
+  }
+</style>

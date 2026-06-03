@@ -1,12 +1,8 @@
 benchmark_id: 001_synthetic_mine_throughput
 
-required_scenarios:
-  - baseline
-  - trucks_4
-  - trucks_12
-  - ramp_upgrade
-  - crusher_slowdown
-  - ramp_closed
+# Structured, benchmark-aware config consumed by harness/evaluate_submission.py.
+# These values reproduce the harness's original hard-coded behaviour for 001
+# exactly; the harness is now generic and reads them from here.
 
 required_output_files:
   - conceptual_model.md
@@ -14,6 +10,14 @@ required_output_files:
   - results.csv
   - summary.json
   - event_log.csv
+
+required_scenarios:
+  - baseline
+  - trucks_4
+  - trucks_12
+  - ramp_upgrade
+  - crusher_slowdown
+  - ramp_closed
 
 required_results_columns:
   - scenario_id
@@ -29,17 +33,56 @@ required_event_log_columns:
   - truck_id
   - event_type
 
-behavioural_checks:
-  trucks_12_gt_trucks_4:
-    description: Higher fleet should usually outperform lower fleet.
-    expression: "total_tonnes_mean[trucks_12] > total_tonnes_mean[trucks_4]"
-  ramp_upgrade_ge_baseline:
-    description: Ramp upgrade should usually improve or maintain throughput.
-    expression: "total_tonnes_mean[ramp_upgrade] >= 0.95 * total_tonnes_mean[baseline]"
-  crusher_slowdown_lt_baseline:
-    description: Slower crusher should usually reduce throughput.
-    expression: "total_tonnes_mean[crusher_slowdown] < total_tonnes_mean[baseline]"
-  ramp_closed_le_baseline:
-    description: Ramp closure should usually not improve throughput.
-    expression: "total_tonnes_mean[ramp_closed] <= 1.05 * total_tonnes_mean[baseline]"
+summary_required_scenario_keys:
+  - replications
+  - shift_length_hours
+  - total_tonnes_mean
+  - tonnes_per_hour_mean
 
+primary_metric:
+  label: Tonnes delivered to crusher
+  summary_mean_keys:
+    - total_tonnes_mean
+  results_value_columns:
+    - total_tonnes_delivered
+    - total_tonnes_mean
+  results_column_regex: null
+
+behavioural_checks:
+  - name: trucks_12_gt_trucks_4
+    type: gt
+    left: trucks_12
+    right: trucks_4
+    description: Higher fleet should usually outperform lower fleet.
+  - name: baseline_gt_trucks_4
+    type: gt
+    left: baseline
+    right: trucks_4
+    description: Baseline 8-truck case should usually outperform 4-truck case.
+  - name: ramp_upgrade_ge_baseline
+    type: ge_factor
+    factor: 0.95
+    left: ramp_upgrade
+    right: baseline
+    description: Ramp upgrade should usually improve or maintain throughput.
+  - name: crusher_slowdown_lt_baseline
+    type: lt
+    left: crusher_slowdown
+    right: baseline
+    description: Slower crusher should usually reduce throughput.
+  - name: ramp_closed_le_baseline
+    type: le_factor
+    factor: 1.05
+    left: ramp_closed
+    right: baseline
+    description: Ramp closure should usually not improve throughput.
+  - name: truck_count_saturation_plausible
+    type: saturation
+    low: trucks_4
+    mid: baseline
+    high: trucks_12
+    factor: 1.25
+    description: Throughput should show some saturation as trucks increase.
+
+cross_check:
+  enabled: false

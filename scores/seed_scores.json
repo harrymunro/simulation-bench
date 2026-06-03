@@ -2,6 +2,8 @@
   {
     "submission_id": "2026-04-25__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__max-thinking",
     "reviewer": "opus-subagent",
+    "reviewer_model": "claude-opus-4-7",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-27",
     "conceptual_modelling": 18,
     "data_topology": 14,
@@ -19,6 +21,8 @@
   {
     "submission_id": "2026-04-25__001_synthetic_mine_throughput__codex-cli__gpt-5-5__xhigh",
     "reviewer": "opus-subagent",
+    "reviewer_model": "claude-opus-4-7",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-27",
     "conceptual_modelling": 17,
     "data_topology": 13,
@@ -36,6 +40,8 @@
   {
     "submission_id": "2026-04-27__001_synthetic_mine_throughput__gsd2__gemini-3-1-pro-preview__customtools",
     "reviewer": "opus-subagent",
+    "reviewer_model": "claude-opus-4-7",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-27",
     "conceptual_modelling": 15,
     "data_topology": 12,
@@ -53,6 +59,8 @@
   {
     "submission_id": "2026-04-25__001_synthetic_mine_throughput__pi-agent__gemini-3-1-pro-preview__vanilla-customtools",
     "reviewer": "opus-subagent",
+    "reviewer_model": "claude-opus-4-7",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-27",
     "conceptual_modelling": 14,
     "data_topology": 12,
@@ -70,6 +78,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-sonnet-4-6__vanilla-max",
     "reviewer": "claude-opus-4-7",
+    "reviewer_model": "claude-opus-4-7",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 18,
     "data_topology": 13,
@@ -87,6 +97,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__superpowers-max-thinking",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 18,
     "data_topology": 14,
@@ -104,6 +116,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__opencode__gemini-3-1-pro-preview__customtools-high-superpowers-skill",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 14,
     "data_topology": 13,
@@ -121,6 +135,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__gemini-cli__gemini-3-1-pro-preview__vanilla",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 16,
     "data_topology": 12,
@@ -138,6 +154,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__plan-mode",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 19,
     "data_topology": 15,
@@ -155,6 +173,8 @@
   {
     "submission_id": "2026-04-29__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__agent-teams-nelson-max-thinking",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-29",
     "conceptual_modelling": 19,
     "data_topology": 15,
@@ -172,6 +192,8 @@
   {
     "submission_id": "2026-04-30__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__ouroboros-max-thinking",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-04-30",
     "conceptual_modelling": 19,
     "data_topology": 15,
@@ -189,6 +211,8 @@
   {
     "submission_id": "2026-05-01__001_synthetic_mine_throughput__opencode__gemini-3-flash-preview__vanilla",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-05-01",
     "conceptual_modelling": 15,
     "data_topology": 11,
@@ -206,6 +230,8 @@
   {
     "submission_id": "2026-05-08__001_synthetic_mine_throughput__claude-code__claude-opus-4-7__nelson-v2-2-2-max-thinking",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-05-08",
     "conceptual_modelling": 19,
     "data_topology": 14,
@@ -223,6 +249,8 @@
   {
     "submission_id": "2026-05-19__001_synthetic_mine_throughput__antigravity__gemini-3-5-flash",
     "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
     "review_date": "2026-05-19",
     "conceptual_modelling": 18,
     "data_topology": 14,
@@ -236,5 +264,62 @@
     "behavioural_checks_passed": 6,
     "recommendation": "Strong submission",
     "notes": "Antigravity + Gemini 3.5 Flash: complete 7-scenario SimPy DES, 100% automated pass, exemplary conceptual model and decision answers; absolute path in README and missing requirements.txt/run_metrics/token_usage drag code-quality and telemetry."
+  },
+  {
+    "submission_id": "2026-05-19__001_synthetic_mine_throughput__antigravity__gemini-3-5-flash__normal-thinking",
+    "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
+    "review_date": "2026-05-19",
+    "conceptual_modelling": 18,
+    "data_topology": 14,
+    "simulation_correctness": 18,
+    "experimental_design": 13,
+    "results_interpretation": 13,
+    "code_quality": 7,
+    "traceability": 5,
+    "automated_checks_passed": 57,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Strong submission",
+    "notes": "Antigravity + Gemini 3.5 Flash (normal-thinking run tag): 57/57 automated checks, all six behavioural checks pass, full SimPy DES with capacity-1 edge resources, lognormal/truncated-normal sampling, Student-t CIs, built-in --validate suite; warmup unexplained, no tests/requirements manifest, and run_metrics/token_usage still placeholders."
+  },
+  {
+    "submission_id": "2026-06-01__001_synthetic_mine_throughput__opencode__claude-opus-4-8__plan-mode-max-effort",
+    "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
+    "review_date": "2026-06-01",
+    "conceptual_modelling": 20,
+    "data_topology": 15,
+    "simulation_correctness": 20,
+    "experimental_design": 14,
+    "results_interpretation": 15,
+    "code_quality": 9,
+    "traceability": 5,
+    "automated_checks_passed": 57,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Exemplary submission",
+    "notes": "opencode + Claude Opus 4.8 (plan-mode, max-effort): reference-quality SimPy DES; 57/57 automated + all 6 behavioural checks; runs reproduce exactly and inputs are byte-identical to the benchmark. Independently verified that the narrow ramp is off the loaded-haul cycle, so ramp_upgrade/ramp_closed correctly move throughput <2% (not a bug); crusher identified as the binding constraint with an optional crusher_debottleneck scenario (+14.7%). Minor: token_usage unrecorded (harness limitation), self-timed run_metrics, single 762-line model module, and CRN 'paired comparison' claim slightly overstated."
+  },
+  {
+    "submission_id": "2026-06-01__001_synthetic_mine_throughput__claude-code__claude-opus-4-8__plan-mode-max-effort",
+    "reviewer": "claude-code",
+    "reviewer_model": "unknown",
+    "reviewer_harness": "claude-code",
+    "review_date": "2026-06-01",
+    "conceptual_modelling": 19,
+    "data_topology": 15,
+    "simulation_correctness": 19,
+    "experimental_design": 14,
+    "results_interpretation": 15,
+    "code_quality": 10,
+    "traceability": 5,
+    "automated_checks_passed": 57,
+    "automated_checks_total": 57,
+    "behavioural_checks_passed": 6,
+    "recommendation": "Exemplary submission",
+    "notes": "claude-code + Claude Opus 4.8 (plan-mode, max-effort): 57/57 automated + all 6 behavioural checks; re-ran the canonical run and summary.json/results.csv reproduce bit-for-bit; inputs byte-identical to the benchmark and the 78-test pytest suite passes. Clean 16-module immutable SimPy package (one process per truck, capacity-1 edges as Resources, Dijkstra shortest-time routing with loud reachability check, SeedSequence streams, Student-t CIs). Independently verified by hand that the loaded LOAD->CRUSH legs never use the narrow ramp, so the crusher is correctly the binding constraint and ramp_upgrade/ramp_closed move throughput <2% (not a bug). Minor: average_truck_utilisation folds queue-wait into productive time so it sits at ~0.99 everywhere (low information); token_usage unrecorded (harness limitation); intervention.category 'plan-mode' is non-canonical and renders as 'unrecorded'; saturation knee between 4 and 8 trucks not pinpointed."
   }
 ]

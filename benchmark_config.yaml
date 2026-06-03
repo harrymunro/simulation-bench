@@ -23,3 +23,28 @@ benchmarks:
       - summary.json
       - event_log.csv
 
+  - id: "002_container_shipping_throughput"
+    name: "Asia-Europe Container Shipping Throughput"
+    path: "benchmarks/002_container_shipping_throughput"
+    type: "discrete_event_simulation"
+    required_tool: "simpy"
+    recommended_time_limit_minutes: 45
+    difficulty: "maximum"
+    notes: >-
+      Reduced hand-holding (no entity/output schema in the prompt), designed and
+      verified traps (canal-upgrade no-op, fleet saturation, Cape reroute), and an
+      execute-and-cross-check harness stage.
+    required_scenarios:
+      - baseline
+      - fleet_small
+      - fleet_large
+      - canal_upgrade
+      - port_slowdown
+      - canal_closed
+    required_outputs:
+      - conceptual_model.md
+      - README.md
+      - results.csv
+      - summary.json
+      - event_log.csv
+

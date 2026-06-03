@@ -2,8 +2,8 @@
 
 Submission:
 
-Reviewer:
-
+Reviewer model:        <!-- e.g. claude-opus-4-8 -->
+Reviewer harness:      <!-- e.g. claude-code -->
 Date:
 
 ## Automated report

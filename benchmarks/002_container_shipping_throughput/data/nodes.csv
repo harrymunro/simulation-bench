@@ -1,0 +1,13 @@
+node_id,node_name,node_type,lat_deg,lon_deg,capacity,metadata
+CNSHA,Port of Shanghai,origin_port,31.23,121.47,,"Primary Asian export hub; deep-sea container terminal"
+SGSIN,Port of Singapore,origin_port,1.26,103.83,,"Second export/transshipment hub at the eastern mouth of the Malacca Strait"
+MALACCA,Malacca Strait,waypoint,2.50,101.00,,"Convergence waypoint for Shanghai and Singapore traffic"
+IOX,Indian Ocean Junction,waypoint,-5.00,75.00,,"Routing divergence: north to Bab-el-Mandeb/Suez or south to the Cape"
+BAB,Bab-el-Mandeb,waypoint,12.60,43.40,,"Red Sea southern entrance on the Suez routing"
+SUEZSOUTH,Suez Canal South (Suez City),chokepoint,29.97,32.55,,"Southern entrance to the Suez Canal"
+PORTSAID,Suez Canal North (Port Said),chokepoint,31.26,32.30,,"Northern (Mediterranean) exit of the Suez Canal"
+GIB,Strait of Gibraltar,waypoint,35.95,-5.60,,"Mediterranean exit into the Atlantic on the Suez routing"
+NLRTM,Port of Rotterdam,destination_port,51.95,4.14,,"Primary European import sink; throughput to here is the objective"
+DEHAM,Port of Hamburg,destination_port,53.55,9.93,,"Secondary European port; reachable but not the delivery objective"
+CAPE,Cape of Good Hope,waypoint,-34.36,18.47,,"Southern tip of Africa between the Indian and Atlantic Oceans"
+WAFR,West Africa Atlantic,waypoint,20.00,-18.00,,"Atlantic waypoint off the coast of West Africa"

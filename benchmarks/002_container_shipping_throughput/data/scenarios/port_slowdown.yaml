@@ -1,0 +1,7 @@
+scenario_id: port_slowdown
+inherits: baseline
+description: Reduced crane productivity at the Rotterdam discharge berth
+
+berth_overrides:
+  B_RTM:
+    moves_per_hour_per_crane: 16

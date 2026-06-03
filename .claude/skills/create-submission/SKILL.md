@@ -16,7 +16,7 @@ submissions/<YYYY-MM-DD>__<benchmark_id>__<harness>__<model>[__<run_tag>]/
 | Segment      | Source                                                                                            |
 | ------------ | ------------------------------------------------------------------------------------------------- |
 | date         | Today's date in `YYYY-MM-DD` (UTC) unless the user gave a different one                           |
-| benchmark_id | Defaults to `001_synthetic_mine_throughput` (the only benchmark today). Pick from `benchmarks/`.  |
+| benchmark_id | One of the benchmarks under `benchmarks/`: `001_synthetic_mine_throughput` or `002_container_shipping_throughput`. If the user does not say which, ask. |
 | harness      | The agent runtime (`claude-code`, `cursor`, `aider`, …). Lowercase kebab-case, no spaces.         |
 | model        | The model the harness drove. Lowercase kebab-case, no spaces. Strip vendor prefixes if redundant. |
 | run_tag      | Optional. Use when the user signals a variant or repeat (e.g. "no skills", "attempt 2").          |
@@ -36,7 +36,7 @@ From the user's request, identify:
 
 1. **harness** — what is driving the model
 2. **model** — which model is being driven
-3. **benchmark_id** — default to `001_synthetic_mine_throughput` if unstated
+3. **benchmark_id** — `001_synthetic_mine_throughput` (mine haulage) or `002_container_shipping_throughput` (Asia–Europe shipping). If the user does not specify, ask which benchmark; do not assume.
 4. **date** — default to today
 5. **run_tag** — only if the user signalled a variant or it disambiguates from an existing folder
 

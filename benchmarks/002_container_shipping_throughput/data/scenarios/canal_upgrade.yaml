@@ -1,0 +1,11 @@
+scenario_id: canal_upgrade
+inherits: baseline
+description: Expanded Suez Canal - more convoy slots and faster transit
+
+leg_overrides:
+  L06_CANAL_NB:
+    capacity: 12
+    max_speed_kn: 14
+  L06_CANAL_SB:
+    capacity: 12
+    max_speed_kn: 14

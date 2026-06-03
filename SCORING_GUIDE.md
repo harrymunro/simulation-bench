@@ -10,6 +10,24 @@ Final score = Human quality score + automated bonus/penalty context
 
 For V1, do not let efficiency dominate. A fast, cheap, wrong simulation is a very small bonfire.
 
+## Recording the reviewer (required)
+
+Reviews are performed by AI models, not people. Every recorded score **must** capture
+which model and harness produced it: `reviewer_model` (e.g. `claude-opus-4-8`) and
+`reviewer_harness` (e.g. `claude-code`). This is stored alongside the score and shown
+on the leaderboard so results are attributable and reviewer drift across model
+versions is visible. Do not fabricate a version you are unsure of — use `unknown`
+rather than a guess, but prefer the exact id.
+
+## Benchmark 002 and difficulty
+
+002 (Asia–Europe container shipping) is scored on the same 100-point rubric, but it
+runs at **maximum difficulty**: the prompt withholds the output schema, the scenarios
+contain designed traps, and the harness cross-checks the event log against the
+summary. At this difficulty, presentation alone earns little — award the top of each
+band only for a correctly *diagnosed* bottleneck and the trap scorecard in
+`benchmarks/002_container_shipping_throughput/templates/reviewer_form.md`.
+
 ## Human quality score: 100 points
 
 | Category | Points |

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Simulation Bench 002 Summary Schema (tolerant)",
+  "description": "Evaluator-side reference schema. Benchmark 002 runs under reduced hand-holding: the agent is not told the output schema, so this schema is deliberately permissive. It checks that a scenarios object exists with a throughput mean and a per-day rate per scenario, accepting common synonyms. The authoritative tolerant contract lives in scoring_rules.yaml.",
+  "type": "object",
+  "required": ["benchmark_id", "scenarios"],
+  "properties": {
+    "benchmark_id": { "type": "string" },
+    "scenarios": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "anyOf": [
+          { "required": ["replications", "total_teu_mean"] },
+          { "required": ["replications", "total_teu_delivered_mean"] },
+          { "required": ["replications", "teu_delivered_mean"] },
+          { "required": ["replications", "total_teu"] }
+        ],
+        "properties": {
+          "replications": { "type": "number" },
+          "horizon_days": { "type": ["number", "null"] },
+          "total_teu_mean": { "type": ["number", "null"] },
+          "total_teu_ci95_low": { "type": ["number", "null"] },
+          "total_teu_ci95_high": { "type": ["number", "null"] },
+          "teu_per_day_mean": { "type": ["number", "null"] },
+          "rotterdam_berth_utilisation": { "type": ["number", "null"] },
+          "canal_utilisation": { "type": ["number", "null"] },
+          "mean_anchorage_wait_hours": { "type": ["number", "null"] },
+          "mean_cycle_time_days": { "type": ["number", "null"] },
+          "top_bottlenecks": { "type": ["array", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "key_assumptions": { "type": "array" },
+    "model_limitations": { "type": "array" }
+  },
+  "additionalProperties": true
+}

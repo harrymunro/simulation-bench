@@ -98,8 +98,9 @@ const { Content } = await render(entry);
       </li>
       <li>Runtime: <code>{data.runtimeSeconds ?? "—"} s</code></li>
       <li>
-        Reviewer: <code>{data.reviewer ?? "—"}</code> on
-        <code>{data.reviewDate ?? "—"}</code>
+        Reviewer model: <code>{data.reviewerModel ?? data.reviewer ?? "—"}</code>
+        · harness: <code>{data.reviewerHarness ?? "—"}</code>
+        · on <code>{data.reviewDate ?? "—"}</code>
       </li>
       {data.recommendation && <li>Recommendation: {data.recommendation}</li>}
       {data.notes && <li>Notes: {data.notes}</li>}
@@ -135,7 +136,7 @@ const { Content } = await render(entry);
             <thead>
               <tr>
                 <th>Scenario</th>
-                <th>Mean total tonnes</th>
+                <th>Mean throughput</th>
               </tr>
             </thead>
             <tbody>

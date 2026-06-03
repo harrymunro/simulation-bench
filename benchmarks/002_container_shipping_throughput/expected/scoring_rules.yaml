@@ -1,0 +1,137 @@
+benchmark_id: 002_container_shipping_throughput
+
+# ---------------------------------------------------------------------------
+# Benchmark-aware harness config. evaluate_submission.py reads this file so the
+# harness is not hard-coded to any single benchmark. Lists may contain plain
+# strings, or {any: [synonym, ...]} groups that pass if ANY synonym is present.
+# This tolerance is deliberate: benchmark 002 is run under reduced hand-holding,
+# so the agent chooses its own column/metric names and the harness must locate
+# the throughput series robustly rather than demand exact strings.
+# ---------------------------------------------------------------------------
+
+required_output_files:
+  - conceptual_model.md
+  - README.md
+  - results.csv
+  - summary.json
+  - event_log.csv
+
+required_scenarios:
+  - baseline
+  - fleet_small
+  - fleet_large
+  - canal_upgrade
+  - port_slowdown
+  - canal_closed
+
+# Minimal universal contract only. Under reduced hand-holding the throughput
+# column name is the agent's choice and is located via primary_metric below.
+required_results_columns:
+  - scenario_id
+  - replication
+  - { any: [random_seed, seed, rng_seed] }
+
+required_event_log_columns:
+  - scenario_id
+  - replication
+  - event_type
+  - { any: [time_days, time_hours, time_min, time, timestamp] }
+  - { any: [vessel_id, ship_id, entity_id, vehicle_id] }
+
+# How the harness locates the per-scenario throughput series.
+primary_metric:
+  label: TEU delivered to Rotterdam
+  summary_mean_keys:
+    - total_teu_mean
+    - total_teu_delivered_mean
+    - teu_delivered_mean
+    - total_teu
+    - throughput_teu_mean
+  results_value_columns:
+    - total_teu_delivered
+    - teu_delivered
+    - total_teu
+    - teu_per_day
+  # Must stay in sync with public_tests/test_csv_outputs.py (teu_per_day is accepted
+  # there too); ordering scale (total vs per-day) is irrelevant for the behavioural
+  # checks, which compare scenarios within a single submission.
+  results_column_regex: "teu.*deliver|deliver.*teu|total_teu|teu_per_day"
+
+# Per-scenario keys the summary should expose (each concept satisfied by any synonym).
+# The total-TEU synonym set is kept in sync with primary_metric.summary_mean_keys.
+summary_required_scenario_keys:
+  - { any: [replications] }
+  - { any: [horizon_days, planning_horizon_days, horizon, shift_length_hours] }
+  - { any: [total_teu_mean, total_teu_delivered_mean, teu_delivered_mean, total_teu, throughput_teu_mean] }
+  - { any: [teu_per_day_mean, teu_per_day, throughput_teu_per_day_mean] }
+
+# Behavioural sanity checks. A correct model passes all of these; they are NOT
+# the discriminator (the planted traps are graded by the human rubric).
+behavioural_checks:
+  - name: fleet_large_gt_fleet_small
+    type: gt
+    left: fleet_large
+    right: fleet_small
+    description: A larger fleet should usually deliver more than a smaller fleet.
+  - name: baseline_gt_fleet_small
+    type: gt
+    left: baseline
+    right: fleet_small
+    description: The baseline fleet should usually outperform the small fleet.
+  - name: canal_upgrade_ge_baseline
+    type: ge_factor
+    factor: 0.95
+    left: canal_upgrade
+    right: baseline
+    description: Expanding the canal should not reduce throughput (expected near-no-op).
+  - name: port_slowdown_lt_baseline
+    type: lt
+    left: port_slowdown
+    right: baseline
+    description: Slower Rotterdam cranes should reduce throughput.
+  - name: canal_closed_le_baseline
+    type: le_factor
+    factor: 1.05
+    left: canal_closed
+    right: baseline
+    description: Closing the canal should not improve throughput.
+  - name: fleet_saturation_plausible
+    type: saturation
+    low: fleet_small
+    mid: baseline
+    high: fleet_large
+    factor: 1.25
+    description: Throughput should show diminishing returns as the fleet grows.
+
+# Execute-and-cross-check: re-derive delivered TEU from the event log and compare,
+# PER REPLICATION, against the per-replication totals in results.csv (apples to
+# apples, so logging only a subset of replications is not penalised). If results.csv
+# exposes no per-replication total column, fall back to comparing the event-log mean
+# against the summary mean with a wider tolerance. A large mismatch means the
+# headline numbers are not supported by the trace (confidently wrong).
+cross_check:
+  enabled: true
+  # Synonyms are deliberately broad to tolerate agent-chosen event/column names
+  # under the reduced-hand-holding prompt; only the matching ones are used.
+  delivered_event_types:
+    - discharge_end
+    - discharge
+    - delivered
+    - deliver
+    - unload_end
+    - dump_end
+  teu_column_candidates:
+    - teu
+    - payload_teu
+    - teu_delivered
+    - containers_teu
+    - payload
+  # Per-replication TOTAL columns in results.csv (rates like teu_per_day are excluded
+  # here because the event-log reconstruction yields a total, not a rate).
+  results_total_columns:
+    - total_teu_delivered
+    - teu_delivered
+    - total_teu
+  destination_hint: NLRTM
+  tolerance_fraction: 0.15
+  fallback_tolerance_fraction: 0.25

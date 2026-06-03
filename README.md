@@ -6,13 +6,28 @@ A benchmark for evaluating agentic software development on modelling and simulat
 
 The benchmark asks an agent to build a discrete-event simulation from supplied topology data and decision questions. It evaluates not only whether the code runs, but whether the agent can produce a defensible conceptual model, use topology data meaningfully, run experiments, report uncertainty, and interpret bottlenecks.
 
-## Current benchmark
+## Benchmarks
 
 ```text
-benchmarks/001_synthetic_mine_throughput
+benchmarks/001_synthetic_mine_throughput      # open-pit mine haulage (V1)
+benchmarks/002_container_shipping_throughput  # Asia–Europe container shipping (maximum difficulty)
 ```
 
-The task is to estimate ore throughput to a primary crusher over an 8-hour shift using a synthetic mine network.
+**001 — Synthetic Mine Throughput.** Estimate ore throughput to a primary crusher
+over an 8-hour shift using a synthetic mine network.
+
+**002 — Asia–Europe Container Shipping Throughput.** Estimate container (TEU)
+throughput from Shanghai and Singapore to Rotterdam over a 180-day horizon, via the
+Suez Canal with a Cape of Good Hope reroute. 002 is deliberately harder: the prompt
+withholds the entity/output schema (the agent must derive the model), the scenarios
+contain **designed, verified traps** (the canal upgrade is a near-no-op because the
+Rotterdam berth is the true bottleneck; over-fleeting saturates; closing the canal
+forces the long Cape reroute), and the harness re-derives throughput from the event
+log to catch confidently-wrong submissions.
+
+Every score now records the **reviewing model and harness** (reviews are performed
+by AI models), so results are attributable and reviewer drift is visible on the
+leaderboard.
 
 ## Key design choices
 

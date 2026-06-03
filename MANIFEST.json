@@ -1,8 +1,12 @@
 {
   "name": "simulation-bench",
-  "version": "0.1.0-regenerated",
+  "version": "0.2.0",
   "contains_reference_solution": false,
-  "benchmark_count": 1,
+  "benchmark_count": 2,
   "primary_benchmark": "001_synthetic_mine_throughput",
-  "generated_files_note": "No reference solution is included. The harness automates quantitative and structural checks only."
+  "benchmarks": [
+    "001_synthetic_mine_throughput",
+    "002_container_shipping_throughput"
+  ],
+  "generated_files_note": "No agent-facing reference solution is shipped. Benchmark 002 has a PRIVATE evaluator-only reference simulation under benchmarks/002_container_shipping_throughput/expected/reference_solution/, which is git-ignored and never copied into a submission; only its verified numbers are recorded in expected/private_expected_behaviour.md. The harness automates quantitative, structural, behavioural, and (for 002) event-log cross-checks."
 }

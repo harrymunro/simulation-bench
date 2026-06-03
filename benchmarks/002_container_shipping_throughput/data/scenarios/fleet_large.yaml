@@ -1,0 +1,6 @@
+scenario_id: fleet_large
+inherits: baseline
+description: Larger fleet sensitivity
+
+fleet:
+  vessel_count: 20

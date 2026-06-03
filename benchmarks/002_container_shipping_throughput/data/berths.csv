@@ -1,0 +1,5 @@
+berth_id,node_id,berth_count,crane_count,moves_per_hour_per_crane,availability,metadata
+B_SHA,CNSHA,3,5,32,1.00,"Shanghai export berths allocated to this service; ample capacity"
+B_SIN,SGSIN,3,5,34,1.00,"Singapore export berths allocated to this service; ample capacity"
+B_RTM,NLRTM,1,4,28,1.00,"Rotterdam deep-sea berth window allocated to this service; one move approx one TEU"
+B_HAM,DEHAM,1,3,26,1.00,"Hamburg berth window; secondary port, not the delivery objective"

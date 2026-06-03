@@ -1,0 +1,9 @@
+scenario_id: canal_closed
+inherits: baseline
+description: Suez Canal unavailable; the service must use an alternative route if one exists, or fail clearly if none does
+
+leg_overrides:
+  L06_CANAL_NB:
+    closed: true
+  L06_CANAL_SB:
+    closed: true

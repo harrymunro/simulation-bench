@@ -132,7 +132,7 @@ Read `submissions/<folder>/results/evaluation_report.json` and present:
 
 - **Header** — folder name decoded into date, benchmark, harness, model, run tag.
 - **Required deliverables** — confirm all five from `RUN_PROTOCOL.md` §3 are present; flag any missing.
-- **Required scenarios** — the six benchmark scenarios (`baseline`, `trucks_4`, `trucks_12`, `ramp_upgrade`, `crusher_slowdown`, `ramp_closed`) — flag any absent from `summary.json`.
+- **Required scenarios** — the benchmark's required scenarios (read them from `benchmarks/<benchmark_id>/expected/scoring_rules.yaml` → `required_scenarios`; for 001 these are `baseline`, `trucks_4`, `trucks_12`, `ramp_upgrade`, `crusher_slowdown`, `ramp_closed`; for 002 `baseline`, `fleet_small`, `fleet_large`, `canal_upgrade`, `port_slowdown`, `canal_closed`) — flag any absent from `summary.json`.
 - **Automated checks** — passed/total and pass rate; list failed checks with their messages.
 - **Scenario means** — `scenario_total_tonnes_means` as a small table.
 - **Behavioural checks** — call out any failures and remind the user that per `SCORING_GUIDE.md` a failure may indicate a model bug, a scenario not applied correctly, or a legitimate modelling choice that needs human review — *not* an automatic disqualification.
@@ -215,7 +215,9 @@ Construct the JSON object and append it to `scores/seed_scores.json` immediately
 ```json
 {
   "submission_id": "<folder name>",
-  "reviewer": "<your reviewer label, e.g. opus-subagent or claude-code>",
+  "reviewer": "<reviewer_model> via <reviewer_harness>",
+  "reviewer_model": "<the model performing THIS review, e.g. claude-opus-4-8>",
+  "reviewer_harness": "<the harness driving that model, e.g. claude-code>",
   "review_date": "<YYYY-MM-DD>",
   "conceptual_modelling": <int 0-20>,
   "data_topology": <int 0-15>,
@@ -234,9 +236,18 @@ Construct the JSON object and append it to `scores/seed_scores.json` immediately
 
 Field-mapping rules:
 
+- **Record the reviewer (mandatory).** Every review is performed by an AI model, so
+  capture *which* model and harness produced this score. Set `reviewer_model` to the
+  model you are actually running as (e.g. `claude-opus-4-8`, `gpt-5-5`,
+  `gemini-3-5-flash`) and `reviewer_harness` to the harness driving it (e.g.
+  `claude-code`, `cursor`). Set the human-readable `reviewer` to
+  `"<reviewer_model> via <reviewer_harness>"`. Do not invent a version you are unsure
+  of — if you genuinely cannot determine the model, use `unknown`, but prefer the
+  exact id. The leaderboard records and displays this so scores are attributable and
+  reviewer drift is visible.
 - Use the score from Step 7 verbatim — do not silently adjust to make the leaderboard look smoother.
 - `automated_checks_passed` / `automated_checks_total` come from `evaluation_report.json` → `automated_checks.passed` / `.total`.
-- `behavioural_checks_passed` is the count of checks under `automated_checks.checks` whose `name` is one of `trucks_12_gt_trucks_4`, `baseline_gt_trucks_4`, `ramp_upgrade_ge_baseline`, `crusher_slowdown_lt_baseline`, `ramp_closed_le_baseline`, `truck_count_saturation_plausible`, and that have `passed: true`.
+- `behavioural_checks_passed` is the count of passed behavioural checks — the checks under `automated_checks.checks` whose `name` matches an entry in the benchmark's `expected/scoring_rules.yaml` → `behavioural_checks` (for 002 also count the `cross_check_*` results). These are the non-structural sanity checks (e.g. fleet ordering, saturation, slowdown, closure, and for 002 the event-log cross-checks). Do not count the structural `output_exists_*` / `*_has_*` checks.
 - `submission_id` is the folder name verbatim (no leading `submissions/`).
 - `review_date` is **today's** date in `YYYY-MM-DD`.
 

@@ -1,0 +1,6 @@
+scenario_id: fleet_small
+inherits: baseline
+description: Smaller fleet sensitivity
+
+fleet:
+  vessel_count: 8

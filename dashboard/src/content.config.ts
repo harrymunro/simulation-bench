@@ -27,6 +27,8 @@ const submissions = defineCollection({
     runtimeSeconds: z.number().nullable(),
     interventionCategory: z.string(),
     reviewer: z.string().nullable(),
+    reviewerModel: z.string().nullable(),
+    reviewerHarness: z.string().nullable(),
     reviewDate: z.string().nullable(),
     recommendation: z.string().nullable(),
     notes: z.string().nullable(),

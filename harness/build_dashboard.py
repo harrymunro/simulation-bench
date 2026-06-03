@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import sqlite3
 import sys
@@ -85,7 +86,7 @@ def load_leaderboard(db_path: Path) -> list[dict]:
                 s.runtime_seconds, s.intervention_category,
                 sc.total_score, sc.conceptual_modelling, sc.data_topology, sc.simulation_correctness,
                 sc.experimental_design, sc.results_interpretation, sc.code_quality, sc.traceability,
-                sc.reviewer, sc.review_date, sc.recommendation, sc.notes
+                sc.reviewer, sc.reviewer_model, sc.reviewer_harness, sc.review_date, sc.recommendation, sc.notes
             FROM submissions s
             JOIN scores sc USING (submission_id)
             ORDER BY sc.total_score DESC, sc.review_date DESC
@@ -119,6 +120,8 @@ def load_leaderboard(db_path: Path) -> list[dict]:
             "runtimeSeconds": r["runtime_seconds"],
             "interventionCategory": r["intervention_category"] or "unrecorded",
             "reviewer": r["reviewer"],
+            "reviewerModel": r["reviewer_model"],
+            "reviewerHarness": r["reviewer_harness"],
             "reviewDate": r["review_date"],
             "recommendation": r["recommendation"],
             "notes": r["notes"],
@@ -309,6 +312,31 @@ def _read_text_section(path: Path) -> str | None:
         return None
 
 
+_ASSET_LINK_RE = re.compile(r"(!?\[[^\]]*\])\((\.?/?)([^)\s]+)\)")
+
+
+def _rewrite_relative_asset_links(text: str, submission_id: str) -> str:
+    """Rewrite bare or `./`-relative links to download files into public URLs.
+
+    Astro cannot resolve `(animation.gif)` from a content file; the asset is
+    copied to `dashboard/public/submissions/<id>/<file>` and served at
+    `/submissions/<id>/<file>`, so rewrite those links accordingly. Absolute
+    paths and URLs are left untouched.
+    """
+
+    def repl(match: re.Match[str]) -> str:
+        label, prefix, target = match.group(1), match.group(2), match.group(3)
+        if target.startswith(("http://", "https://", "/")):
+            return match.group(0)
+        if "/" in target:
+            return match.group(0)
+        if target not in DOWNLOAD_FILENAMES:
+            return match.group(0)
+        return f"{label}(/submissions/{submission_id}/{target})"
+
+    return _ASSET_LINK_RE.sub(repl, text)
+
+
 def _summarise_evaluation_report(folder: Path) -> dict | None:
     """Return a small dict of selected fields from results/evaluation_report.json, or None."""
     candidates = [folder / "results" / "evaluation_report.json", folder / "evaluation_report.json"]
@@ -321,14 +349,23 @@ def _summarise_evaluation_report(folder: Path) -> dict | None:
         return None
     automated = report.get("automated_checks") or {}
     behavioural = report.get("behavioural_checks") or {}
-    summary = report.get("summary") or {}
+    legacy_summary = report.get("summary") or {}
+    # Scenario means are written at the top level of the harness report. The
+    # benchmark-agnostic key is ``scenario_metric_means``; ``scenario_total_tonnes_means``
+    # is kept as a 001-era alias, and the old nested location is a final fallback.
+    scenario_means = (
+        report.get("scenario_metric_means")
+        or report.get("scenario_total_tonnes_means")
+        or legacy_summary.get("scenario_total_tonnes_means")
+        or {}
+    )
     return {
         "automatedChecksPassed": automated.get("passed"),
         "automatedChecksTotal": automated.get("total"),
         "automatedPassRate": automated.get("pass_rate"),
         "behaviouralChecksPassed": behavioural.get("passed"),
         "behaviouralChecksTotal": behavioural.get("total"),
-        "scenarioTotalTonnesMeans": summary.get("scenario_total_tonnes_means") or {},
+        "scenarioTotalTonnesMeans": scenario_means,
         "reportRelativePath": report_path.relative_to(folder).as_posix(),
     }
 
@@ -360,6 +397,8 @@ def _render_frontmatter(row: dict, files: list[dict], evaluation_report: dict | 
         f"runtimeSeconds: {_yaml_scalar(row['runtimeSeconds'])}",
         f"interventionCategory: {_yaml_scalar(row['interventionCategory'])}",
         f"reviewer: {_yaml_scalar(row['reviewer'])}",
+        f"reviewerModel: {_yaml_scalar(row['reviewerModel'])}",
+        f"reviewerHarness: {_yaml_scalar(row['reviewerHarness'])}",
         f"reviewDate: {_yaml_scalar(row['reviewDate'])}",
         f"recommendation: {_yaml_scalar(row['recommendation'])}",
         f"notes: {_yaml_scalar(row['notes'])}",
@@ -409,11 +448,11 @@ def emit_submissions(rows: list[dict], submissions_root: Path, dashboard_root: P
             reviewer = _read_text_section(folder / "reviewer_form.md")
 
         if conceptual:
-            body_parts.append("## Conceptual model\n\n" + conceptual)
+            body_parts.append("## Conceptual model\n\n" + _rewrite_relative_asset_links(conceptual, row["submission_id"]))
         if readme:
-            body_parts.append("## README\n\n" + readme)
+            body_parts.append("## README\n\n" + _rewrite_relative_asset_links(readme, row["submission_id"]))
         if reviewer:
-            body_parts.append("## Reviewer form\n\n" + reviewer)
+            body_parts.append("## Reviewer form\n\n" + _rewrite_relative_asset_links(reviewer, row["submission_id"]))
 
         body = "\n\n".join(body_parts) if body_parts else "_No rendered sections; see file index above._"
 

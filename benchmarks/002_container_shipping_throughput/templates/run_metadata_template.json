@@ -1,0 +1,10 @@
+{
+  "agent": "",
+  "model": "",
+  "platform": "",
+  "date": "",
+  "human_interventions": 0,
+  "internet_access": false,
+  "time_limit_minutes": 45,
+  "notes": ""
+}
